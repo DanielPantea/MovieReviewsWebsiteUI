@@ -2,6 +2,7 @@
   <a href="#default" class="logo">Logo</a>
   <div class="header-right">
     <a button style="cursor:pointer" (click)=onHandleSignIn()>Register</a>
-    <a button style="cursor:pointer" (click)=onHandleLogIn()>Log In</a>
+    <a button style="cursor:pointer" (click)=onHandleLogIn()>LogIn</a>
+    <app-log-in *ngIf = "showLogIn" (closeLogin) = "onHandleLogIn()"></app-log-in>
   </div>
 </div> 
