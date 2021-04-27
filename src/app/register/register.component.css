@@ -1,4 +1,4 @@
-  .backdrop {
+.backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,10 +10,10 @@
   
   .box {
     position: fixed;
-    top: 20vh;
-    left: 37vw;
-    width: 25vw;
-    height: 32vh;
+    top: 15vh;
+    left: 35vw;
+    width: 30vw;
+    height: 50vh;
     padding: 20px;
     background: white;
     z-index: 100;
@@ -46,9 +46,9 @@
     text-decoration: none;
     font-size: 18px;
     line-height: 13px;
-    width: 80%;
+    width: 67%;
   }
-  
+
   .box a{
     color: black;
     text-align: left;
@@ -62,4 +62,3 @@
   .box a:hover{
     font-size: 16px;
   }
-  

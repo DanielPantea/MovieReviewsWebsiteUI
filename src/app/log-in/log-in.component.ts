@@ -12,9 +12,4 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Output() closeLogIn = new EventEmitter<void>();
-  onClose(){
-    this.closeLogIn.emit();
-  }
-
 }

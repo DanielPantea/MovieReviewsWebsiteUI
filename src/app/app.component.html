@@ -1,8 +1,8 @@
  <div class="header">
   <a href="#default" class="logo">Logo</a>
   <div class="header-right">
-    <a button style="cursor:pointer" (click)=onHandleSignIn()>Register</a>
-    <a button style="cursor:pointer" (click)=onHandleLogIn()>LogIn</a>
-    <app-log-in *ngIf = "showLogIn" (closeLogin) = "onHandleLogIn()"></app-log-in>
+    <a routerLink="/register">Register</a>
+    <a routerLink="/login">Login</a>
   </div>
 </div> 
+<router-outlet></router-outlet>
