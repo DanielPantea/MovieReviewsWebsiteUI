@@ -13,7 +13,7 @@
     top: 20vh;
     left: 37vw;
     width: 25vw;
-    height: 32vh;
+    height: 33vh;
     padding: 20px;
     background: white;
     z-index: 100;
@@ -46,7 +46,7 @@
     text-decoration: none;
     font-size: 18px;
     line-height: 13px;
-    width: 80%;
+    width: 285px;
   }
   
   .box a{

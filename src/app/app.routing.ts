@@ -1,9 +1,11 @@
 import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Routes, RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 const routes: Routes = [
+    { path: 'navbar',component: NavbarComponent},
     { path: 'login', component: LogInComponent },
     { path: 'register', component: RegisterComponent  },
     // otherwise redirect to home
