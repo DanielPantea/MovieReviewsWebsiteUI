@@ -1,0 +1,50 @@
+.body{
+    margin-left: 40px;
+    position: absolute;
+    width: 80%;
+    height: 100vh;
+    padding: 20px;
+    background: rgb(231, 236, 240);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.body input[type = "text"]{
+    float: left;
+    border: 1;
+    border-color: rgba(194, 195, 196, 0.774);
+    background: rgba(194, 195, 196, 0.774);
+    display: block;
+    margin: 20px auto;
+    text-align: left;
+    padding: 12px 20px;
+    width: 700px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.body button{
+    margin: 22px;
+    border: 0;
+    background-color:rgba(194, 195, 196, 0.774);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 13px;
+    width: 80px;
+}
+
+.body button:hover{
+    background: darkgray;
+}
+
+.fs{
+    margin: 5px;
+    line-height: 40px;
+}
+
+.body img{
+    margin: 0 auto;
+    width: 1000px;
+}

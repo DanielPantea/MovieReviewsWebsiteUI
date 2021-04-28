@@ -1,7 +1,6 @@
 .navbar{
-    position: left;
-    width: 12vw;
-    height: 100%;
+    width: 100%;
+    height: 100vh;
     padding: 20px;
     background: rgb(185, 214, 238);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -23,6 +22,7 @@
 
 .navbar button:hover{
     background-color: rgb(136, 197, 247);
+    
 }
 .navbar button:focus{
     background-color: rgb(136, 197, 247);

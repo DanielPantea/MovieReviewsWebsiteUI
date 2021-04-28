@@ -40,3 +40,18 @@
 .header-right {
   float: right;
 }
+
+.row{
+  display: flex;
+}
+
+.splitscreen {
+  display:flex;
+}
+.splitscreen .left {
+  flex: 0;
+}
+.splitscreen .right {
+  flex: 1;
+}
+
