@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { User } from "../_model/user.model";
 
 @Injectable({ providedIn: 'root' })
-export class AuthentificationService
+export class UserService
 {
     currentUser: User;
     constructor() { }
