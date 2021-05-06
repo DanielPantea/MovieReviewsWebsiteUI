@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { DiarypageComponent } from './diarypage/diarypage.component';
+import { HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DiarypageComponent } from './diarypage/diarypage.component';
   ],
   imports: [
     BrowserModule,
-    appRoutingModule
+    appRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
