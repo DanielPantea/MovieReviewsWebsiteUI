@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthentificationService } from '../_services/authentification.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +9,30 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+  password: string;
+  isInvalid: boolean;
+
+  constructor(
+    private authentificationService: AuthentificationService,
+    private routing: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  login()
+  {
+    this.authentificationService.login(this.username, this.password).subscribe(
+      data => {
+        this.routing.navigate(["**"]);
+        console.log(data);
+        
+      },
+      error => {
+        this.isInvalid = true;
+        console.log(error);
+      }
+    )
+  }
 }
