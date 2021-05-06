@@ -11,5 +11,8 @@ export class UserService
         return this.currentUser == null;
     }
 
-
+    logout()
+    {
+        this.currentUser = null;
+    }
 }
