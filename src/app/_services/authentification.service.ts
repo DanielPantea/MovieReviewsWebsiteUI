@@ -22,9 +22,11 @@ export class AuthentificationService
 
     register(username: string, password: string, email: string){
         let body = JSON.parse(
-            `username: ${username},
-             password: ${password},
-             email: ${email}`
+            `{
+                "username": "${username}",
+                "password": "${password}",
+                "email": "${email}"
+            }`
         )
         return this.http.post<any>(`${environment.apiUrl}/register`, body);
     }
