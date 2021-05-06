@@ -1,0 +1,11 @@
+.splitscreen {
+    display:flex;
+  }
+  .splitscreen .left {
+    flex: 15%;
+  }
+  .splitscreen .right {
+    flex: 85%;
+  }
+  
+  

@@ -7,6 +7,8 @@ import { appRoutingModule } from './app.routing';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { HeaderComponent } from './header/header.component';
+import { DiarypageComponent } from './diarypage/diarypage.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     LogInComponent,
     RegisterComponent,
     NavbarComponent,
-    HomepageComponent
+    HomepageComponent,
+    HeaderComponent,
+    DiarypageComponent
   ],
   imports: [
     BrowserModule,

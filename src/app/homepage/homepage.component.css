@@ -21,7 +21,7 @@
 }
 
 .body button{
-    margin: 21px;
+    margin: 22px;
     margin-right: 15px;
     border: 0;
     background-color:rgba(194, 195, 196, 0.774);
@@ -31,7 +31,9 @@
     text-decoration: none;
     font-size: 18px;
     line-height: 13px;
-    width: 80px;
+    width: 90px;
+    border-radius: 10px;
+    outline:none;
 }
 
 .body button:hover{
@@ -45,7 +47,7 @@
 }
 
 .moviebox{
-    width: 70%;
+    width: 80%;
     height: 20vh;
     padding: 20px;
     background: rgb(185, 185, 185);
