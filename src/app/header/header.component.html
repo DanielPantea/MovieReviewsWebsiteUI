@@ -1,7 +1,7 @@
 <div class="header">
     <a class="logo">Logo</a>
     <div class="header-right">
-      <a routerLink="/register">Register</a>
+      <a *ngIf="userService.isLoggedIn()" routerLink="/register">Register</a>
       <a *ngIf="userService.isLoggedIn()" routerLink="/login">Login</a>
       <a *ngIf="!userService.isLoggedIn()" (click)="userService.logout()" style="cursor: pointer;">Logout</a>
     </div>
