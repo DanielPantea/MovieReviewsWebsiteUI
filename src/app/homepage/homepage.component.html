@@ -1,13 +1,19 @@
 <div class="body">
 
     <input type="text" name="" placeholder="search">
-    <button routerLink="/" class="btn btn-link">Search</button><br/>
-    <button routerLink="/" class="btn btn-link">Filter</button>
+    <button routerLink="/" class="btn btn-link" (click)="getAllMovies()">Search</button><br/>
+    <button routerLink="/" class="btn btn-link" (click)="getMoviesByTags()">Filter</button>
     <button routerLink="/" class="btn btn-link">Sort</button>
     
+    <div *ngFor="let movie of movies">
+        <div class="moviebox">
+            {{movie.movieTitle}}
+            <img [src]="movie.posterImgUrl" alt="" >
+            {{movie.movieDesc}}
+        </div>
+    </div>
+    <!-- <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div><br/>
     <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div><br/>
     <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div><br/>
-    <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div><br/>
-    <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div>
-
+    <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div> -->
 </div>
