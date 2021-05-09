@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../_model/user.model';
-import { AuthentificationService } from '../_services/authentification.service';
-import { UserService } from '../_services/user.service';
+import { AuthentificationService } from '../_service/authentification.service';
+import { UserService } from '../_service/user.service';
 
 @Component({
   selector: 'app-log-in',

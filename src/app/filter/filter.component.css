@@ -1,0 +1,33 @@
+/* Customize the label (the container) */
+
+.box {
+    position: fixed;
+    width: 150px;
+    top: 33vh;
+    left: 18vw;
+    padding: 20px;
+    background: white;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    text-align: left;
+    font-size: 18px;
+  }
+
+  .box button{
+    float: right;
+    border: 0;
+    background-color:rgba(194, 195, 196, 0.774);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 13px;
+    border-radius: 4px;
+    outline:none;
+  }
+
+.box button:hover{
+    background: darkgray;
+  }
+

@@ -2,7 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../_model/movie.model';
 import { Tag } from '../_model/tag.model';
-import { MovieService } from '../_services/movie.service';
+import { MovieService } from '../_service/movie.service';
+
 
 @Component({
   selector: 'app-homepage',
@@ -19,6 +20,13 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    let currentTags = JSON.parse(localStorage.getItem("tags"));
+
+    if(currentTags?.length != 0){
+      console.log(currentTags);
+      this.getMoviesByTags();
+    }
   }
 
   getAllMovies(){
@@ -38,8 +46,7 @@ export class HomepageComponent implements OnInit {
 
   getMoviesByTags(){
 
-    this.tags = new Array(new Tag(1,"Trending"));
-    this.movieService.getMoviesByTags(this.tags).subscribe(
+    this.movieService.getMoviesByTags().subscribe(
       (response: Movie[]) => {
         this.movies = response;
         console.log(response);
