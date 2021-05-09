@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { appRoutingModule } from './app.routing';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { DiarypageComponent } from './diarypage/diarypage.component';
 import { HttpClientModule} from '@angular/common/http'
@@ -23,15 +22,11 @@ import { MoviesComponent } from './movies/movies.component';
     LogInComponent,
     RegisterComponent,
     NavbarComponent,
-    HomepageComponent,
     HeaderComponent,
     DiarypageComponent,
-<<<<<<< HEAD
-    MovieDetailsPageComponent
-=======
+    MovieDetailsPageComponent,
     FilterComponent,
     MoviesComponent
->>>>>>> main
   ],
   imports: [
     BrowserModule,
