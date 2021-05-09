@@ -1,0 +1,8 @@
+<div class="box">
+    <div *ngFor="let movieGenre of movieGenres | keyvalue">
+
+        <input type="checkbox"  (change)="toggleMovieGenres(movieGenre.key)" > {{movieGenre.value}}
+        
+    </div>
+    <button routerLink="/" class="btn btn-link" (click)="submitFilter()">Submit</button>
+</div>

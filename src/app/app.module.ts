@@ -13,6 +13,8 @@ import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterComponent } from './filter/filter.component';
+import { MoviesComponent } from './movies/movies.component';
 
 
 @NgModule({
@@ -24,7 +26,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomepageComponent,
     HeaderComponent,
     DiarypageComponent,
+<<<<<<< HEAD
     MovieDetailsPageComponent
+=======
+    FilterComponent,
+    MoviesComponent
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
