@@ -1,9 +1,8 @@
-import { enTag } from './../_utility/tag.enum';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../_model/movie.model';
 import { Tag } from '../_model/tag.model';
-import { MovieService } from '../_services/movie.service';
+import { MovieService } from '../_service/movie.service';
 
 
 @Component({
@@ -14,22 +13,20 @@ import { MovieService } from '../_services/movie.service';
 export class HomepageComponent implements OnInit {
 
   movies: Movie[];
-  tags: any;
+  tags: Tag[];
 
   constructor(
     private movieService: MovieService,
   ) { }
 
-  StringIsNumber = value => isNaN(Number(value)) === false;
-
-  ToArray(ennume) {
-    return Object.keys(ennume)
-        .filter(this.StringIsNumber)
-        .map(key => ennume[key]);
-  }
-
   ngOnInit(): void {
-    this.tags = this.ToArray(enTag);
+
+    let currentTags = JSON.parse(localStorage.getItem("tags"));
+
+    if(currentTags?.length != 0){
+      console.log(currentTags);
+      this.getMoviesByTags();
+    }
   }
 
   getAllMovies(){
@@ -47,20 +44,19 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  // getMoviesByTags(){
+  getMoviesByTags(){
 
-  //   this.tags = new Array(new Tag(1,"Trending"));
-  //   this.movieService.getMoviesByTags(this.tags).subscribe(
-  //     (response: Movie[]) => {
-  //       this.movies = response;
-  //       console.log(response);
-  //     },
+    this.movieService.getMoviesByTags().subscribe(
+      (response: Movie[]) => {
+        this.movies = response;
+        console.log(response);
+      },
 
-  //     (error: HttpErrorResponse) => {
-  //       console.log(error);
-  //     }
-  //   )
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
 
-  // }
+  }
 
 }

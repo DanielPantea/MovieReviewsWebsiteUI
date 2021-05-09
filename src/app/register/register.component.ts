@@ -1,4 +1,4 @@
-import { AuthentificationService } from './../_services/authentification.service';
+import { AuthentificationService } from '../_service/authentification.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 

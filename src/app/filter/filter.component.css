@@ -10,6 +10,7 @@
     z-index: 100;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     text-align: left;
+    font-size: 18px;
   }
 
   .box button{
@@ -22,8 +23,11 @@
     text-decoration: none;
     font-size: 18px;
     line-height: 13px;
-    width: 90px;
-    border-radius: 10px;
+    border-radius: 4px;
     outline:none;
+  }
+
+.box button:hover{
+    background: darkgray;
   }
 

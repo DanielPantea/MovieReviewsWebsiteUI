@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { enTag } from './../_utility/tag.enum';
+import { MovieService } from '../_service/movie.service';
 
 
 @Component({
@@ -9,20 +9,36 @@ import { enTag } from './../_utility/tag.enum';
 })
 export class FilterComponent implements OnInit {
   
-  tags: any;
+  public movieGenres: {[key: string]: string};
+  tags: string[] = [];
 
-  StringIsNumber = value => isNaN(Number(value)) === false;
+  constructor(
 
-  ToArray(ennume) {
-    return Object.keys(ennume)
-        .filter(this.StringIsNumber)
-        .map(key => ennume[key]);
+    private movieService: MovieService
+  ) {
+    this.movieGenres = MovieService.movieGenres;
+   }
+
+  ngOnInit(): void {}
+
+  getIndexOf(key: string){
+
+    return this.tags.indexOf(key);
   }
-  
-  constructor() { }
 
-  ngOnInit(): void {
-    this.tags = this.ToArray(enTag);
+  toggleMovieGenres(key: string){
+
+    let index = this.getIndexOf(key);
+
+    if(index != -1)
+      this.tags.splice(index,1);
+    else
+      this.tags.push(key);
+
+  }
+
+  submitFilter(){
+    localStorage.setItem('tags',JSON.stringify(this.tags));
   }
 
 }
