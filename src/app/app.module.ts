@@ -12,6 +12,7 @@ import { DiarypageComponent } from './diarypage/diarypage.component';
 import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MovieDetailsPageComponent } from './movie-details-page/movie-details-pa
     BrowserModule,
     appRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
