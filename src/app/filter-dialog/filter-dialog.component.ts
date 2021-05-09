@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MovieService } from '../_service/movie.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { MovieService } from '../_service/movie.service';
 export class FilterDialogComponent implements OnInit {
 
   public movieGenres: {[key: string]: string};
-  tags: string[] = [];
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<FilterDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public tags: string[]
+  ) { }
 
   ngOnInit(): void {
 
@@ -22,7 +25,7 @@ export class FilterDialogComponent implements OnInit {
   getIndexOf(key: string){
 
     return this.tags.indexOf(key);
-    
+
   }
 
   toggleMovieGenre(key: string){

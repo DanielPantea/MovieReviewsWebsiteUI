@@ -15,6 +15,7 @@ import { MovieService } from '../_service/movie.service';
 export class MoviesComponent implements OnInit, OnDestroy {
 
   movies: Movie[];
+  tags: string[] = [];
   routeQueryParams: Subscription
 
   constructor(
@@ -43,12 +44,14 @@ export class MoviesComponent implements OnInit, OnDestroy {
   openFilter(): void {
 
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.tags;
 
     const dialogRef = this.dialog.open(FilterDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       result => {
-        console.log("Closed Filter " + result);
+        this.tags = result;
+        this.getMoviesByTags();
         this.router.navigate(['.'], {relativeTo: this.activatedRoute});
       }
     );
@@ -66,7 +69,20 @@ export class MoviesComponent implements OnInit, OnDestroy {
         console.log(error);
       }
     )
+  }
 
+  getMoviesByTags(): void {
+
+    this.movieService.getMoviesByTags(this.tags.toString()).subscribe(
+      (response: Movie[]) => {
+        this.movies = response;
+        console.log(response);
+      },
+
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
   }
 
 }
