@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { DiarypageComponent } from './diarypage/diarypage.component';
 import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     HomepageComponent,
     HeaderComponent,
-    DiarypageComponent
+    DiarypageComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

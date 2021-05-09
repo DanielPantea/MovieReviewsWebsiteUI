@@ -1,5 +1,4 @@
 export enum enTag{
-    Default,
     Trending,
     Action,
 	Comedy,
