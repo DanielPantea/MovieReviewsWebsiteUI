@@ -7,13 +7,19 @@
     
     <div *ngFor="let movie of movies">
         <div class="moviebox">
-            {{movie.movieTitle}}
-            <img [src]="movie.posterImgUrl" alt="" >
-            {{movie.movieDesc}}
+            <div class="splitscreen">
+  
+                <div class="left">
+                    <img [src]="movie.posterImgUrl" alt="" >
+                </div>
+              
+                <div class="right">
+                    <div class="title">{{movie.movieTitle}}</div>
+                    {{movie.movieDesc}}
+                </div>
+                
+             </div>
         </div>
     </div>
-    <!-- <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div><br/>
-    <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div><br/>
-    <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div><br/>
-    <div class="moviebox"><img src="assets/daaa.jfif" alt="" ></div> -->
+
 </div>
