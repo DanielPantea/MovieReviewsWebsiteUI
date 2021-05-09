@@ -36,13 +36,7 @@ export class MovieService{
     
     getAllMovies(): Observable<Movie[]> {
 
-        let headers = new HttpHeaders(
-            {
-                Authorization: 'Basic ' + this.userService.currentUser.authdata
-            }
-        );
-
-        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`, {headers});
+        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`);
     }
 
     getMoviesByTags(): Observable<Movie[]> {

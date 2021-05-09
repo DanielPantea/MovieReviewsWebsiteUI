@@ -13,6 +13,7 @@ import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterComponent } from './filter/filter.component';
+import { MoviesComponent } from './movies/movies.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FilterComponent } from './filter/filter.component';
     HomepageComponent,
     HeaderComponent,
     DiarypageComponent,
-    FilterComponent
+    FilterComponent,
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
