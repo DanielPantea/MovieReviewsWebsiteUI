@@ -15,7 +15,7 @@ import { MovieService } from '../_service/movie.service';
 export class MoviesComponent implements OnInit, OnDestroy {
 
   movies: Movie[];
-  tags: string[] = [];
+  tags: string[];
   routeQueryParams: Subscription
 
   constructor(
@@ -26,7 +26,13 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.getAllMovies();
+    this.tags = localStorage.getItem('tags')?.split(',') ?? [];
+    if(this.tags.length == 0) {
+      this.getAllMovies();
+    }
+    else {
+      this.getMoviesByTags();
+    }
 
     this.routeQueryParams = this.activatedRoute.queryParams.subscribe(
       params => {
@@ -39,19 +45,30 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routeQueryParams.unsubscribe();
+    console.log("Exit");
+
   }
 
   openFilter(): void {
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.tags;
+    dialogConfig.closeOnNavigation = true;
 
     const dialogRef = this.dialog.open(FilterDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       result => {
-        this.tags = result;
-        this.getMoviesByTags();
+        this.tags = result ?? this.tags;
+        localStorage.setItem('tags', this.tags.toString());
+
+        if(this.tags.length == 0) {
+          this.getAllMovies();
+        }
+        else {
+          this.getMoviesByTags();
+        }
+          
         this.router.navigate(['.'], {relativeTo: this.activatedRoute});
       }
     );
@@ -62,7 +79,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.movieService.getAllMovies().subscribe(
       (response: Movie[]) => {
         this.movies = response;
-        console.log(response);
       },
 
       (error: HttpErrorResponse) => {
@@ -76,7 +92,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.movieService.getMoviesByTags(this.tags.toString()).subscribe(
       (response: Movie[]) => {
         this.movies = response;
-        console.log(response);
       },
 
       (error: HttpErrorResponse) => {

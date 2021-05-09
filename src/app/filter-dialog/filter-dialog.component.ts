@@ -9,12 +9,15 @@ import { MovieService } from '../_service/movie.service';
 })
 export class FilterDialogComponent implements OnInit {
 
-  public movieGenres: {[key: string]: string};
+  movieGenres: {[key: string]: string};
+  tags: string[]
 
   constructor(
     public dialogRef: MatDialogRef<FilterDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public tags: string[]
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: string[]
+  ) { 
+    this.tags = data;
+  }
 
   ngOnInit(): void {
 

@@ -12,7 +12,6 @@ import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FilterComponent } from './filter/filter.component';
 import { MoviesComponent } from './movies/movies.component';
 import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 
@@ -28,7 +27,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
     NavbarComponent,
     HeaderComponent,
     DiarypageComponent,
-    FilterComponent,
     MoviesComponent,
     FilterDialogComponent
   ],
