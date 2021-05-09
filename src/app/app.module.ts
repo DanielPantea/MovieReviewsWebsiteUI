@@ -7,7 +7,6 @@ import { appRoutingModule } from './app.routing';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
-import { DiarypageComponent } from './diarypage/diarypage.component';
 import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +25,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
     RegisterComponent,
     NavbarComponent,
     HeaderComponent,
-    DiarypageComponent,
     MoviesComponent,
     FilterDialogComponent
   ],

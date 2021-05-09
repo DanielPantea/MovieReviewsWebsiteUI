@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
 import { Movie } from '../_model/movie.model';
@@ -26,7 +26,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     this.tags = localStorage.getItem('tags')?.split(',') ?? [];
+
     if(this.tags.length == 0) {
       this.getAllMovies();
     }
@@ -52,24 +54,25 @@ export class MoviesComponent implements OnInit, OnDestroy {
   openFilter(): void {
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.tags;
+    dialogConfig.data =  this.tags;
     dialogConfig.closeOnNavigation = true;
 
     const dialogRef = this.dialog.open(FilterDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      result => {
+      result => {  
         this.tags = result ?? this.tags;
-        localStorage.setItem('tags', this.tags.toString());
 
-        if(this.tags.length == 0) {
-          this.getAllMovies();
-        }
-        else {
+        if(this.tags?.length != 0) {
+          localStorage.setItem('tags', this.tags.toString());
           this.getMoviesByTags();
         }
-          
-        this.router.navigate(['.'], {relativeTo: this.activatedRoute});
+        else {
+          localStorage.removeItem('tags')
+          this.getAllMovies();
+        }
+        console.log(this.tags.toString());
+        this.router.navigate(['.'], { relativeTo: this.activatedRoute });
       }
     );
   }
