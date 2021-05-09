@@ -42,14 +42,30 @@
 
 .body img{
     padding: 10px;
-    margin: 0 auto;
-    width: 200px;
+    width: 100px;
 }
 
 .moviebox{
     width: 80%;
     height: 20vh;
     padding: 20px;
+    margin-bottom: 20px;
     background: rgb(185, 185, 185);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
+
+.title{
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.splitscreen {
+    display:flex;
+  }
+  .splitscreen .left {
+    /* flex: 0; */
+  }
+  .splitscreen .right {
+    /* flex: 1; */
+  }
