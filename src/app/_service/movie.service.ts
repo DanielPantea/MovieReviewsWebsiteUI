@@ -1,42 +1,51 @@
-import { Tag } from '../_model/tag.model';
 import { environment } from '../../environments/environment.prod';
-import { UserService } from './user.service';
 import { Movie } from '../_model/movie.model';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class MovieService{
 
-    static readonly movieGenres: {[key: string]: string} = {};
+    static readonly movieGenres: {[key: string]: string} = {
+        'trending': "Trending",
+        'action': "Action",
+        'adventure': "Adventure",
+        'animated': "Animated",
+        'comedy': "Comedy",
+        'crime': "Crime",
+        'drama': "Drama",
+        'docu': "Documentary",
+        'fantasy': "Fantasy",
+        'history': "Historical",
+        'horror': "Horror",
+        'musical': "Musical",
+        'romance': "Romance",
+        'satire': "Satire",
+        'scifi': "Sci-Fi",
+        'thriller': "Thriller",
+        'war': "War",
+        'western': "Western",
+    };
+    movies: Movie[];
 
     constructor(
-        private userService: UserService,
         private http: HttpClient
-    ) {
-        MovieService.movieGenres['action'] = "Action";
-        MovieService.movieGenres['adventure'] = "Adventure";
-        MovieService.movieGenres['animated'] = "Animated";
-        MovieService.movieGenres['comedy'] = "Comedy";
-        MovieService.movieGenres['crime'] = "Crime";
-        MovieService.movieGenres['drama'] = "Drama";
-        MovieService.movieGenres['fantasy'] = "Fantasy";
-        MovieService.movieGenres['historical'] = "Historical";
-        MovieService.movieGenres['horror'] = "Horror";
-        MovieService.movieGenres['musical'] = "Musical";
-        MovieService.movieGenres['romance'] = "Romance";
-        MovieService.movieGenres['satire'] = "Satire";
-        MovieService.movieGenres['scifi'] = "Sci-Fi";
-        MovieService.movieGenres['thriller'] = "Thriller";
-        MovieService.movieGenres['trending'] = "Trending";
-        MovieService.movieGenres['war'] = "War";
-        MovieService.movieGenres['western'] = "Western";
-    }
+    ) { }
     
-    getAllMovies(): Observable<Movie[]> {
+    getMovies(): void {
+        let tags = localStorage.getItem('tags')?.split(',') ?? [];
 
-        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`);
+        let resp = tags.length == 0 ? this.getAllMovies() : this.getMoviesByTags(tags.toString());
+        resp.subscribe(
+            (response: Movie[]) => {
+                this.movies = response;
+            },
+        
+            (error: HttpErrorResponse) => {
+                console.log(error);
+            }
+        );
     }
 
     getMovieById(movieId: number): Observable<Movie>{
@@ -44,15 +53,13 @@ export class MovieService{
         return this.http.get<Movie>(`${environment.apiUrl}/movie/${movieId}`);
     }
 
-    getMoviesByTags(): Observable<Movie[]> {
+    private getAllMovies(): Observable<Movie[]> {
 
-        let currentTags = JSON.parse(localStorage.getItem("tags"));
-        let tagsString = "";
-        for(let tag of currentTags){
-            tagsString+=tag + ",";
-        }
-        tagsString = tagsString.slice(0, -1);
+        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`);
+    }
 
-        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/tag/${tagsString}`);
+    private getMoviesByTags(tags: string): Observable<Movie[]> {
+
+        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/tag/${tags}`);
     }
 }
