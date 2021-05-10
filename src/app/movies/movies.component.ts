@@ -1,5 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
 import { Movie } from '../_model/movie.model';
 import { MovieService } from '../_service/movie.service';
 
@@ -8,31 +12,60 @@ import { MovieService } from '../_service/movie.service';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
 
-  movies: Movie[];
+  routeQueryParams: Subscription
 
   constructor(
-    private movieService: MovieService,
+    public dialog: MatDialog,
+    public movieService: MovieService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.getAllMovies();
+
+    this.movieService.getMovies();
+
+    this.routeQueryParams = this.activatedRoute.queryParams.subscribe(
+      params => {
+        if(params['filter']){
+          this.openFilter();
+        }
+      }
+    );
   }
 
-  getAllMovies(){
+  ngOnDestroy(): void {
+    this.routeQueryParams.unsubscribe();
+    // console.log("Exit");
 
-    this.movieService.getAllMovies().subscribe(
-      (response: Movie[]) => {
-        this.movies = response;
-        console.log(response);
-      },
+  }
 
-      (error: HttpErrorResponse) => {
-        console.log(error);
+  openFilter(): void {
+
+    let tags = localStorage.getItem('tags')?.split(',') ?? [];
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data =  tags;
+
+    const dialogRef = this.dialog.open(FilterDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      () => { 
+
+        if(tags?.length != 0) {
+          localStorage.setItem('tags', tags.toString());
+        }
+        else {
+          localStorage.removeItem('tags')
+        }
+
+        this.movieService.getMovies();
+        this.router.navigate(['.'], { relativeTo: this.activatedRoute });
+      
       }
-    )
-
+    );
   }
 
 }

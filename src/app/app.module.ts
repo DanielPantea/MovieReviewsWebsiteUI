@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 import { appRoutingModule } from './app.routing';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
-import { DiarypageComponent } from './diarypage/diarypage.component';
 import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterComponent } from './filter/filter.component';
-import { MoviesComponent } from './movies/movies.component';
 
+import { MoviesComponent } from './movies/movies.component';
+import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
+
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 
 @NgModule({
   declarations: [
@@ -22,18 +24,19 @@ import { MoviesComponent } from './movies/movies.component';
     LogInComponent,
     RegisterComponent,
     NavbarComponent,
-    HomepageComponent,
     HeaderComponent,
-    DiarypageComponent,
-    FilterComponent,
-    MoviesComponent
+    MoviesComponent,
+    FilterDialogComponent
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

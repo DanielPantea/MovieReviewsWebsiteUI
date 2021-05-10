@@ -1,0 +1,7 @@
+<div style="width: 300px; display: grid; grid-template-columns: auto auto auto;">
+    <div *ngFor="let movieGenre of movieGenres | keyvalue">
+
+        <mat-checkbox [checked]="getIndexOf(movieGenre.key) != -1" (change)="toggleMovieGenre(movieGenre.key)">{{movieGenre.value}}</mat-checkbox>
+        
+    </div>
+</div>
