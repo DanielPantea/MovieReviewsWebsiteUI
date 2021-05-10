@@ -3,6 +3,7 @@ import { Movie } from '../_model/movie.model';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { enSortMovie } from '../_model/sort-movie.enum';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService{
@@ -46,6 +47,22 @@ export class MovieService{
                 console.log(error);
             }
         );
+    }
+
+    sortMovies(sortProp: enSortMovie, sortDir: number): void {
+
+        switch(sortProp) {
+            case enSortMovie.lengthMinutes:
+                this.movies.sort((m1, m2) => (Math.sign(m1.lengthMinutes - m2.lengthMinutes) == sortDir) ? 1 : -1 )
+                break;
+            case enSortMovie.movieTitle:
+                //this.movies.sort((m1, m2) => (Math.sign(m1.lengthMinutes - m2.lengthMinutes) == sortDir) ? 1 : -1 )
+                break;
+            case enSortMovie.releaseDate:
+                //this.movies.sort((m1, m2) => (Math.sign(m1.lengthMinutes - m2.lengthMinutes) == sortDir) ? 1 : -1 )
+                break;
+        }
+
     }
 
     private getAllMovies(): Observable<Movie[]> {
