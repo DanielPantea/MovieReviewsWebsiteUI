@@ -1,10 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
-import { Movie } from '../_model/movie.model';
 import { MovieService } from '../_service/movie.service';
 
 @Component({
