@@ -5,3 +5,65 @@
     background: rgb(231, 236, 240);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
+
+.body img{
+    padding: 20px;
+    width: 200px;
+}
+
+.body button{
+    color: black;
+    background-color:rgb(228, 202, 163);
+    text-align: left;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 1;
+    width: 205px;
+}
+
+.body button:hover{
+    background-color: rgb(205, 214, 154);
+    
+}
+.body button:focus{
+    background-color: rgb(205, 214, 154);
+    outline: none;
+}
+
+.title{
+    padding: 10px;
+    margin-bottom: 13px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.desc{
+    padding: 10px;
+}
+
+.trailer{
+    padding-bottom: 10px;
+    padding-left:  10px;
+}
+
+.creators{
+    padding-bottom: 5px;
+    padding-left:  10px;
+}
+
+.length{
+    padding-left:  10px;
+    padding-bottom: 10px;
+}
+
+.splitscreen {
+    display:flex;
+  }  
+
+.left{
+    flex: 0;
+}

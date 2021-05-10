@@ -16,6 +16,7 @@ const routes: Routes = [
     { path: 'diary', component: DiarypageComponent },
     { path: 'filter', component: FilterComponent },
     { path: 'movies', component: MoviesComponent },
+    { path: 'movie-details/:movieId', component: MovieDetailsPageComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '/movies' }
 ];

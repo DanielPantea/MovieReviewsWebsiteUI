@@ -12,10 +12,7 @@ export class FilterComponent implements OnInit {
   public movieGenres: {[key: string]: string};
   tags: string[] = [];
 
-  constructor(
-
-    private movieService: MovieService
-  ) {
+  constructor() {
     this.movieGenres = MovieService.movieGenres;
    }
 

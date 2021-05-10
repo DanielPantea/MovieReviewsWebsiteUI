@@ -39,6 +39,11 @@ export class MovieService{
         return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`);
     }
 
+    getMovieById(movieId: number): Observable<Movie>{
+
+        return this.http.get<Movie>(`${environment.apiUrl}/movie/${movieId}`);
+    }
+
     getMoviesByTags(): Observable<Movie[]> {
 
         let currentTags = JSON.parse(localStorage.getItem("tags"));

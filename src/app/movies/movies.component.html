@@ -4,13 +4,9 @@
     <button routerLink="/" class="btn btn-link" (click)="getAllMovies()">Search</button><br/>
     <button routerLink="/filter" class="btn btn-link">Filter</button>
     <button routerLink="/" class="btn btn-link">Sort</button>
-    
-    <!-- <div *ngFor="let tag of tags">
-        {{tag}}
-    </div> -->
 
     <div *ngFor="let movie of movies">
-        <div class="moviebox">
+        <div [routerLink] = "['/movie-details', movie.movieId]" class="moviebox">
             <div class="splitscreen">
   
                 <div class="left">
