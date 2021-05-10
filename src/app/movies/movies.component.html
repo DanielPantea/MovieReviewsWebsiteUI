@@ -1,7 +1,7 @@
 <div class="body">
 
     <input type="text" name="" placeholder="search">
-    <button routerLink="/" class="btn btn-link" (click)="getAllMovies()">Search</button><br/>
+    <button routerLink="/" class="btn btn-link">Search</button><br/>
     <button class="btn btn-link" (click)="openFilter()">Filter</button>
     <button routerLink="/" class="btn btn-link">Sort</button>
     
@@ -9,7 +9,7 @@
         {{tag}}
     </div> -->
 
-    <div *ngFor="let movie of movies">
+    <div *ngFor="let movie of movieService.movies">
         <div class="moviebox">
             <div class="splitscreen">
   
@@ -17,7 +17,7 @@
                     <img [src]="movie.posterImgUrl" alt="" >
                 </div>
               
-                <div class="right">
+                <div class="right"> 
                     <div class="title">{{movie.movieTitle}}</div>
                     {{movie.movieDesc}}
                 </div>

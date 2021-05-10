@@ -14,27 +14,18 @@ import { MovieService } from '../_service/movie.service';
 })
 export class MoviesComponent implements OnInit, OnDestroy {
 
-  movies: Movie[];
-  tags: string[];
   routeQueryParams: Subscription
 
   constructor(
     public dialog: MatDialog,
-    private movieService: MovieService,
+    public movieService: MovieService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
 
-    this.tags = localStorage.getItem('tags')?.split(',') ?? [];
-
-    if(this.tags.length == 0) {
-      this.getAllMovies();
-    }
-    else {
-      this.getMoviesByTags();
-    }
+    this.movieService.getMovies();
 
     this.routeQueryParams = this.activatedRoute.queryParams.subscribe(
       params => {
@@ -47,60 +38,34 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routeQueryParams.unsubscribe();
-    console.log("Exit");
+    // console.log("Exit");
 
   }
 
   openFilter(): void {
 
+    let tags = localStorage.getItem('tags')?.split(',') ?? [];
+
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data =  this.tags;
-    dialogConfig.closeOnNavigation = true;
+    dialogConfig.data =  tags;
 
     const dialogRef = this.dialog.open(FilterDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      result => {  
-        this.tags = result ?? this.tags;
+      () => { 
 
-        if(this.tags?.length != 0) {
-          localStorage.setItem('tags', this.tags.toString());
-          this.getMoviesByTags();
+        if(tags?.length != 0) {
+          localStorage.setItem('tags', tags.toString());
         }
         else {
           localStorage.removeItem('tags')
-          this.getAllMovies();
         }
-        console.log(this.tags.toString());
+
+        this.movieService.getMovies();
         this.router.navigate(['.'], { relativeTo: this.activatedRoute });
+      
       }
     );
-  }
-
-  getAllMovies(): void {
-
-    this.movieService.getAllMovies().subscribe(
-      (response: Movie[]) => {
-        this.movies = response;
-      },
-
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    )
-  }
-
-  getMoviesByTags(): void {
-
-    this.movieService.getMoviesByTags(this.tags.toString()).subscribe(
-      (response: Movie[]) => {
-        this.movies = response;
-      },
-
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    )
   }
 
 }
