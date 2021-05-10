@@ -2,7 +2,7 @@ import { environment } from '../../environments/environment.prod';
 import { Movie } from '../_model/movie.model';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class MovieService{
@@ -32,7 +32,10 @@ export class MovieService{
         'date': 'By Release Date',
         'length': 'By Length'
     }
+
     movies: Movie[];
+
+    subscription: Subscription;
 
     constructor(
         private http: HttpClient
@@ -42,7 +45,11 @@ export class MovieService{
         let tags = localStorage.getItem('tags')?.split(',') ?? [];
 
         let resp = tags.length == 0 ? this.getAllMovies() : this.getMoviesByTags(tags.toString());
-        resp.subscribe(
+
+        // To avoid memory leaks, unsubscribe from the last subscription
+        this.subscription?.unsubscribe();
+
+        this.subscription = resp.subscribe(
             (response: Movie[]) => {
                 
                 this.movies = response;

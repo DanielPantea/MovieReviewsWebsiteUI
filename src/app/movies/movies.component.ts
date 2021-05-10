@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from '../sort-dialog/sort-dialog.component';
 import { MovieService } from '../_service/movie.service';
@@ -11,34 +9,16 @@ import { MovieService } from '../_service/movie.service';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css']
 })
-export class MoviesComponent implements OnInit, OnDestroy {
-
-  routeQueryParams: Subscription
+export class MoviesComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
     public movieService: MovieService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
 
     this.movieService.getMovies();
-
-    this.routeQueryParams = this.activatedRoute.queryParams.subscribe(
-      params => {
-        if(params['filter']){
-          this.openFilter();
-        }
-      }
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.routeQueryParams.unsubscribe();
-    // console.log("Exit");
-
   }
 
   openFilter(): void {
@@ -60,9 +40,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
           localStorage.removeItem('tags')
         }
 
-        this.movieService.getMovies();
-        this.router.navigate(['.'], { relativeTo: this.activatedRoute });
-      
+        this.movieService.getMovies();      
       }
     );
   }
@@ -88,7 +66,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
         }
 
         this.movieService.getMovies();
-
       }
     );
   }
