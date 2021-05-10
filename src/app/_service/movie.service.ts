@@ -53,13 +53,13 @@ export class MovieService{
 
         switch(sortProp) {
             case enSortMovie.lengthMinutes:
-                this.movies.sort((m1, m2) => (Math.sign(m1.lengthMinutes - m2.lengthMinutes) == sortDir) ? 1 : -1 )
+                this.movies.sort((m1, m2) => (m1.lengthMinutes > m2.lengthMinutes) ? sortDir : -sortDir )
                 break;
             case enSortMovie.movieTitle:
-                //this.movies.sort((m1, m2) => (Math.sign(m1.lengthMinutes - m2.lengthMinutes) == sortDir) ? 1 : -1 )
+                this.movies.sort((m1, m2) => (m1.movieTitle > m2.movieTitle) ? sortDir : -sortDir )
                 break;
             case enSortMovie.releaseDate:
-                //this.movies.sort((m1, m2) => (Math.sign(m1.lengthMinutes - m2.lengthMinutes) == sortDir) ? 1 : -1 )
+                this.movies.sort((m1, m2) => (m1.releaseDate > m2.releaseDate) ? sortDir : -sortDir )
                 break;
         }
 

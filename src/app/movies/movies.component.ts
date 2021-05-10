@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
+import { enSortMovie } from '../_model/sort-movie.enum';
 import { MovieService } from '../_service/movie.service';
 
 @Component({
@@ -38,6 +39,10 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.routeQueryParams.unsubscribe();
     // console.log("Exit");
 
+  }
+
+  sortMovies(): void {
+    this.movieService.sortMovies(enSortMovie.releaseDate, 1);
   }
 
   openFilter(): void {
