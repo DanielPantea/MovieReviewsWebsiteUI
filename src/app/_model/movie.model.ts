@@ -1,6 +1,4 @@
-import { Tag } from './tag.model';
-
-export class Movie{
+export interface Movie{
 
     movieId: number;
     movieTitle: string;
@@ -12,6 +10,5 @@ export class Movie{
     movieDirectors: string;
     movieWriters: string;
     movieActors: string;
-    movieTags: Tag[];
     
 }
