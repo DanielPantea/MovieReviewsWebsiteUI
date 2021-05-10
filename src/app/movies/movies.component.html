@@ -6,7 +6,7 @@
     <button routerLink="/" class="btn btn-link">Sort</button>
 
     <div *ngFor="let movie of movieService.movies">
-        <div class="moviebox">
+        <div routerLink="['/movie-details', movie.movieId]" class="moviebox">
             <div class="splitscreen">
   
                 <div class="left">
