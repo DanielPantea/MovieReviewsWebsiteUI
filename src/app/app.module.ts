@@ -14,6 +14,7 @@ import { MovieDetailsPageComponent } from './movie-details-page/movie-details-pa
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterComponent } from './filter/filter.component';
 import { MoviesComponent } from './movies/movies.component';
+import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MoviesComponent } from './movies/movies.component';
     DiarypageComponent,
     MovieDetailsPageComponent,
     FilterComponent,
-    MoviesComponent
+    MoviesComponent,
+    WatchlistPageComponent
   ],
   imports: [
     BrowserModule,

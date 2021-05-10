@@ -1,3 +1,4 @@
+import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
 import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
 import { Component } from '@angular/core';
 import { DiarypageComponent } from './diarypage/diarypage.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'diary', component: DiarypageComponent },
     { path: 'filter', component: FilterComponent },
     { path: 'movies', component: MoviesComponent },
+    { path: 'watchlist', component: WatchlistPageComponent },
     { path: 'movie-details/:movieId', component: MovieDetailsPageComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '/movies' }
