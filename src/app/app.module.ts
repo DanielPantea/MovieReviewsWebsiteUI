@@ -13,10 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MoviesComponent } from './movies/movies.component';
 import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
+import { SortDialogComponent } from './sort-dialog/sort-dialog.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NavbarComponent,
     HeaderComponent,
     MoviesComponent,
-    FilterDialogComponent
+    FilterDialogComponent,
+    SortDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     BrowserAnimationsModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

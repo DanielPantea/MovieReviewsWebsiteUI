@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
+import { SortDialogComponent } from '../sort-dialog/sort-dialog.component';
 import { MovieService } from '../_service/movie.service';
 
 @Component({
@@ -62,6 +63,32 @@ export class MoviesComponent implements OnInit, OnDestroy {
         this.movieService.getMovies();
         this.router.navigate(['.'], { relativeTo: this.activatedRoute });
       
+      }
+    );
+  }
+
+  openSort(): void {
+
+    const dialogConfig = new MatDialogConfig();
+
+    let sortParams = JSON.parse(localStorage.getItem('sortParams')) ?? {sortType: '', sortDir: 1};
+
+     dialogConfig.data = sortParams ;
+
+    const dialogRef = this.dialog.open(SortDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      () => { 
+        
+        if(sortParams.sortType != '') {
+          localStorage.setItem('sortParams', JSON.stringify(sortParams));
+        }
+        else {
+          localStorage.removeItem('sortParams');
+        }
+
+        this.movieService.getMovies();
+
       }
     );
   }
