@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { enAuthResult } from '../_model/auth-result.enum';
 import { User } from '../_model/user.model';
 import { AuthentificationService } from '../_service/authentification.service';
 import { UserService } from '../_service/user.service';
@@ -22,7 +22,6 @@ export class LogInComponent implements OnInit, OnDestroy {
 
   constructor(
     private authentificationService: AuthentificationService,
-    private routing: Router,
     private userService: UserService,
     private dialogRef: MatDialogRef<LogInComponent>
   ) { }
@@ -41,7 +40,7 @@ export class LogInComponent implements OnInit, OnDestroy {
         this.userService.currentUser = data;
         this.userService.currentUser.authdata = btoa(`${this.username}:${this.password}`);
         localStorage.setItem('userDetails', JSON.stringify(this.userService.currentUser));
-        this.dialogRef.close({data: true});
+        this.dialogRef.close({data: enAuthResult.LoggedIn });
       },
       (error: HttpErrorResponse) => {          
         this.authentificationService.logout;

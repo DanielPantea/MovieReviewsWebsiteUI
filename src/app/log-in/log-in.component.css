@@ -1,3 +1,8 @@
+.box h1{
+  color:rgb(36, 121, 190);
+  font-weight: 500;
+}
+  
   .box input[type = "text"],.box input[type="password"]{
     border: 0;
     background: rgb(214, 206, 206);
