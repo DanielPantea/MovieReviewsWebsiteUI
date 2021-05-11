@@ -13,6 +13,7 @@ import { MovieDetailsPageComponent } from './movie-details-page/movie-details-pa
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MoviesComponent } from './movies/movies.component';
+import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
 import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from './sort-dialog/sort-dialog.component';
 
@@ -30,6 +31,8 @@ import { MatRadioModule } from '@angular/material/radio';
     NavbarComponent,
     HeaderComponent,
     MovieDetailsPageComponent,
+    MoviesComponent,
+    WatchlistPageComponent,
     MoviesComponent,
     FilterDialogComponent,
     SortDialogComponent

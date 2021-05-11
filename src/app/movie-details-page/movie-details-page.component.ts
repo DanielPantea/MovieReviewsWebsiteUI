@@ -1,3 +1,4 @@
+import { UserService } from './../_service/user.service';
 import { Movie } from './../_model/movie.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MovieService } from './../_service/movie.service';
@@ -16,7 +17,8 @@ export class MovieDetailsPageComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,12 @@ export class MovieDetailsPageComponent implements OnInit {
         console.log(error);
       }
     )
+
+  }
+
+  addWatchlist(){
+
+    this.userService.addWatchlist(this.movieId).subscribe();
 
   }
 

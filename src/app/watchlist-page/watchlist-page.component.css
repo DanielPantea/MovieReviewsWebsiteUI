@@ -1,0 +1,31 @@
+.body{
+    position: inherit;
+    height: 100%;
+    padding: 20px;
+    background: rgb(231, 236, 240);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.moviebox{
+    display:inline-block;
+    cursor: pointer;
+    width: 220px;
+    height: 40vh;
+    margin: 30px;
+    background: rgb(185, 185, 185);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    outline: none;
+    text-align: center;
+}
+
+.moviebox:hover{
+    background: darkgrey;
+}
+
+.body img{
+    display: block;
+    margin-top: 23px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 170px;
+}

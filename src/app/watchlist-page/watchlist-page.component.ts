@@ -28,6 +28,21 @@ export class WatchlistPageComponent implements OnInit {
       }
     )
 
+    this.getWatchlist();
+  }
+
+  getWatchlist(){
+    
+    this.userService.getWatchlist().subscribe(
+      (response: Movie[]) => {
+        this.movies = response;
+      },
+
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
+
   }
 
 }
