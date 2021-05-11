@@ -2,13 +2,19 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { UserService } from "./user.service";
 
 @Injectable({ providedIn: 'root' })
 export class AuthentificationService
 {
     constructor(
-        private http: HttpClient
-    ) { }
+        private http: HttpClient,
+        private userService: UserService
+    ) { 
+        if(this.isLoggedIn) {
+            userService.currentUser = JSON.parse(localStorage.getItem('userDetails'));
+        }
+    }
 
     login(username: string, password: string): Observable<any> {
         let headers = new HttpHeaders(
@@ -37,6 +43,7 @@ export class AuthentificationService
     logout()
     {
         localStorage.removeItem('userDetails');
+        this.userService.currentUser = null;
     }
 
 }

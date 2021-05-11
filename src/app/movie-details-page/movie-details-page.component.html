@@ -3,8 +3,8 @@
   
         <div class="left">
             <img [src]="movie?.posterImgUrl" alt="" >
-            <button routerLink="/"><strong>+ </strong>Add to Watchlist</button><br/>
-            <button routerLink="/"><strong>+ </strong>Add to Viewed</button>
+            <button (click)="addWatchlist()"><strong>+ </strong>Add to Watchlist</button><br/>
+            <button><strong>+ </strong>Add to Viewed</button>
         </div>
       
         <div class="right">

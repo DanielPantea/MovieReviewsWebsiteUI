@@ -48,6 +48,7 @@ export class MovieDetailsPageComponent implements OnInit {
 
   addWatchlist(){
 
+    console.log("ta");
     this.userService.addWatchlist(this.movieId).subscribe();
 
   }

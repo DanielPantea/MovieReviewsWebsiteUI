@@ -14,14 +14,7 @@ export class UserService
 
     constructor(
         private http: HttpClient,
-        private authentificationService: AuthentificationService
-    ) { 
-
-        if(authentificationService.isLoggedIn) {
-
-            this.currentUser = JSON.parse(localStorage.getItem('userDetails'));
-        }
-    }
+    ) { }
 
     getWatchlist(): Observable<Movie[]> {
         
@@ -30,6 +23,7 @@ export class UserService
                 Authorization: 'Basic ' + this.currentUser.authdata
             }
         )
+        console.log(this.currentUser.username);
         return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist`, {headers});
     }
 
