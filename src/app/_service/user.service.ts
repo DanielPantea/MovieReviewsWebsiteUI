@@ -39,6 +39,7 @@ export class UserService
                 Authorization: 'Basic ' + this.currentUser.authdata
             }
         );
-        return this.http.post<Movie>(`${environment.apiUrl}/user/watchlist/add/${movieId}`, {headers});
+
+        return this.http.post<any>(`${environment.apiUrl}/user/watchlist/add/${movieId}`, null, {headers});
     }
 }

@@ -48,16 +48,7 @@ export class MovieDetailsPageComponent implements OnInit {
 
   addWatchlist(){
 
-    this.userService.addWatchlist(this.movieId).subscribe(
-      (response: Movie) => {
-        this.movie = response;
-        console.log (response);
-      },
-
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    )
+    this.userService.addWatchlist(this.movieId).subscribe();
 
   }
 
