@@ -28,15 +28,14 @@ export class WatchlistPageComponent implements OnInit {
       }
     )
 
-    this.getWatchlistByMovieId();
+    this.getWatchlist();
   }
 
-  getWatchlistByMovieId(){
+  getWatchlist(){
     
-    this.userService.getWatchlistByMovieId().subscribe(
+    this.userService.getWatchlist().subscribe(
       (response: Movie[]) => {
         this.movies = response;
-        console.log (response);
       },
 
       (error: HttpErrorResponse) => {

@@ -23,22 +23,22 @@ export class UserService
         }
     }
 
-    getWatchlistByMovieId(): Observable<Movie[]> {
+    getWatchlist(): Observable<Movie[]> {
         
         let headers = new HttpHeaders(
             {
-                Authentification: 'Basic ' + this.currentUser.authdata
+                Authorization: 'Basic ' + this.currentUser.authdata
             }
         )
-        return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist`,{headers});
+        return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist`, {headers});
     }
 
     addToWatchlist(movieId: number){
         let headers = new HttpHeaders(
             {
-                Authentification: 'Basic ' + this.currentUser.authdata
+                Authorization: 'Basic ' + this.currentUser.authdata
             }
-        )
+        );
         return this.http.post<Movie>(`${environment.apiUrl}/user/watchlist/${movieId}`,{headers});
     }
 }
