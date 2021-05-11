@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from '../sort-dialog/sort-dialog.component';
@@ -9,7 +10,9 @@ import { MovieService } from '../_service/movie.service';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
+
+  afterClosedSubscription: Subscription;
 
   constructor(
     public dialog: MatDialog,
@@ -21,6 +24,11 @@ export class MoviesComponent implements OnInit {
     this.movieService.getMovies();
   }
 
+  ngOnDestroy(): void {
+    
+    this.afterClosedSubscription?.unsubscribe();
+  }
+
   openFilter(): void {
 
     let tags = localStorage.getItem('tags')?.split(',') ?? [];
@@ -30,7 +38,7 @@ export class MoviesComponent implements OnInit {
 
     const dialogRef = this.dialog.open(FilterDialogComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(
+    this.afterClosedSubscription = dialogRef.afterClosed().subscribe(
       () => { 
 
         if(tags?.length != 0) {

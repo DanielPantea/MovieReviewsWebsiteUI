@@ -27,7 +27,8 @@ export class UserService
         return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist`, {headers});
     }
 
-    addWatchlist(movieId: number){
+    addWatchlist(movieId: number) {
+        
         let headers = new HttpHeaders(
             {
                 Authorization: 'Basic ' + this.currentUser.authdata

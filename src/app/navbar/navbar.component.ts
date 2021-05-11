@@ -14,8 +14,7 @@ export class NavbarComponent implements OnInit {
     private movieService: MovieService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
   
   goToTrending(): void {
 

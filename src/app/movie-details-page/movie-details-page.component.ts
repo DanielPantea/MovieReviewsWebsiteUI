@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs';
 import { UserService } from './../_service/user.service';
 import { Movie } from './../_model/movie.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MovieService } from './../_service/movie.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,10 +11,14 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './movie-details-page.component.html',
   styleUrls: ['./movie-details-page.component.css']
 })
-export class MovieDetailsPageComponent implements OnInit {
+export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   movieId: number;
   movie: Movie;
+
+  paramSubscription: Subscription;
+  getMovieByIdSubscription: Subscription;
+  addWatchlistSubscription: Subscription;
 
   constructor(
     private route:ActivatedRoute,
@@ -22,7 +27,8 @@ export class MovieDetailsPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
+
+    this.paramSubscription = this.route.paramMap.subscribe(
       params =>{
         this.movieId = +params.get('movieId');
       }
@@ -31,9 +37,16 @@ export class MovieDetailsPageComponent implements OnInit {
     this.getMovieById();
   }
 
-  getMovieById(){
+  ngOnDestroy(): void {
+
+    this.paramSubscription?.unsubscribe();
+    this.getMovieByIdSubscription?.unsubscribe();
+    this.addWatchlistSubscription?.unsubscribe();
+  }
+
+  getMovieById(): void {
     
-    this.movieService.getMovieById(this.movieId).subscribe(
+    this.getMovieByIdSubscription = this.movieService.getMovieById(this.movieId).subscribe(
       (response: Movie) => {
         this.movie = response;
         console.log (response);
@@ -46,11 +59,9 @@ export class MovieDetailsPageComponent implements OnInit {
 
   }
 
-  addWatchlist(){
+  addWatchlist(): void {
 
-    console.log("ta");
-    this.userService.addWatchlist(this.movieId).subscribe();
-
+    this.addWatchlistSubscription = this.userService.addWatchlist(this.movieId).subscribe();
   }
 
 }

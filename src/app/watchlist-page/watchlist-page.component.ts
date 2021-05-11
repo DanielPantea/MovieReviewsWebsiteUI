@@ -1,19 +1,23 @@
+import { Subscription } from 'rxjs';
 import { MovieService } from './../_service/movie.service';
 import { UserService } from './../_service/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Movie } from './../_model/movie.model';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-watchlist-page',
   templateUrl: './watchlist-page.component.html',
   styleUrls: ['./watchlist-page.component.css']
 })
-export class WatchlistPageComponent implements OnInit {
+export class WatchlistPageComponent implements OnInit, OnDestroy {
 
   movieId: number;
   movies: Movie[];
+
+  paramSubscription: Subscription;
+  getWatchlistSubscription: Subscription;
 
   constructor(
     private route:ActivatedRoute,
@@ -22,7 +26,8 @@ export class WatchlistPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
+
+    this.paramSubscription = this.route.paramMap.subscribe(
       params =>{
         this.movieId = +params.get('movieId');
       }
@@ -31,9 +36,15 @@ export class WatchlistPageComponent implements OnInit {
     this.getWatchlist();
   }
 
-  getWatchlist(){
+  ngOnDestroy(): void {
+
+    this.paramSubscription?.unsubscribe();
+    this.getWatchlistSubscription?.unsubscribe();
+  }
+
+  getWatchlist(): void {
     
-    this.userService.getWatchlist().subscribe(
+    this.getWatchlistSubscription = this.userService.getWatchlist().subscribe(
       (response: Movie[]) => {
         this.movies = response;
       },
@@ -42,7 +53,6 @@ export class WatchlistPageComponent implements OnInit {
         console.log(error);
       }
     )
-
   }
 
 }

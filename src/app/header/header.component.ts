@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LogInComponent } from '../log-in/log-in.component';
 import { RegisterComponent } from '../register/register.component';
@@ -11,7 +12,10 @@ import { UserService } from '../_service/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
+
+  loginSubscription: Subscription;
+  registerSubscription: Subscription;
 
   constructor(
     public userService: UserService,
@@ -19,12 +23,16 @@ export class HeaderComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  ngOnDestroy(): void {
+    this.loginSubscription?.unsubscribe();
+    this.registerSubscription?.unsubscribe();
   }
 
   openLogin(): void {
 
-    this.dialog.open(LogInComponent).afterClosed().subscribe(
+    this.loginSubscription = this.dialog.open(LogInComponent).afterClosed().subscribe(
       (data) => {
 
         if(data?.authResult == enAuthResult.GoToRegister) {
@@ -38,7 +46,7 @@ export class HeaderComponent implements OnInit {
 
   openRegister(): void {
 
-    this.dialog.open(RegisterComponent).afterClosed().subscribe(
+    this.registerSubscription = this.dialog.open(RegisterComponent).afterClosed().subscribe(
       (data) => {
 
         if(data?.authResult == enAuthResult.GoToLogin) {

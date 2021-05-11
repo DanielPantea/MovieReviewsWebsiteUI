@@ -30,6 +30,7 @@ export class LogInComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    
     this.loginSubscription?.unsubscribe();
   }
 

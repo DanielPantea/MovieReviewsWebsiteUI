@@ -64,7 +64,6 @@ export class MovieService{
                 console.log(error);
             }
         );
-
     }
 
     sortMovies(sortType: string, sortDir: number): void {
@@ -80,7 +79,6 @@ export class MovieService{
                 this.movies.sort((m1, m2) => (m1.releaseDate > m2.releaseDate) ? sortDir : -sortDir )
                 break;
         }
-
     }
 
     getMovieById(movieId: number): Observable<Movie>{

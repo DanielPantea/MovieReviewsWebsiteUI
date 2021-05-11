@@ -10,5 +10,4 @@ export interface Movie{
     movieDirectors: string;
     movieWriters: string;
     movieActors: string;
-    
 }

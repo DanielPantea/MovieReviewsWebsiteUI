@@ -5,8 +5,8 @@ import { Observable } from "rxjs";
 import { UserService } from "./user.service";
 
 @Injectable({ providedIn: 'root' })
-export class AuthentificationService
-{
+export class AuthentificationService {
+
     constructor(
         private http: HttpClient,
         private userService: UserService
@@ -17,6 +17,7 @@ export class AuthentificationService
     }
 
     login(username: string, password: string): Observable<any> {
+
         let headers = new HttpHeaders(
             {
                 Authorization: 'Basic ' + btoa(`${username}:${password}`)
@@ -25,7 +26,8 @@ export class AuthentificationService
         return this.http.get<any>(`${environment.apiUrl}/login`, {headers});
     }
 
-    register(username: string, password: string, email: string){
+    register(username: string, password: string, email: string) {
+
         let body = JSON.parse(
             `{
                 "username": "${username}",
@@ -36,14 +38,14 @@ export class AuthentificationService
         return this.http.post<any>(`${environment.apiUrl}/register`, body);
     }
 
-    isLoggedIn(){
+    isLoggedIn() {
+
         return localStorage.getItem('userDetails') != null;
     }
 
-    logout()
-    {
+    logout(): void {
+
         localStorage.removeItem('userDetails');
         this.userService.currentUser = null;
     }
-
 }

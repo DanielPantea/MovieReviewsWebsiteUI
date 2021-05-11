@@ -19,7 +19,6 @@ export class SortDialogComponent implements OnInit {
     this.sortParams = data;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
