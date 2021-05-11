@@ -1,34 +1,8 @@
 <div class="body">
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
-    </div>
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
-    </div>
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
-    </div>
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
-    </div>
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
-    </div>
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
-    </div>
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
-    </div>
-    <div class="moviebox">
-        <img  src="assets/harry_potter_poster.jpg">
-        <span>Harry Potter: The Philosopher Stone</span>
+    <div *ngFor="let movie of movieService.movies">
+        <div class="moviebox">
+            <img  [src]="movie.posterImgUrl" alt="">
+            <span>{{movie.movieTitle}}</span>
+        </div>
     </div>
 </div>

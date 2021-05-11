@@ -1,3 +1,8 @@
+import { MovieService } from './../_service/movie.service';
+import { UserService } from './../_service/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Movie } from './../_model/movie.model';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WatchlistPageComponent implements OnInit {
 
-  constructor() { }
+  movieId: number;
+  movies: Movie[];
+
+  constructor(
+    private route:ActivatedRoute,
+    private userService:UserService,
+    public movieService:MovieService
+  ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(
+      params =>{
+        this.movieId = +params.get('movieId');
+      }
+    )
+
+    this.getWatchlistByMovieId();
+  }
+
+  getWatchlistByMovieId(){
+    
+    this.userService.getWatchlistByMovieId().subscribe(
+      (response: Movie[]) => {
+        this.movies = response;
+        console.log (response);
+      },
+
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
+
   }
 
 }
