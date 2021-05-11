@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LogInComponent } from '../log-in/log-in.component';
 import { AuthentificationService } from '../_service/authentification.service';
 import { UserService } from '../_service/user.service';
 
@@ -11,10 +13,18 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    public authentificationService: AuthentificationService
+    public authentificationService: AuthentificationService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+  }
+
+  openLogin(): void {
+
+    
+    this.dialog.open(LogInComponent);
+
   }
 
 }
