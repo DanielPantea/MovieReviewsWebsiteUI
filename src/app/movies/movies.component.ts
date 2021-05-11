@@ -53,21 +53,7 @@ export class MoviesComponent implements OnInit {
 
      dialogConfig.data = sortParams ;
 
-    const dialogRef = this.dialog.open(SortDialogComponent, dialogConfig);
-
-    dialogRef.afterClosed().subscribe(
-      () => { 
-        
-        if(sortParams.sortType != '') {
-          localStorage.setItem('sortParams', JSON.stringify(sortParams));
-        }
-        else {
-          localStorage.removeItem('sortParams');
-        }
-
-        this.movieService.getMovies();
-      }
-    );
+    this.dialog.open(SortDialogComponent, dialogConfig);
   }
 
 }

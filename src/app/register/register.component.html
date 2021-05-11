@@ -1,10 +1,11 @@
 <div class="backdrop"></div>
 <div class="box">
             <h1>Create an account</h1>
+            <span *ngIf="isInvalid">Invalid Credentials</span>
             <input type="text" name="" placeholder="Username" [(ngModel)]="username">
             <input type="text" name="" placeholder="Email" [(ngModel)]="email">
             <input type="password" name="" placeholder="Password" [(ngModel)]="password">
             <input type="password" name="" placeholder="Confirm Password" [(ngModel)]="cpassword">
             <button (click)="register()">Register</button><br/>
-            <a routerLink="/login" class="btn btn-link">Already have an account?</a>
+            <a (click)="goToLogin()" class="btn btn-link">Already have an account?</a>
 </div>
