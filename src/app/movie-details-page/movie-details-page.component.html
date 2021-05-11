@@ -2,23 +2,23 @@
     <div class="splitscreen">
   
         <div class="left">
-            <img [src]="movie.posterImgUrl" alt="" >
+            <img [src]="movie?.posterImgUrl" alt="" >
             <button routerLink="/"><strong>+ </strong>Add to Watchlist</button><br/>
             <button routerLink="/"><strong>+ </strong>Add to Viewed</button>
         </div>
       
         <div class="right">
             <div class="title">
-                {{movie.movieTitle}}
+                {{movie?.movieTitle}}
             </div>
 
-            <div class="length">{{movie.lengthMinutes}} minutes | {{movie.releaseDate}}.</div>
+            <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate}}.</div>
             
-            <div class="desc"><strong>Description: </strong>{{movie.movieDesc}} </div>
+            <div class="desc"><strong>Description: </strong>{{movie?.movieDesc}} </div>
 
             <div class="trailer">
                 <strong>Trailer: </strong>
-                <a href="movie.trailerUrl">{{movie.trailerUrl}}</a>
+                <a href="movie.trailerUrl">{{movie?.trailerUrl}}</a>
             </div>
 
             <div class="creators">
