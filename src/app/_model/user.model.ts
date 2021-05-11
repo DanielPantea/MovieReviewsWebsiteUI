@@ -1,11 +1,8 @@
-export class User{
+export interface User {
+
+    userId: number;
     username: string;
-    password: string;
+    email: number;
     authdata: string;
 
-    constructor(username: string, password: string){
-        this.username = username;
-        this.password = password;
-        this.authdata = btoa(`${username}:${password}`);
-    }
 }
