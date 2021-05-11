@@ -46,12 +46,18 @@
 }
 
 .moviebox{
+    cursor: pointer;
     width: 80%;
     height: 20vh;
     padding: 20px;
     margin-bottom: 20px;
     background: rgb(185, 185, 185);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    outline: none;
+}
+
+.moviebox:hover{
+    background: darkgrey;
 }
 
 .title{
