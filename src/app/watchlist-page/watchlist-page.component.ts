@@ -14,11 +14,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class WatchlistPageComponent implements OnInit, OnDestroy {
 
-  movieId: number;
   movies: Movie[];
 
   paramSubscription: Subscription;
   getWatchlistSubscription: Subscription;
+  removeWatchlistSubscription: Subscription;
 
   constructor(
     private route:ActivatedRoute,
@@ -29,12 +29,6 @@ export class WatchlistPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.paramSubscription = this.route.paramMap.subscribe(
-      params =>{
-        this.movieId = +params.get('movieId');
-      }
-    )
-
     if(this.authentificationService.isLoggedIn()) {
         this.getWatchlist();
     }
@@ -44,6 +38,7 @@ export class WatchlistPageComponent implements OnInit, OnDestroy {
 
     this.paramSubscription?.unsubscribe();
     this.getWatchlistSubscription?.unsubscribe();
+    this.removeWatchlistSubscription?.unsubscribe();
   }
 
   getWatchlist(): void {
@@ -57,6 +52,11 @@ export class WatchlistPageComponent implements OnInit, OnDestroy {
         console.log(error);
       }
     )
+  }
+
+  removeWatchlist(movieId: number): void {
+    
+    this.removeWatchlistSubscription = this.userService.removeWatchlist(movieId).subscribe();
   }
 
 }

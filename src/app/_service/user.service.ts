@@ -37,4 +37,16 @@ export class UserService
 
         return this.http.post<any>(`${environment.apiUrl}/user/watchlist/add/${movieId}`, null, {headers});
     }
+
+    removeWatchlist(movieId: number) {
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        );
+        
+        console.log(movieId)
+        return this.http.delete<any>(`${environment.apiUrl}/user/watchlist/del/${movieId}`,{headers});
+    }
 }
