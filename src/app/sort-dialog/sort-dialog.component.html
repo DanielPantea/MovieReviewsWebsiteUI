@@ -1,0 +1,12 @@
+<div style="width: 200px;">
+    <mat-radio-group name="type" [(ngModel)]="sortParams.sortType">
+        <mat-radio-button name="type" [value]="''">Default</mat-radio-button><br><br>
+        <div *ngFor="let sortType of sortTypes | keyvalue">
+            <mat-radio-button name="type" [value]="sortType.key">{{sortType.value}}</mat-radio-button><br><br>
+        </div>
+    </mat-radio-group><br>
+    <mat-radio-group name="direction" [disabled]="sortParams.sortType == ''" [(ngModel)]="sortParams.sortDir">
+        <mat-radio-button style="margin-right:30px;" name="direction" [value]="1">Asc</mat-radio-button>
+        <mat-radio-button name="direction" [value]="-1">Desc</mat-radio-button>
+    </mat-radio-group>
+</div>

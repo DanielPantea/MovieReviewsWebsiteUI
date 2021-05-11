@@ -9,9 +9,6 @@ import { MoviesComponent } from './movies/movies.component';
 
 
 const routes: Routes = [
-    { path: 'navbar',component: NavbarComponent },
-    { path: 'login', component: LogInComponent },
-    { path: 'register', component: RegisterComponent },
     { path: 'movies', component: MoviesComponent },
     { path: 'watchlist', component: WatchlistPageComponent },
     { path: 'movie-details/:movieId', component: MovieDetailsPageComponent },

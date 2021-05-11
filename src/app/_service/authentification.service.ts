@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class AuthentificationService
@@ -10,13 +10,12 @@ export class AuthentificationService
         private http: HttpClient
     ) { }
 
-    login(username: string, password: string)
-    {
+    login(username: string, password: string): Observable<any> {
         let headers = new HttpHeaders(
             {
                 Authorization: 'Basic ' + btoa(`${username}:${password}`)
             }
-        )
+        );
         return this.http.get<any>(`${environment.apiUrl}/login`, {headers});
     }
 
@@ -30,4 +29,14 @@ export class AuthentificationService
         )
         return this.http.post<any>(`${environment.apiUrl}/register`, body);
     }
+
+    isLoggedIn(){
+        return localStorage.getItem('userDetails') != null;
+    }
+
+    logout()
+    {
+        localStorage.removeItem('userDetails');
+    }
+
 }
