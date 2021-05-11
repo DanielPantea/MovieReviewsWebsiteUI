@@ -1,5 +1,5 @@
 <div class="body">
-        <div *ngFor="let movie of movies" class="moviebox">
+        <div *ngFor="let movie of movies" class="moviebox" [routerLink] = "['/movie-details', movie.movieId]">
             <img  [src]="movie.posterImgUrl" alt="">
             <span>{{movie.movieTitle}}</span>
     </div>
