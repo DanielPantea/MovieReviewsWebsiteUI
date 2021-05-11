@@ -18,6 +18,7 @@ export class MovieDetailsPageComponent implements OnInit {
   constructor(
     private route:ActivatedRoute,
     private movieService: MovieService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +43,12 @@ export class MovieDetailsPageComponent implements OnInit {
         console.log(error);
       }
     )
+
+  }
+
+  addWatchlist(){
+
+    this.userService.addWatchlist(this.movieId).subscribe();
 
   }
 

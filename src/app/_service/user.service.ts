@@ -33,12 +33,13 @@ export class UserService
         return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist`, {headers});
     }
 
-    addToWatchlist(movieId: number){
+    addWatchlist(movieId: number){
         let headers = new HttpHeaders(
             {
                 Authorization: 'Basic ' + this.currentUser.authdata
             }
         );
-        return this.http.post<Movie>(`${environment.apiUrl}/user/watchlist/${movieId}`,{headers});
+
+        return this.http.post<any>(`${environment.apiUrl}/user/watchlist/add/${movieId}`, null, {headers});
     }
 }

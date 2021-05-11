@@ -1,8 +1,6 @@
 <div class="body">
-    <div *ngFor="let movie of movies">
-        <div class="moviebox">
+        <div *ngFor="let movie of movies" class="moviebox">
             <img  [src]="movie.posterImgUrl" alt="">
             <span>{{movie.movieTitle}}</span>
-        </div>
     </div>
 </div>
