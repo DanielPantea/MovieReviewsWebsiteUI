@@ -1,0 +1,39 @@
+<div class="body">
+    <div class="splitscreen">
+  
+        <div class="left">
+            <img [src]="movie?.posterImgUrl" alt="" >
+            <button routerLink="/"><strong>+ </strong>Add to Watchlist</button><br/>
+            <button routerLink="/"><strong>+ </strong>Add to Viewed</button>
+        </div>
+      
+        <div class="right">
+            <div class="title">
+                {{movie?.movieTitle}}
+            </div>
+
+            <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate}}.</div>
+            
+            <div class="desc"><strong>Description: </strong>{{movie?.movieDesc}} </div>
+
+            <div class="trailer">
+                <strong>Trailer: </strong>
+                <a href="movie.trailerUrl">{{movie?.trailerUrl}}</a>
+            </div>
+
+            <div class="creators">
+                <strong>Director:</strong>
+                Daniel Mac
+            </div>
+            <div class="creators">
+                <strong>Writers:</strong>
+                G.A. Martin
+            </div>
+            <div class="creators">
+                <strong>Actors:</strong>
+                Lopez Algan
+            </div>
+        </div>
+        
+     </div>
+</div>

@@ -83,6 +83,11 @@ export class MovieService{
 
     }
 
+    getMovieById(movieId: number): Observable<Movie>{
+
+        return this.http.get<Movie>(`${environment.apiUrl}/movie/${movieId}`);
+    }
+
     private getAllMovies(): Observable<Movie[]> {
 
         return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`);
