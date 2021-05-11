@@ -7,7 +7,6 @@ import { MoviesComponent } from './movies/movies.component';
 
 
 const routes: Routes = [
-    { path: 'register', component: RegisterComponent },
     { path: 'movies', component: MoviesComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '/movies' }
