@@ -1,8 +1,8 @@
 <div class="header">
     <a class="logo">Logo</a>
     <div class="header-right">
-      <a *ngIf="!authentificationService.isLoggedIn()" (click)="openRegister()">Register</a>
-      <a *ngIf="!authentificationService.isLoggedIn()" (click)="openLogin()">Login</a>
+      <a *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openRegister()">Register</a>
+      <a *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()">Login</a>
       <a *ngIf="authentificationService.isLoggedIn()">{{userService.currentUser?.username}}</a>
       <a *ngIf="authentificationService.isLoggedIn()" (click)="authentificationService.logout()" style="cursor: pointer;">Logout</a>
     </div>

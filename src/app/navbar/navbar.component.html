@@ -1,6 +1,9 @@
 <div class="navbar">
-    <button (click)="goToTrending()">Trending</button><br/>
-    <button routerLink="/watchlist">Watchlist</button><br/>
-    <button routerLink="/">Diary</button><br/>
+    <button (click)="goToTrending()">Trending</button>
+    <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Watchlist </button>
+    <button *ngIf="authentificationService.isLoggedIn()" routerLink="/watchlist"> Watchlist </button>
+
+    <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Diary </button>
+    <button *ngIf="authentificationService.isLoggedIn()" routerLink="/"> Diary </button>
 </div>
 

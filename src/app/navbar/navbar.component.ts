@@ -1,3 +1,5 @@
+import { DialogManagerService } from './../_service/dialog-manager.service';
+import { AuthentificationService } from './../_service/authentification.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from '../_service/movie.service';
@@ -11,7 +13,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    public authentificationService: AuthentificationService,
+    public dialogManagerService: DialogManagerService
   ) { }
 
   ngOnInit(): void { }

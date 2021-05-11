@@ -1,3 +1,4 @@
+import { AuthentificationService } from './../_service/authentification.service';
 import { Subscription } from 'rxjs';
 import { MovieService } from './../_service/movie.service';
 import { UserService } from './../_service/user.service';
@@ -22,7 +23,8 @@ export class WatchlistPageComponent implements OnInit, OnDestroy {
   constructor(
     private route:ActivatedRoute,
     private userService:UserService,
-    public movieService:MovieService
+    public movieService:MovieService,
+    public authentificationService: AuthentificationService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,9 @@ export class WatchlistPageComponent implements OnInit, OnDestroy {
       }
     )
 
-    this.getWatchlist();
+    if(this.authentificationService.isLoggedIn()) {
+        this.getWatchlist();
+    }
   }
 
   ngOnDestroy(): void {

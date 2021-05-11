@@ -39,7 +39,6 @@ export class AuthentificationService {
     }
 
     isLoggedIn() {
-
         return localStorage.getItem('userDetails') != null;
     }
 
