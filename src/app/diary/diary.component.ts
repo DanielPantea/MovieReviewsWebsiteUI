@@ -1,3 +1,4 @@
+import { Review } from './../_model/review.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Movie } from './../_model/movie.model';
 import { Subscription } from 'rxjs';
@@ -14,9 +15,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class DiaryComponent implements OnInit, OnDestroy {
 
   movies: Movie[];
+  reviews: Review[][] = [];
 
   getDiarySubscription: Subscription;
   removeDiarySubscription: Subscription;
+  getReviewSubscription: Subscription
 
   constructor(
     private userService:UserService,
@@ -35,6 +38,7 @@ export class DiaryComponent implements OnInit, OnDestroy {
 
     this.getDiarySubscription?.unsubscribe();
     this.removeDiarySubscription?.unsubscribe();
+    this.getReviewSubscription?.unsubscribe();
   }
 
   getDiary(): void {
@@ -42,6 +46,9 @@ export class DiaryComponent implements OnInit, OnDestroy {
     this.getDiarySubscription = this.userService.getDiary().subscribe(
       (response: Movie[]) => {
         this.movies = response;
+        for(let movie of this.movies){
+          this.getReviews(movie.movieId);
+        }
       },
 
       (error: HttpErrorResponse) => {
@@ -53,6 +60,19 @@ export class DiaryComponent implements OnInit, OnDestroy {
   removeDiary(movieId: number): void {
     
     this.removeDiarySubscription = this.userService.removeDiary(movieId).subscribe();
+  }
+
+  getReviews(movieId: number): void {
+
+    this.getReviewSubscription = this.userService.getUserReviews(movieId).subscribe(
+      (response: Review[]) => {
+        this.reviews[movieId] = response;
+      },
+
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
   }
 
 }

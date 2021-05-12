@@ -1,3 +1,4 @@
+import { Review } from './../_model/review.model';
 import { Router } from '@angular/router';
 import { Movie } from './../_model/movie.model';
 import { environment } from './../../environments/environment';
@@ -82,5 +83,14 @@ export class UserService
         
         location.reload();
         return this.http.delete<any>(`${environment.apiUrl}/user/diary/del/${movieId}`,{headers});
+    }
+
+    getUserReviews(movieId: number){
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        )
+        return this.http.get<Review[]>(`${environment.apiUrl}/review/user/${movieId}`, {headers});
     }
 }

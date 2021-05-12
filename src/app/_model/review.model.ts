@@ -1,5 +1,6 @@
+import { User } from './user.model';
 import { Movie } from './movie.model';
-export interface User {
+export interface Review {
 
     reviewId: number;
     reviewText: string;
