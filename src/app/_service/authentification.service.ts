@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
@@ -9,7 +10,8 @@ export class AuthentificationService {
 
     constructor(
         private http: HttpClient,
-        private userService: UserService
+        private userService: UserService,
+        private router: Router
     ) { 
         if(this.isLoggedIn) {
             userService.currentUser = JSON.parse(localStorage.getItem('userDetails'));
@@ -46,5 +48,6 @@ export class AuthentificationService {
 
         localStorage.removeItem('userDetails');
         this.userService.currentUser = null;
+        this.router.navigate(["**"]);
     }
 }
