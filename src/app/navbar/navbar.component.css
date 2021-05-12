@@ -1,4 +1,4 @@
-.navbar{
+.navmenu{
     height: 100%;
     position: sticky;
     padding: 20px;
@@ -6,7 +6,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
-.navbar button{
+.navmenu button{
   color: black;
   background-color:rgb(185, 214, 238);
   text-align: left;
@@ -20,11 +20,11 @@
   width: 100%;
 }
 
-.navbar button:hover{
+.navmenu button:hover{
     background-color: rgb(136, 197, 247);
     
 }
-.navbar button:focus{
+.navmenu button:focus{
     background-color: rgb(136, 197, 247);
     outline: none;
 }

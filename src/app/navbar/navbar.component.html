@@ -1,8 +1,7 @@
-<div class="navbar">
+<div class="navmenu">
     <button (click)="goToTrending()">Trending</button>
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Watchlist </button>
     <button *ngIf="authentificationService.isLoggedIn()" routerLink="/watchlist"> Watchlist </button>
-
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Diary </button>
     <button *ngIf="authentificationService.isLoggedIn()" routerLink="/diary"> Diary </button>
 
