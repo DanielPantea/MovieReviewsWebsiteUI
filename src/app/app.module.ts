@@ -27,6 +27,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { RequestmovieComponent } from './requestmovie/requestmovie.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { DiaryComponent } from './diary/diary.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {MatCardModule} from '@angular/material/card';
     MoviesComponent,
     FilterDialogComponent,
     SortDialogComponent,
-    RequestmovieComponent
+    RequestmovieComponent,
+    DiaryComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   paramSubscription: Subscription;
   getMovieByIdSubscription: Subscription;
   addWatchlistSubscription: Subscription;
+  addDiarySubscription: Subscription;
 
   constructor(
     private route:ActivatedRoute,
@@ -42,6 +43,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.paramSubscription?.unsubscribe();
     this.getMovieByIdSubscription?.unsubscribe();
     this.addWatchlistSubscription?.unsubscribe();
+    this.addDiarySubscription?.unsubscribe();
   }
 
   getMovieById(): void {
@@ -62,6 +64,11 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   addWatchlist(): void {
 
     this.addWatchlistSubscription = this.userService.addWatchlist(this.movieId).subscribe();
+  }
+
+  addDiary(): void {
+
+    this.addDiarySubscription = this.userService.addDiary(this.movieId).subscribe();
   }
 
 }
