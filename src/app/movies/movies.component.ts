@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from '../sort-dialog/sort-dialog.component';
 import { MovieService } from '../_service/movie.service';
@@ -12,7 +12,8 @@ import { MovieService } from '../_service/movie.service';
 })
 export class MoviesComponent implements OnInit, OnDestroy {
 
-  afterClosedSubscription: Subscription;
+  filterSubscription: Subscription;
+  sortingSubscription: Subscription;
 
   constructor(
     public dialog: MatDialog,
@@ -26,7 +27,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     
-    this.afterClosedSubscription?.unsubscribe();
+    this.filterSubscription?.unsubscribe();
+    this.sortingSubscription?.unsubscribe();
   }
 
   openFilter(): void {
@@ -38,7 +40,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
     const dialogRef = this.dialog.open(FilterDialogComponent, dialogConfig);
 
-    this.afterClosedSubscription = dialogRef.afterClosed().subscribe(
+    this.filterSubscription = dialogRef.afterClosed().subscribe(
       () => { 
 
         if(tags?.length != 0) {
@@ -59,9 +61,24 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
     let sortParams = JSON.parse(localStorage.getItem('sortParams')) ?? {sortType: '', sortDir: 1};
 
-     dialogConfig.data = sortParams ;
+     dialogConfig.data = sortParams;
 
-    this.dialog.open(SortDialogComponent, dialogConfig);
+    const dialpgRef = this.dialog.open(SortDialogComponent, dialogConfig);
+
+    this.sortingSubscription = dialpgRef.afterClosed().subscribe(
+      () => {
+
+        if(sortParams) {
+          localStorage.setItem('sortParams', JSON.stringify(sortParams));
+        }
+        else {
+          localStorage.removeItem('sortParams');
+        }
+
+        this.movieService.getMovies();
+      }
+    )
+
   }
 
 }
