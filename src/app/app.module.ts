@@ -21,6 +21,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { RequestmovieComponent } from './requestmovie/requestmovie.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -35,7 +40,8 @@ import { MatRadioModule } from '@angular/material/radio';
     WatchlistPageComponent,
     MoviesComponent,
     FilterDialogComponent,
-    SortDialogComponent
+    SortDialogComponent,
+    RequestmovieComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatRadioModule
+    MatRadioModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,5 +5,7 @@
 
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Diary </button>
     <button *ngIf="authentificationService.isLoggedIn()" routerLink="/"> Diary </button>
+
+    <button *ngIf="authentificationService.isLoggedIn()" routerLink="/request"> Request </button>
 </div>
 
