@@ -1,33 +1,76 @@
 <div class="body">
-        <h1>Request Missing Movie</h1>
+          <mat-card>
+            Request Missing Movie
+          </mat-card>
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Movie Title</mat-label>
-              <input matInput placeholder="Placeholder">
+              <input matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Movie Description</mat-label>
-              <input matInput placeholder="Placeholder">
+              <input matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="standard">
-              <mat-label>Movie Title</mat-label>
-              <input matInput placeholder="Placeholder">
+              <mat-label>Release Date</mat-label>
+              <input matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="standard">
-              <mat-label>Movie Title</mat-label>
+              <mat-label>Trailer Url</mat-label>
+              <input matInput placeholder="Placeholder" required>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Length(min)</mat-label>
+              <input matInput placeholder="Placeholder" required>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Movie Directors</mat-label>
+              <input matInput placeholder="Placeholder" required>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Movie Writers</mat-label>
+              <input matInput placeholder="Placeholder" required>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Movie Actors</mat-label>
+              <input matInput placeholder="Placeholder" required>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Tags</mat-label>
               <input matInput placeholder="Placeholder">
             </mat-form-field>
           </p>
           <p>
-              <span>Poster Image </span> 
-              <button mat-icon-button color="primary">
-                <mat-icon>open_in_new</mat-icon>
-              </button>
-        </p>
+            <mat-form-field>
+
+              <mat-toolbar>
+                <input matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />
+                <button mat-icon-button>
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+              </mat-toolbar>
+        
+              <input type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
+                multiple="multiple" accept="image/*" />
+            </mat-form-field>
+          </p>
+          <div>
+            <button mat-raised-button >Send Request</button>
+          </div>
 </div>
