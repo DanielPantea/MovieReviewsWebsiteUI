@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Movie } from './../_model/movie.model';
 import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
@@ -14,6 +15,7 @@ export class UserService
 
     constructor(
         private http: HttpClient,
+        private router: Router
     ) { }
 
     getWatchlist(): Observable<Movie[]> {
@@ -23,7 +25,6 @@ export class UserService
                 Authorization: 'Basic ' + this.currentUser.authdata
             }
         )
-        console.log(this.currentUser.username);
         return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist`, {headers});
     }
 
@@ -46,7 +47,7 @@ export class UserService
             }
         );
         
-        console.log(movieId)
+        location.reload();
         return this.http.delete<any>(`${environment.apiUrl}/user/watchlist/del/${movieId}`,{headers});
     }
 }
