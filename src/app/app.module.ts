@@ -28,6 +28,7 @@ import { RequestmovieComponent } from './requestmovie/requestmovie.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DiaryComponent } from './diary/diary.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MoviesComponent,
     FilterDialogComponent,
     SortDialogComponent,
-    RequestmovieComponent
+    RequestmovieComponent,
+    DiaryComponent
   ],
   imports: [
     BrowserModule,

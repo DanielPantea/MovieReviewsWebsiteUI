@@ -3,7 +3,8 @@
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Watchlist </button>
     <button *ngIf="authentificationService.isLoggedIn()" routerLink="/watchlist"> Watchlist </button>
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Diary </button>
-    <button *ngIf="authentificationService.isLoggedIn()" routerLink="/"> Diary </button>
+    <button *ngIf="authentificationService.isLoggedIn()" routerLink="/diary"> Diary </button>
+
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Request </button>
     <button *ngIf="authentificationService.isLoggedIn()" routerLink="/request"> Request </button>
 </div>

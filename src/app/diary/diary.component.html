@@ -1,0 +1,19 @@
+<div class="body">
+
+        <div *ngFor="let movie of movies" class="moviebox">
+            
+            <div class="splitscreen">
+  
+                <div class="left">
+                    <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
+                </div>
+              
+                <div class="right"> 
+                    <div class="title" [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}}</div>
+                    <div *ngFor = "let review of reviews[movie.movieId]"> {{review.reviewText}}<br/></div>
+                </div>
+                <button (click) = "removeDiary(movie.movieId)" class="close">Remove</button>
+             </div>
+        </div>
+
+</div>
