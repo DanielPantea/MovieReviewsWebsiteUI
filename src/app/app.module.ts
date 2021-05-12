@@ -27,6 +27,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { RequestmovieComponent } from './requestmovie/requestmovie.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
