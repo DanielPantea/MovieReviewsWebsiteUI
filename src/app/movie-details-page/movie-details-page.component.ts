@@ -15,6 +15,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   movieId: number;
   movie: Movie;
+  rating: number = 0;
 
   paramSubscription: Subscription;
   getMovieByIdSubscription: Subscription;

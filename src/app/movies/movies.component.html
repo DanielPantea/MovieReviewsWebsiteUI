@@ -1,28 +1,22 @@
 <div class="body">
 
-    <input type="text" name="" placeholder="search">
-    <button routerLink="/" class="btn btn-link">Search</button><br/>
-    <button class="btn btn-link" (click)="openFilter()">Filter</button>
-    <button class="btn btn-link" (click)="openSort()">Sort</button>
-    
-    <!-- <div *ngFor="let tag of tags">
-        {{tag}}
-    </div> -->
-
-    <div *ngFor="let movie of movieService.movies">
-        <div [routerLink] = "['/movie-details', movie.movieId]" class="moviebox">
-            <div class="splitscreen">
-  
-                <div class="left">
-                    <img [src]="movie.posterImgUrl" alt="" >
-                </div>
-              
-                <div class="right"> 
-                    <div class="title">{{movie.movieTitle}}</div>
-                    {{movie.movieDesc}}
-                </div>
-                
-             </div>
+    <div style="margin-bottom:10px;">
+        <input type="text" placeholder="search">
+        <button mat-raised-button style="margin-left: 20px;" class="">Search</button><br/>
+    </div>
+    <div style="margin: 10px auto;">
+        <button mat-raised-button (click)="openFilter()">Filter</button>
+        <button mat-raised-button style="margin-left:20px;" (click)="openSort()">Sort</button>
+    </div>
+    <div [routerLink] = "['/movie-details', movie.movieId]" class="moviebox" *ngFor="let movie of movieService.movies">
+        <div class="splitscreen">
+            <div class="left">
+                <img [src]="movie.posterImgUrl" alt="" >
+            </div>
+            <div class="right"> 
+                <div class="title">{{movie.movieTitle}}</div>
+                {{movie.movieDesc}}
+            </div>
         </div>
     </div>
 

@@ -1,4 +1,4 @@
-.body{
+.watchlistbody{
     position: inherit;
     height: 100%;
     padding: 20px;
@@ -23,7 +23,7 @@
     background: darkgrey;
 }
 
-.body img{
+.watchlistbody img{
     display: block;
     margin: 3px auto 2px auto;
     width:  170px;
@@ -31,12 +31,17 @@
     object-fit: cover;
 }
 
-.body span{
+.watchlistbody span{
     font-size: 16px;
     font-weight: 600;
 }
 
-.body button{
-    border: 0;
-    background-color: rgb(144, 144, 151);
+.btn-close{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.btn-close:hover{
+    background-color: rgb(255, 0, 0);
 }
