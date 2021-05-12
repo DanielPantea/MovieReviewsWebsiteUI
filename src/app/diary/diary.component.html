@@ -1,20 +1,18 @@
 <div class="body">
 
-    <div *ngFor="let movie of movieService.movies">
-        <div [routerLink] = "['/movie-details', movie.movieId]" class="moviebox">
+        <div *ngFor="let movie of movies" class="moviebox">
             <div class="splitscreen">
   
                 <div class="left">
-                    <img [src]="movie.posterImgUrl" alt="" >
+                    <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
                 </div>
               
                 <div class="right"> 
-                    <div class="title">{{movie.movieTitle}}</div>
+                    <div class="title" [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}}</div>
                     {{movie.movieDesc}}
                 </div>
-                
+                <button (click) = "removeDiary(movie.movieId)" class="close">Remove</button>
              </div>
         </div>
-    </div>
 
 </div>
