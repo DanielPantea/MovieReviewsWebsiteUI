@@ -4,8 +4,9 @@
           </mat-card>
           <p>
             <mat-form-field appearance="standard">
-              <mat-label>Movie Title</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <mat-label *ngIf="!isInvalid">Movie Title</mat-label>
+              <mat-label *ngIf="isInvalid">Movie Title</mat-label>
+              <input [(ngModel)]="movie.movieTitle" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
           <p>
@@ -71,6 +72,6 @@
             </mat-form-field>
           </p>
           <div>
-            <button mat-raised-button >Send Request</button>
+            <button (click)="sendRequest()" mat-raised-button >Send Request</button>
           </div>
 </div>

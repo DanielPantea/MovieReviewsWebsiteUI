@@ -1,3 +1,5 @@
+import { Movie } from './../_model/movie.model';
+import { UserService } from './../_service/user.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -10,7 +12,25 @@ export class RequestmovieComponent implements OnInit {
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef;
   myfilename = 'Image Poster';
 
-  constructor() { }
+  movie: Movie = {
+    movieId: null,
+    movieTitle: '',
+    movieDesc: '',
+    posterImgUrl: '',
+    releaseDate: null,
+    trailerUrl: '',
+    lengthMinutes: 0,
+    movieDirectors: '',
+    movieWriters: '',
+    movieActors: '',
+    isEnabled: false
+  };
+  isInvalid = false;
+
+  constructor(
+
+    private userService: UserService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -45,5 +65,14 @@ export class RequestmovieComponent implements OnInit {
     } else {
       this.myfilename = 'Image Poster';
     }
+  }
+
+  sendRequest(){
+    
+    if(this.movie.movieTitle == ''){
+      this.isInvalid = true;
+      return;
+    }
+    this.userService.sendRequest(this.movie).subscribe();
   }
 }

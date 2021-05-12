@@ -52,7 +52,7 @@ export class UserService
         return this.http.delete<any>(`${environment.apiUrl}/user/watchlist/del/${movieId}`,{headers});
     }
 
-    getDiary(){
+    getDiary(): Observable<Movie[]> {
 
         let headers = new HttpHeaders(
             {
@@ -92,5 +92,18 @@ export class UserService
             }
         )
         return this.http.get<Review[]>(`${environment.apiUrl}/review/user/${movieId}`, {headers});
+    }
+
+    sendRequest(movie: Movie){
+
+        let body = movie;
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        );
+
+        return this.http.post<any>(`${environment.apiUrl}/movie/add`, body, {headers});
     }
 }
