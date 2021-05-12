@@ -50,4 +50,25 @@ export class UserService
         location.reload();
         return this.http.delete<any>(`${environment.apiUrl}/user/watchlist/del/${movieId}`,{headers});
     }
+
+    getDiary(){
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        )
+        return this.http.get<Movie[]>(`${environment.apiUrl}/user/diary`, {headers});
+    }
+
+    addDiary(movieId: number) {
+        
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        );
+
+        return this.http.post<any>(`${environment.apiUrl}/user/diary/add/${movieId}`, null, {headers});
+    }
 }
