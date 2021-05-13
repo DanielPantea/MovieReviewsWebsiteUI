@@ -30,6 +30,7 @@ import { RequestmovieComponent } from './requestmovie/requestmovie.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
 import { DiaryComponent } from './diary/diary.component';
 
 
@@ -47,6 +48,7 @@ import { DiaryComponent } from './diary/diary.component';
     FilterDialogComponent,
     SortDialogComponent,
     RequestmovieComponent,
+    RatingDialogComponent,
     DiaryComponent
   ],
   imports: [

@@ -11,11 +11,17 @@
     width: 200px;
 }
 
-.body a{
+.star {
+    font-size: 1.5rem;
+    color: #b0c4de;
+  }
+.star:hover {
     cursor: pointer;
-    text-decoration: underline;
-    color: blue;
 }
+.filled {
+    color: #1e90ff;
+  }
+
 
 .left button{
     color: black;
@@ -38,7 +44,7 @@
 .body button:focus{
     background-color: rgb(205, 214, 154);
     outline: none;
-}
+} */
 
 .title{
     padding: 10px;

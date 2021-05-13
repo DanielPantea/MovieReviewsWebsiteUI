@@ -1,0 +1,8 @@
+<ngb-rating [max]="10" [(rate)]="rating.grade" [readonly]="false" (rateChange)="onChangeGrade()">
+    <ng-template let-fill="fill" let-index="index">
+        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+    </ng-template>
+</ngb-rating>
+<button mat-mini-fab color="warn" (click)="clearRating()">
+    <mat-icon>clear</mat-icon>
+</button>
