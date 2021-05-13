@@ -1,7 +1,7 @@
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Movie } from './../_model/movie.model';
 import { UserService } from './../_service/user.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-requestmovie',
@@ -27,13 +27,23 @@ export class RequestmovieComponent implements OnInit {
     isEnabled: false
   };
   
+  cardTitle: string;
+
   isInvalid = false;
 
   constructor(
 
     private userService: UserService,
-    private dialogRef: MatDialogRef<RequestmovieComponent>
-  ) { }
+    private dialogRef: MatDialogRef<RequestmovieComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { movie: Movie, cardTitle: string }
+  ) { 
+    
+    if(data.movie) {
+      this.movie = data.movie;
+    }
+
+    this.cardTitle = data.cardTitle;
+  }
 
   ngOnInit(): void {
   }
