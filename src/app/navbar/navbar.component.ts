@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private movieService: MovieService,
     public authentificationService: AuthentificationService,
-    public dialogManagerService: DialogManagerService
+    public dialogManagerService: DialogManagerService,
   ) { }
 
   ngOnInit(): void { }

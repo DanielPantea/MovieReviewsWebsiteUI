@@ -24,6 +24,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   paramSubscription: Subscription;
   getMovieByIdSubscription: Subscription;
   addWatchlistSubscription: Subscription;
+  addDiarySubscription: Subscription;
 
   constructor(
     private route:ActivatedRoute,
@@ -49,6 +50,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.paramSubscription?.unsubscribe();
     this.getMovieByIdSubscription?.unsubscribe();
     this.addWatchlistSubscription?.unsubscribe();
+    this.addDiarySubscription?.unsubscribe();
   }
 
   getMovieById(): void {
@@ -88,6 +90,15 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   rateMovie(): void {
 
     this.dialogManagerService.openRatings(this.userRating);
+  }
+  
+  addDiary(): void {
+
+    this.addDiarySubscription = this.userService.addDiary(this.movieId).subscribe();
+  }
+
+  trailerLink(){
+      window.location.href = this.movie.trailerUrl;
   }
 
 }

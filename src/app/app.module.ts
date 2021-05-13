@@ -18,6 +18,8 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from './sort-dialog/sort-dialog.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
@@ -29,6 +31,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
+import { DiaryComponent } from './diary/diary.component';
 
 
 @NgModule({
@@ -45,7 +48,8 @@ import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
     FilterDialogComponent,
     SortDialogComponent,
     RequestmovieComponent,
-    RatingDialogComponent
+    RatingDialogComponent,
+    DiaryComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,9 @@ import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    NgbModule
+    NgbModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

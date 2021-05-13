@@ -1,66 +1,80 @@
 <div class="body">
-          <mat-card>
+          <mat-card mat-dialog-title>
             Request Missing Movie
           </mat-card>
+
+          <mat-dialog-content>
           <p>
             <mat-form-field appearance="standard">
-              <mat-label>Movie Title</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <mat-label *ngIf="!isInvalid">Movie Title</mat-label>
+              <mat-label *ngIf="isInvalid">Movie Title</mat-label>
+              <input [(ngModel)]="movie.movieTitle" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
+
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Movie Description</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <input [(ngModel)]="movie.movieDesc" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
-          <p>
-            <mat-form-field appearance="standard">
-              <mat-label>Release Date</mat-label>
-              <input matInput placeholder="Placeholder" required>
-            </mat-form-field>
-          </p>
+
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Trailer Url</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <input [(ngModel)]="movie.trailerUrl" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
+
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Length(min)</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <input [(ngModel)]="movie.lengthMinutes" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
+
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Movie Directors</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <input [(ngModel)]="movie.movieDirectors" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
+
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Movie Writers</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <input [(ngModel)]="movie.movieWriters" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
+
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Movie Actors</mat-label>
-              <input matInput placeholder="Placeholder" required>
+              <input [(ngModel)]="movie.movieActors" matInput placeholder="Placeholder" required>
             </mat-form-field>
           </p>
+
           <p>
             <mat-form-field appearance="standard">
               <mat-label>Tags</mat-label>
               <input matInput placeholder="Placeholder">
             </mat-form-field>
           </p>
+
           <p>
-            <mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Release Date</mat-label>
+            <input [(ngModel)]="movie.releaseDate" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field appearance="fill">
 
               <mat-toolbar>
-                <input matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />
+                <input  matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />
                 <button mat-icon-button>
                   <mat-icon>attach_file</mat-icon>
                 </button>
@@ -70,7 +84,10 @@
                 multiple="multiple" accept="image/*" />
             </mat-form-field>
           </p>
-          <div>
-            <button mat-raised-button >Send Request</button>
-          </div>
+        </mat-dialog-content>
+
+        <mat-dialog-actions>
+          <button (click)="sendRequest()" mat-raised-button >Send Request</button>
+          <button mat-raised-button mat-dialog-close >Cancel</button>
+        </mat-dialog-actions>
 </div>
