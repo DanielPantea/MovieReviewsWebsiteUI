@@ -18,8 +18,6 @@
             <span>{{totalRating}}</span>
             <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate}}.</div>
 
-            <ngb-rating [max]="10" [(rate)]="rating" [readonly]="false"></ngb-rating>
-
             <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate | date}}.</div>
             
             <div class="desc"><strong>Description: </strong>{{movie?.movieDesc}} </div>
