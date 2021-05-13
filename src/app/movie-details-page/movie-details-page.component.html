@@ -41,5 +41,33 @@
             </div>
         </div>
         
-     </div>
+    </div>
+
+    <mat-card>
+        
+        <div *ngIf="reviewsLength==1">{{reviewsLength}} Review</div>
+        <div *ngIf="reviewsLength!=1">{{reviewsLength}} Reviews</div>
+        
+
+        <p>
+            <mat-form-field class="reviewline">
+                <mat-label>Leave a review</mat-label>
+                <input matInput >
+                <button 
+                mat-button matSuffix mat-stroked-button >
+                    Add
+                </button>
+            </mat-form-field>
+        </p>
+        
+        <div *ngFor = "let review of reviews[movie?.movieId]"> 
+            <div class="reviewPostdate">
+                <span>{{review.user.username}} </span>
+                {{review.postDate | date}}
+            </div>
+            <p> {{review.reviewText}}</p>
+            
+        </div>
+        
+    </mat-card>
 </div>

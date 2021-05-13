@@ -94,6 +94,15 @@ export class UserService
         return this.http.get<Review[]>(`${environment.apiUrl}/review/user/${movieId}`, {headers});
     }
 
+    getMovieReviews(movieId: number){
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        )
+        return this.http.get<Review[]>(`${environment.apiUrl}/review/all/${movieId}`, {headers});
+    }
+
     sendRequest(movie: Movie){
 
         let body = movie;
