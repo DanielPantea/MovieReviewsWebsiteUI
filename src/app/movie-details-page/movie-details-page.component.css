@@ -11,6 +11,12 @@
     width: 200px;
 }
 
+.body a{
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+
 .body button{
     color: black;
     background-color:rgb(228, 202, 163);
