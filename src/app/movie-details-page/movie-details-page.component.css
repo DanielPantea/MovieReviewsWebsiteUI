@@ -17,7 +17,7 @@
     color: blue;
 }
 
-.body button{
+.left button{
     color: black;
     background-color:rgb(228, 202, 163);
     text-align: left;
@@ -75,8 +75,10 @@
 }
 
 .mat-card{
-    margin: 10px;
+    margin: 5px;
+    margin-top: 10px;
     background-color: rgb(209, 213, 216);
+    padding: 20px;
 }
 
 .mat-card h1{
@@ -85,4 +87,21 @@
 
 .mat-card button{
     margin-left: 40px;
+}
+
+.reviewline{
+    width: 100%;
+}
+
+.reviewPostdate{
+    font-size: 15px;
+}
+.reviewPostdate span{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.mat-card button{
+    float:right;
+    width: 100px;
 }
