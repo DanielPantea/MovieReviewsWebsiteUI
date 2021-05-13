@@ -52,8 +52,8 @@
         <p>
             <mat-form-field class="reviewline">
                 <mat-label>Leave a review</mat-label>
-                <input matInput >
-                <button 
+                <input matInput [(ngModel)] = "reviewText">
+                <button (click)="addReview({movieId: movieId, reviewText: reviewText})" 
                 mat-button matSuffix mat-stroked-button >
                     Add
                 </button>

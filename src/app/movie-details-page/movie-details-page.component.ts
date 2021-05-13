@@ -23,12 +23,14 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   reviews: Review[][] = [];
   userRating: Rating;
   totalRating: number;
+  reviewText: string;
 
   paramSubscription: Subscription;
   getMovieByIdSubscription: Subscription;
   addWatchlistSubscription: Subscription;
   addDiarySubscription: Subscription;
   getAllReviewsSubscription: Subscription;
+  addReviewSubscription: Subscription;
 
   constructor(
     private route:ActivatedRoute,
@@ -56,6 +58,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.addWatchlistSubscription?.unsubscribe();
     this.addDiarySubscription?.unsubscribe();
     this.getAllReviewsSubscription?.unsubscribe();
+    this.addReviewSubscription?.unsubscribe();
   }
 
   getMovieById(): void {
@@ -117,6 +120,15 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
         console.log(error);
       }
     )
+  }
+
+  addReview(review: Review): void {
+
+    this.addReviewSubscription = this.userService.addReview(review).subscribe(
+      () =>{
+        location.reload();
+      }
+    );
   }
 
   trailerLink(){

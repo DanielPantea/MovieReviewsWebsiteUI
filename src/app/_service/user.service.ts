@@ -115,4 +115,15 @@ export class UserService
 
         return this.http.post<any>(`${environment.apiUrl}/movie/add`, body, {headers});
     }
+
+    addReview(review: Review){
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        );
+
+        return this.http.post<any>(`${environment.apiUrl}/review/add`, review, {headers});
+    }
 }
