@@ -1,8 +1,8 @@
 <div class="body">
 
     <div style="margin-bottom:10px;">
-        <input type="text" placeholder="search">
-        <button mat-raised-button style="margin-left: 20px;" class="">Search</button><br/>
+        <input type="text" placeholder="search" [(ngModel)]="searchTags">
+        <button mat-raised-button style="margin-left: 20px;" class="" (click)="search()">Search</button><br/>
     </div>
     <div style="margin: 10px auto;">
         <button mat-raised-button (click)="openFilter()">Filter</button>

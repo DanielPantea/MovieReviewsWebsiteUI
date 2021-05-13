@@ -14,6 +14,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   filterSubscription: Subscription;
   sortingSubscription: Subscription;
+  searchTags: string;
 
   constructor(
     public dialog: MatDialog,
@@ -23,6 +24,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.movieService.getMovies();
+
+    this.searchTags = localStorage.getItem('searchTags') ?? '';
   }
 
   ngOnDestroy(): void {
@@ -79,6 +82,14 @@ export class MoviesComponent implements OnInit, OnDestroy {
       }
     )
 
+  }
+
+  search(): void {
+    if(!this.searchTags)
+      localStorage.removeItem('searchTags');
+    else
+      localStorage.setItem('searchTags', this.searchTags);
+    this.movieService.getMovies();
   }
 
 }

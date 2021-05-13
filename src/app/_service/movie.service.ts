@@ -42,9 +42,14 @@ export class MovieService{
     ) { }
     
     getMovies(): void {
-        let tags = localStorage.getItem('tags')?.split(',') ?? [];
-
-        let resp = tags.length == 0 ? this.getAllMovies() : this.getMoviesByTags(tags.toString());
+        let tags = localStorage.getItem('tags') ?? '';
+        if(localStorage.getItem('searchTags'))
+        {
+            tags += tags == '' ? '' : ',';
+            tags += localStorage.getItem('searchTags').split(/[\s,.-]+/).toString();
+        }
+        console.log(tags);
+        let resp = tags == '' ? this.getAllMovies() : this.getMoviesByTags(tags);
 
         // To avoid memory leaks, unsubscribe from the last subscription
         this.subscription?.unsubscribe();
