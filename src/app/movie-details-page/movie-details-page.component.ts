@@ -72,4 +72,8 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.addDiarySubscription = this.userService.addDiary(this.movieId).subscribe();
   }
 
+  trailerLink(){
+      window.location.href = this.movie.trailerUrl;
+  }
+
 }

@@ -1,3 +1,4 @@
+import { RequestmovieComponent } from './../requestmovie/requestmovie.component';
 import { Router } from '@angular/router';
 import { RegisterComponent } from './../register/register.component';
 import { enAuthResult } from './../_model/auth-result.enum';
@@ -11,6 +12,7 @@ export class DialogManagerService implements OnDestroy {
 
     loginSubscription: Subscription;
     registerSubscription: Subscription;
+    requestSubscription: Subscription;
 
     constructor(
         private dialog: MatDialog,
@@ -20,6 +22,7 @@ export class DialogManagerService implements OnDestroy {
 
         this.loginSubscription?.unsubscribe();
         this.registerSubscription?.unsubscribe();
+        this.requestSubscription?.unsubscribe();
       }
     
     openLogin(): void {
@@ -45,5 +48,10 @@ export class DialogManagerService implements OnDestroy {
             
           }
         );
+    }
+
+    openRequest(): void {
+
+      this.dialog.open(RequestmovieComponent,{width: '700px'});
     }
 }

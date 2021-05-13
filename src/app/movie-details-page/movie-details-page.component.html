@@ -14,13 +14,13 @@
 
             <ngb-rating [max]="10" [(rate)]="rating" [readonly]="false"></ngb-rating>
 
-            <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate}}.</div>
+            <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate | date}}.</div>
             
             <div class="desc"><strong>Description: </strong>{{movie?.movieDesc}} </div>
 
             <div class="trailer">
                 <strong>Trailer: </strong>
-                <a href="movie.trailerUrl">{{movie?.trailerUrl}}</a>
+                <a (click)="trailerLink()"  >{{movie?.trailerUrl}}</a>
             </div>
 
             <div class="creators">
