@@ -81,6 +81,10 @@ export class MovieService{
         }
     }
 
+    getMovieTotalRating(movieId): Observable<number> {
+        return this.http.get<number>(`${environment.apiUrl}/movie/rating/${movieId}`);
+    }
+
     getMovieById(movieId: number): Observable<Movie>{
 
         return this.http.get<Movie>(`${environment.apiUrl}/movie/${movieId}`);
