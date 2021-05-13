@@ -25,6 +25,7 @@ export class RequestmovieComponent implements OnInit {
     movieActors: '',
     isEnabled: false
   };
+  
   isInvalid = false;
 
   constructor(

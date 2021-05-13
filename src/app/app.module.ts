@@ -18,6 +18,8 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from './sort-dialog/sort-dialog.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
@@ -62,7 +64,9 @@ import { DiaryComponent } from './diary/diary.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    NgbModule
+    NgbModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
