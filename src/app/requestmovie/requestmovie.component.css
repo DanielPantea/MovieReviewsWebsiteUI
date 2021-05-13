@@ -8,12 +8,24 @@
     background-color: rgb(201, 201, 201);
 }
 
+.mat-dialog-content{
+    margin-left: 70px;
+}
+.mat-dialog-actions{
+    margin-left: 70px;
+}
+
 .mat-toolbar{
     font-weight: normal;
     font-size: 17px;
 }
 
 .body p{
+    margin: 0 0 0 20px;
+    font-size: 17px;
+}
+
+.body input{
     margin: 0 0 0 20px;
     font-size: 17px;
 }

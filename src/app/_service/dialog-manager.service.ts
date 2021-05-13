@@ -52,6 +52,6 @@ export class DialogManagerService implements OnDestroy {
 
     openRequest(): void {
 
-      this.dialog.open(RequestmovieComponent);
+      this.dialog.open(RequestmovieComponent,{width: '700px'});
     }
 }
