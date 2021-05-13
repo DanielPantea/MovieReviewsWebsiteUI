@@ -68,8 +68,21 @@
 
 .splitscreen {
     display:flex;
-  }  
+}  
 
 .left{
     flex: 0;
+}
+
+.mat-card{
+    margin: 10px;
+    background-color: rgb(209, 213, 216);
+}
+
+.mat-card h1{
+    margin-left: 40px;
+}
+
+.mat-card button{
+    margin-left: 40px;
 }

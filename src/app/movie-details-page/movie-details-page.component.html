@@ -37,5 +37,25 @@
             </div>
         </div>
         
-     </div>
+    </div>
+
+    <mat-card>
+        
+        {{reviewsLength}} Reviews
+
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>add review</mat-label>
+                <input  matInput placeholder="Placeholder" required>
+            </mat-form-field>
+        </p>
+        
+        <div *ngFor = "let review of reviews[movie?.movieId]"> 
+            <p>
+            <span>{{review.user.username}}  {{review.postDate | date}}</span><br/>
+            {{review.reviewText}}
+            </p>
+        </div>
+        
+    </mat-card>
 </div>

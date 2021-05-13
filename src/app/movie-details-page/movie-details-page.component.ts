@@ -1,3 +1,4 @@
+import { Review } from './../_model/review.model';
 import { Subscription } from 'rxjs';
 import { UserService } from './../_service/user.service';
 import { Movie } from './../_model/movie.model';
@@ -14,13 +15,16 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   movieId: number;
+  reviewsLength: number;
   movie: Movie;
   rating: number = 0;
+  reviews: Review[][] = [];
 
   paramSubscription: Subscription;
   getMovieByIdSubscription: Subscription;
   addWatchlistSubscription: Subscription;
   addDiarySubscription: Subscription;
+  getAllReviewsSubscription: Subscription;
 
   constructor(
     private route:ActivatedRoute,
@@ -45,6 +49,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.getMovieByIdSubscription?.unsubscribe();
     this.addWatchlistSubscription?.unsubscribe();
     this.addDiarySubscription?.unsubscribe();
+    this.getAllReviewsSubscription?.unsubscribe();
   }
 
   getMovieById(): void {
@@ -52,6 +57,8 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.getMovieByIdSubscription = this.movieService.getMovieById(this.movieId).subscribe(
       (response: Movie) => {
         this.movie = response;
+        this.getReviews(this.movie.movieId);
+
         console.log (response);
       },
 
@@ -70,6 +77,20 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   addDiary(): void {
 
     this.addDiarySubscription = this.userService.addDiary(this.movieId).subscribe();
+  }
+
+  getReviews(movieId: number): void {
+
+    this.getAllReviewsSubscription = this.userService.getMovieReviews(movieId).subscribe(
+      (response: Review[]) => {
+        this.reviews[movieId] = response;
+        this.reviewsLength = this.reviews[movieId].length;
+      },
+
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
   }
 
   trailerLink(){
