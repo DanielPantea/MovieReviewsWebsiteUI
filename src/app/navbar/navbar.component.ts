@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
   goToTrending(): void {
 
     localStorage.setItem('tags', 'trending');
+    localStorage.removeItem('searchTags');
     this.movieService.getMovies();
     this.router.navigateByUrl('/movies');
   }
