@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DialogManagerService } from '../_service/dialog-manager.service';
 import { Rating } from '../_model/rating.model';
 import { RatingService } from '../_service/rating.service';
+import { enUserRole } from '../_model/user-role.enum';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movie-details-page',
@@ -59,6 +61,11 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.addDiarySubscription?.unsubscribe();
     this.getAllReviewsSubscription?.unsubscribe();
     this.addReviewSubscription?.unsubscribe();
+  }
+
+  isAdmin(): boolean {
+    
+    return this.userService.currentUser.userRole == enUserRole.ADMIN;
   }
 
   getMovieById(): void {
@@ -133,6 +140,14 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   trailerLink(){
       window.location.href = this.movie.trailerUrl;
+  }
+
+  openEditMovie()
+  {
+    if(!this.isAdmin())
+      return;
+    
+    this.dialogManagerService.openRequest(this.movie);
   }
 
 }

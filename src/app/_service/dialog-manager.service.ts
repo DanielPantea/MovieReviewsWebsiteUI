@@ -7,6 +7,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Injectable, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs';
 import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component';
+import { Movie } from '../_model/movie.model';
 
 @Injectable({ providedIn: 'root' })
 export class DialogManagerService implements OnDestroy {
@@ -62,8 +63,12 @@ export class DialogManagerService implements OnDestroy {
       this.ratingSubscription = this.dialog.open(RatingDialogComponent, dialogConfig).afterClosed().subscribe();
     }
     
-    openRequest(): void {
+    openRequest(movie: Movie): void {
 
-      this.dialog.open(RequestmovieComponent,{width: '700px'});
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data =  movie;
+      dialogConfig.width = '700px'
+
+      this.dialog.open(RequestmovieComponent,dialogConfig);
     }
 }
