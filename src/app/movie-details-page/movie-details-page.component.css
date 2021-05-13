@@ -11,6 +11,18 @@
     width: 200px;
 }
 
+.star {
+    font-size: 1.5rem;
+    color: #b0c4de;
+  }
+.star:hover {
+    cursor: pointer;
+}
+.filled {
+    color: #1e90ff;
+  }
+
+/* 
 .body button{
     color: black;
     background-color:rgb(228, 202, 163);
@@ -32,7 +44,7 @@
 .body button:focus{
     background-color: rgb(205, 214, 154);
     outline: none;
-}
+} */
 
 .title{
     padding: 10px;

@@ -5,6 +5,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MovieService } from './../_service/movie.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DialogManagerService } from '../_service/dialog-manager.service';
+import { Rating } from '../_model/rating.model';
+import { RatingService } from '../_service/rating.service';
 
 @Component({
   selector: 'app-movie-details-page',
@@ -15,7 +18,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   movieId: number;
   movie: Movie;
-  rating: number = 0;
+  rating: Rating;
 
   paramSubscription: Subscription;
   getMovieByIdSubscription: Subscription;
@@ -24,7 +27,9 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   constructor(
     private route:ActivatedRoute,
     private movieService: MovieService,
-    private userService: UserService
+    private userService: UserService,
+    public dialogManagerService: DialogManagerService,
+    private ratingService: RatingService
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +55,13 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.getMovieByIdSubscription = this.movieService.getMovieById(this.movieId).subscribe(
       (response: Movie) => {
         this.movie = response;
+        this.ratingService.getUserRating(this.movieId).subscribe(
+          (data) => {
+            console.log("ghdsa");
+            this.rating = data ? data : {movieId: this.movieId, grade: 0};
+          },
+          (error) => this.rating = {movieId: this.movieId, grade: 0}
+        )
         console.log (response);
       },
 
@@ -60,9 +72,18 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   }
 
+  getRating(): void {
+
+  }
+
   addWatchlist(): void {
 
     this.addWatchlistSubscription = this.userService.addWatchlist(this.movieId).subscribe();
+  }
+
+  rateMovie(): void {
+
+    this.dialogManagerService.openRatings(this.rating);
   }
 
 }
