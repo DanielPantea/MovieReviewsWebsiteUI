@@ -1,13 +1,5 @@
-.body{
-    position: inherit;
-    height: 100%;
-    padding: 20px;
-    background: rgb(231, 236, 240);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-
 .mat-card{
-    width: 39%;
+    width: 80%;
     margin-left: 70px;
     margin-bottom: 20px;
     font-size: 35px;

@@ -1,3 +1,4 @@
+import { MatDialogRef } from '@angular/material/dialog';
 import { Movie } from './../_model/movie.model';
 import { UserService } from './../_service/user.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -31,6 +32,7 @@ export class RequestmovieComponent implements OnInit {
   constructor(
 
     private userService: UserService,
+    private dialogRef: MatDialogRef<RequestmovieComponent>
   ) { }
 
   ngOnInit(): void {
@@ -74,6 +76,10 @@ export class RequestmovieComponent implements OnInit {
       this.isInvalid = true;
       return;
     }
-    this.userService.sendRequest(this.movie).subscribe();
+    this.userService.sendRequest(this.movie).subscribe(
+      () => {
+        this.dialogRef.close();
+      }
+    );
   }
 }

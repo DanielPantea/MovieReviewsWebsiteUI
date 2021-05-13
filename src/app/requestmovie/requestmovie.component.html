@@ -1,8 +1,9 @@
 <div class="body">
-          <mat-card>
+          <mat-card mat-dialog-title>
             Request Missing Movie
           </mat-card>
 
+          <mat-dialog-content>
           <p>
             <mat-form-field appearance="standard">
               <mat-label *ngIf="!isInvalid">Movie Title</mat-label>
@@ -83,8 +84,10 @@
                 multiple="multiple" accept="image/*" />
             </mat-form-field>
           </p>
+        </mat-dialog-content>
 
-          <div>
-            <button (click)="sendRequest()" mat-raised-button >Send Request</button>
-          </div>
+        <mat-dialog-actions>
+          <button (click)="sendRequest()" mat-raised-button >Send Request</button>
+          <button mat-raised-button mat-dialog-close >Cancel</button>
+        </mat-dialog-actions>
 </div>
