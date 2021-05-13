@@ -12,9 +12,10 @@
                 {{movie?.movieTitle}}
             </div>
             <button mat-fab color="accent" (click)="rateMovie()">
-                <span *ngIf="rating?.grade!=0">{{rating?.grade}}</span>
-                <span *ngIf="rating?.grade==0" class="star">&#9733;</span>
+                <span *ngIf="userRating?.grade!=0">{{userRating?.grade}}</span>
+                <span *ngIf="userRating?.grade==0" class="star">&#9733;</span>
             </button>
+            <span>{{totalRating}}</span>
             <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate}}.</div>
             
             <div class="desc"><strong>Description: </strong>{{movie?.movieDesc}} </div>

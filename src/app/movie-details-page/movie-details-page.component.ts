@@ -18,7 +18,8 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   movieId: number;
   movie: Movie;
-  rating: Rating;
+  userRating: Rating;
+  totalRating: number;
 
   paramSubscription: Subscription;
   getMovieByIdSubscription: Subscription;
@@ -57,12 +58,15 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
         this.movie = response;
         this.ratingService.getUserRating(this.movieId).subscribe(
           (data) => {
-            console.log("ghdsa");
-            this.rating = data ? data : {movieId: this.movieId, grade: 0};
+            this.userRating = data ? data : {movieId: this.movieId, grade: 0};
           },
-          (error) => this.rating = {movieId: this.movieId, grade: 0}
+          (error) => this.userRating = {movieId: this.movieId, grade: 0}
+        );
+        this.movieService.getMovieTotalRating(this.movieId).subscribe(
+          (data: number) => {
+            this.totalRating = data;
+          }
         )
-        console.log (response);
       },
 
       (error: HttpErrorResponse) => {
@@ -83,7 +87,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   rateMovie(): void {
 
-    this.dialogManagerService.openRatings(this.rating);
+    this.dialogManagerService.openRatings(this.userRating);
   }
 
 }
