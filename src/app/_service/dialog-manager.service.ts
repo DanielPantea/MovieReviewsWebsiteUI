@@ -63,11 +63,12 @@ export class DialogManagerService implements OnDestroy {
       this.ratingSubscription = this.dialog.open(RatingDialogComponent, dialogConfig).afterClosed().subscribe();
     }
     
-    openRequest(movie: Movie): void {
+    openRequest(movie: Movie, cardTitle: string): void {
 
       const dialogConfig = new MatDialogConfig();
-      dialogConfig.data =  movie;
-      dialogConfig.width = '700px'
+      dialogConfig.data =  {movie: movie, cardTitle: cardTitle};
+      dialogConfig.width = '700px';
+      dialogConfig.disableClose = true;
 
       this.dialog.open(RequestmovieComponent,dialogConfig);
     }

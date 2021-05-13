@@ -147,7 +147,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     if(!this.isAdmin())
       return;
     
-    this.dialogManagerService.openRequest(this.movie);
+    this.dialogManagerService.openRequest(this.movie, 'Edit Movie');
   }
 
 }

@@ -27,19 +27,22 @@ export class RequestmovieComponent implements OnInit {
     isEnabled: false
   };
   
+  cardTitle: string;
+
   isInvalid = false;
 
   constructor(
 
     private userService: UserService,
     private dialogRef: MatDialogRef<RequestmovieComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Movie
+    @Inject(MAT_DIALOG_DATA) public data: { movie: Movie, cardTitle: string }
   ) { 
-    console.log(data);
-    if(data) {
-      this.movie = data;
+    
+    if(data.movie) {
+      this.movie = data.movie;
     }
 
+    this.cardTitle = data.cardTitle;
   }
 
   ngOnInit(): void {

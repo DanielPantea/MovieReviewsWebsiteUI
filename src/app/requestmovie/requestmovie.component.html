@@ -1,6 +1,6 @@
 <div class="body">
           <mat-card mat-dialog-title>
-            Request Missing Movie
+            {{cardTitle}}
           </mat-card>
 
           <mat-dialog-content>
@@ -87,7 +87,7 @@
         </mat-dialog-content>
 
         <mat-dialog-actions>
-          <button (click)="sendRequest()" mat-raised-button >Send Request</button>
+          <button (click)="sendRequest()" mat-raised-button >Submit</button>
           <button mat-raised-button mat-dialog-close >Cancel</button>
         </mat-dialog-actions>
 </div>
