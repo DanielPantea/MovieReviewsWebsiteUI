@@ -68,14 +68,11 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.getMovieByIdSubscription = this.movieService.getMovieById(this.movieId).subscribe(
       (response: Movie) => {
         this.movie = response;
+        
         this.getReviews(this.movie.movieId);
 
-        this.ratingService.getUserRating(this.movieId).subscribe(
-          (data) => {
-            this.userRating = data ? data : {movieId: this.movieId, grade: 0};
-          },
-          (error) => this.userRating = {movieId: this.movieId, grade: 0}
-        );
+        this.getRating();
+
         this.movieService.getMovieTotalRating(this.movieId).subscribe(
           (data: number) => {
             this.totalRating = data;
@@ -92,6 +89,15 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   getRating(): void {
 
+    this.ratingService.getUserRating(this.movieId).subscribe(
+      (data:number) => {
+        this.userRating = {
+                            movieId: this.movieId,
+                            grade: data ?? 0  
+                          };
+      },
+      (error) => this.userRating = {movieId: this.movieId, grade: 0}
+    );
   }
 
   addWatchlist(): void {

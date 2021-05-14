@@ -21,10 +21,10 @@ export class RatingService {
             }
         )
 
-        return this.http.post<any>(`${environment.apiUrl}/rating/add/`, rating, {headers});
+        return this.http.post<any>(`${environment.apiUrl}/user/rating/add/`, rating, {headers});
     }
 
-    getUserRating(movieId: number): Observable<Rating> {
+    getUserRating(movieId: number): Observable<number> {
 
         let headers = new HttpHeaders(
             {
@@ -32,7 +32,7 @@ export class RatingService {
             }
         )
 
-        return this.http.get<Rating>(`${environment.apiUrl}/rating/get/${movieId}/`, {headers});
+        return this.http.get<number>(`${environment.apiUrl}/user/rating/get/${movieId}`, {headers});
     }
 
     removeUserRating(movieId: number): Observable<any> {
@@ -43,6 +43,6 @@ export class RatingService {
             }
         )
 
-        return this.http.delete<any>(`${environment.apiUrl}/rating/del/${movieId}`, {headers});
+        return this.http.delete<any>(`${environment.apiUrl}/user/rating/del/${movieId}`, {headers});
     }
 }
