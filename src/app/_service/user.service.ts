@@ -8,6 +8,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { User } from "../_model/user.model";
 import { AuthentificationService } from "./authentification.service";
+import { Rating } from '../_model/rating.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService
@@ -33,7 +34,7 @@ export class UserService
                 Authorization: 'Basic ' + this.currentUser.authdata
             }
         )
-        return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist`, {headers});
+        return this.http.get<Movie[]>(`${environment.apiUrl}/user/watchlist/get`, {headers});
     }
 
     addWatchlist(movieId: number) {
@@ -66,7 +67,7 @@ export class UserService
                 Authorization: 'Basic ' + this.currentUser.authdata
             }
         )
-        return this.http.get<Movie[]>(`${environment.apiUrl}/user/diary`, {headers});
+        return this.http.get<Movie[]>(`${environment.apiUrl}/user/diary/get`, {headers});
     }
 
     addDiary(movieId: number) {
@@ -98,18 +99,8 @@ export class UserService
                 Authorization: 'Basic ' + this.currentUser.authdata
             }
         )
-        return this.http.get<Review[]>(`${environment.apiUrl}/review/user/${movieId}`, {headers});
+        return this.http.get<Review[]>(`${environment.apiUrl}/user/review/get/all/${movieId}`, {headers});
     }
-
-    getMovieReviews(movieId: number){
-        let headers = new HttpHeaders(
-            {
-                Authorization: 'Basic ' + this.currentUser.authdata
-            }
-        )
-        return this.http.get<Review[]>(`${environment.apiUrl}/review/all/${movieId}`, {headers});
-    }
-
 
     addReview(review: Review){
 
@@ -119,6 +110,55 @@ export class UserService
             }
         );
 
-        return this.http.post<any>(`${environment.apiUrl}/review/add`, review, {headers});
+        return this.http.post<any>(`${environment.apiUrl}/user/review/add`, review, {headers});
+    }
+    
+
+    addUserRating(rating: Rating): Observable<any> {
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        )
+
+        return this.http.post<any>(`${environment.apiUrl}/user/rating/add`, rating, {headers});
+    }
+
+
+    getUserRating(movieId: number): Observable<number> {
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        )
+
+        return this.http.get<number>(`${environment.apiUrl}/user/rating/get/${movieId}`, {headers});
+    }
+
+    removeUserRating(movieId: number): Observable<any> {
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        )
+
+        return this.http.delete<any>(`${environment.apiUrl}/user/rating/del/${movieId}`, {headers});
+    }
+
+    sendMovieRequest(movie: Movie){
+
+        movie.isEnabled = false;
+        let body = movie;
+        
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.currentUser.authdata
+            }
+        );
+
+        return this.http.post<any>(`${environment.apiUrl}/user/movie/add`, body, {headers});
     }
 }

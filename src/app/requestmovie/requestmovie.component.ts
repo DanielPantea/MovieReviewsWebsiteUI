@@ -1,9 +1,10 @@
 import { MovieService } from './../_service/movie.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Movie } from './../_model/movie.model';
 import { UserService } from './../_service/user.service';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { enUserRole } from '../_model/user-role.enum';
+import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
 
 @Component({
   selector: 'app-requestmovie',
@@ -33,6 +34,8 @@ export class RequestmovieComponent implements OnInit {
 
   isInvalid = false;
 
+  formType: enMovieInfoFormType;
+
   constructor(
 
     private userService: UserService,
@@ -43,10 +46,6 @@ export class RequestmovieComponent implements OnInit {
     
     if(data.movie) {
       this.movie = data.movie;
-    }
-
-    if(userService.currentUser.userRole == enUserRole.ADMIN){
-      this.movie.isEnabled = true;
     }
 
     this.cardTitle = data.cardTitle;
@@ -87,16 +86,44 @@ export class RequestmovieComponent implements OnInit {
     }
   }
 
-  addMovie(){
+  validateForm()
+  {
+
+    if(this.movie.movieTitle == '')
+      return false;
     
-    if(this.movie.movieTitle == ''){
-      this.isInvalid = true;
+      return true;
+  }
+
+  submit(){
+    
+    if(!this.validateForm()){
       return;
     }
-    this.movieService.addMovie(this.movie).subscribe(
-      () => {
-        this.dialogRef.close();
-      }
-    );
+
+    switch(this.formType) {
+
+      case enMovieInfoFormType.MovieRequest:
+        this.movieService.addMovie(this.movie).subscribe(
+          () => {
+            this.dialogRef.close();
+          }
+        );
+        break;
+      case enMovieInfoFormType.AddMovie:
+        this.userService.sendMovieRequest(this.movie).subscribe(
+          () => {
+            this.dialogRef.close();
+          }
+        );
+        break;
+      case enMovieInfoFormType.UpdateMovie:
+        this.movieService.updateMovie(this.movie).subscribe(
+          () => {
+            this.dialogRef.close();
+          }
+        );
+        break;
+    }
   }
 }

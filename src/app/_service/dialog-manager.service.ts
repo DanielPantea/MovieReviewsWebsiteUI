@@ -8,6 +8,7 @@ import { Injectable, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs';
 import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component';
 import { Movie } from '../_model/movie.model';
+import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
 
 @Injectable({ providedIn: 'root' })
 export class DialogManagerService implements OnDestroy {
@@ -63,10 +64,10 @@ export class DialogManagerService implements OnDestroy {
       this.ratingSubscription = this.dialog.open(RatingDialogComponent, dialogConfig).afterClosed().subscribe();
     }
     
-    openRequest(movie: Movie, cardTitle: string): void {
+    openMovieInfo(movie: Movie, cardTitle: string, formType: enMovieInfoFormType): void {
 
       const dialogConfig = new MatDialogConfig();
-      dialogConfig.data =  {movie: movie, cardTitle: cardTitle};
+      dialogConfig.data =  {movie: movie, cardTitle: cardTitle, formType: formType};
       dialogConfig.width = '700px';
       dialogConfig.disableClose = true;
 

@@ -5,6 +5,7 @@ import { AuthentificationService } from './../_service/authentification.service'
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from '../_service/movie.service';
+import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
 
 @Component({
   selector: 'app-navbar',
@@ -29,6 +30,10 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('searchTags');
     this.movieService.getMovies();
     this.router.navigateByUrl('/movies');
+  }
+
+  openAddMovie() {
+    this.dialogManagerService.openMovieInfo(null, 'Add Movie', enMovieInfoFormType.AddMovie);
   }
 
 }

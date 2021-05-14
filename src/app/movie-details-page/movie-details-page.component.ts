@@ -8,9 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DialogManagerService } from '../_service/dialog-manager.service';
 import { Rating } from '../_model/rating.model';
-import { RatingService } from '../_service/rating.service';
-import { enUserRole } from '../_model/user-role.enum';
-import { MatDialogConfig } from '@angular/material/dialog';
+import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
 
 @Component({
   selector: 'app-movie-details-page',
@@ -39,7 +37,6 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     private movieService: MovieService,
     public userService: UserService,
     public dialogManagerService: DialogManagerService,
-    private ratingService: RatingService
   ) { }
 
   ngOnInit(): void {
@@ -89,7 +86,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   getRating(): void {
 
-    this.ratingService.getUserRating(this.movieId).subscribe(
+    this.userService.getUserRating(this.movieId).subscribe(
       (data:number) => {
         this.userRating = {
                             movieId: this.movieId,
@@ -117,7 +114,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   getReviews(movieId: number): void {
 
-    this.getAllReviewsSubscription = this.userService.getMovieReviews(movieId).subscribe(
+    this.getAllReviewsSubscription = this.movieService.getMovieReviews(movieId).subscribe(
       (response: Review[]) => {
         this.reviews[movieId] = response;
         this.reviewsLength = this.reviews[movieId].length;
@@ -147,7 +144,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     if(!this.userService.isAdmin())
       return;
     
-    this.dialogManagerService.openRequest(this.movie, 'Edit Movie');
+    this.dialogManagerService.openMovieInfo(this.movie, 'Edit Movie', enMovieInfoFormType.UpdateMovie);
   }
 
   deleteMovie(): void {

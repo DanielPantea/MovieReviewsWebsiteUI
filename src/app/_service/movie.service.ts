@@ -4,6 +4,7 @@ import { Movie } from '../_model/movie.model';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
+import { Review } from '../_model/review.model';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService{
@@ -89,27 +90,33 @@ export class MovieService{
     }
 
     getMovieTotalRating(movieId): Observable<number> {
-        return this.http.get<number>(`${environment.apiUrl}/movie/rating/${movieId}`);
+
+        return this.http.get<number>(`${environment.apiUrl}/movie/rating/get/${movieId}`);
+    }
+
+    getMovieReviews(movieId: number){
+
+        return this.http.get<Review[]>(`${environment.apiUrl}/movie/review/get/all/${movieId}`);
     }
 
     getMovieById(movieId: number): Observable<Movie>{
 
-        return this.http.get<Movie>(`${environment.apiUrl}/movie/${movieId}`);
+        return this.http.get<Movie>(`${environment.apiUrl}/movie/get/${movieId}`);
     }
 
     private getAllMovies(): Observable<Movie[]> {
 
-        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`);
+        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/get/all`);
     }
 
     getRequestsMovies(): Observable<Movie[]> {
 
-        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/requests`);
+        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/requests/get`);
     }
 
     private getMoviesByTags(tags: string): Observable<Movie[]> {
 
-        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/tag/${tags}`);
+        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/tags/get/${tags}`);
     }
 
     
@@ -121,7 +128,7 @@ export class MovieService{
             }
         );
         
-        return this.http.put<any>(`${environment.apiUrl}/movie/enable/${movieId}`,null, {headers})
+        return this.http.put<any>(`${environment.apiUrl}/movie/upd/enable/${movieId}`,null, {headers})
     }
 
     deleteMovie(movieId: number): Observable<any> {
@@ -146,5 +153,18 @@ export class MovieService{
         );
 
         return this.http.post<any>(`${environment.apiUrl}/movie/add`, body, {headers});
+    }
+
+    updateMovie(movie: Movie){
+
+        let body = movie;
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.userService.currentUser.authdata
+            }
+        );
+
+        return this.http.put<any>(`${environment.apiUrl}/movie/upd`, body, {headers});
     }
 }
