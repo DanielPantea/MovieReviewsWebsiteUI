@@ -123,4 +123,15 @@ export class MovieService{
         
         return this.http.put<any>(`${environment.apiUrl}/movie/enable/${movieId}`,null, {headers})
     }
+
+    deleteMovie(movieId: number): Observable<any> {
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.userService.currentUser.authdata
+            }
+        );
+
+        return this.http.delete<any>(`${environment.apiUrl}/movie/del/${movieId}`, {headers});
+    }
 }
