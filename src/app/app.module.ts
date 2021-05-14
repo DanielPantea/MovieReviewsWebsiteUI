@@ -9,7 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
-import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MoviesComponent } from './movies/movies.component';
@@ -42,7 +42,7 @@ import { MovieRequestsComponent } from './movie-requests/movie-requests.componen
     RegisterComponent,
     NavbarComponent,
     HeaderComponent,
-    MovieDetailsPageComponent,
+    MovieDetailsComponent,
     MoviesComponent,
     WatchlistPageComponent,
     MoviesComponent,

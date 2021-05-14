@@ -1,9 +1,9 @@
-import { Review } from './../_model/review.model';
+import { Review } from '../_model/review.model';
 import { Subscription } from 'rxjs';
-import { UserService } from './../_service/user.service';
-import { Movie } from './../_model/movie.model';
+import { UserService } from '../_service/user.service';
+import { Movie } from '../_model/movie.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MovieService } from './../_service/movie.service';
+import { MovieService } from '../_service/movie.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DialogManagerService } from '../_service/dialog-manager.service';
@@ -11,11 +11,11 @@ import { Rating } from '../_model/rating.model';
 import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
 
 @Component({
-  selector: 'app-movie-details-page',
-  templateUrl: './movie-details-page.component.html',
-  styleUrls: ['./movie-details-page.component.css']
+  selector: 'app-movie-page',
+  templateUrl: './movie-details.component.html',
+  styleUrls: ['./movie-details.component.css']
 })
-export class MovieDetailsPageComponent implements OnInit, OnDestroy {
+export class MovieDetailsComponent implements OnInit, OnDestroy {
 
   movieId: number;
   reviewsLength: number;
