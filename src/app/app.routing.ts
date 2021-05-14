@@ -1,9 +1,9 @@
-import { DiaryComponent } from './diary/diary.component';
-import { WatchlistComponent } from './watchlist/watchlist.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { DiaryComponent } from './_pages/diary/diary.component';
+import { WatchlistComponent } from './_pages/watchlist/watchlist.component';
+import { MovieDetailsComponent } from './_pages/movie-details/movie-details.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MoviesComponent } from './movies/movies.component';
-import { MovieRequestsComponent } from './movie-requests/movie-requests.component';
+import { MoviesComponent } from './_pages/movies/movies.component';
+import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.component';
 
 
 const routes: Routes = [

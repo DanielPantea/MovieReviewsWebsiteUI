@@ -1,9 +1,9 @@
-import { MovieService } from './../_service/movie.service';
+import { MovieService } from '../../_services/movie.service';
 import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Movie } from './../_model/movie.model';
-import { UserService } from './../_service/user.service';
+import { Movie } from '../../_models/movie.model';
+import { UserService } from '../../_services/user.service';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
+import { enMovieInfoFormType } from '../../_models/movie-info-form.enum';
 
 @Component({
   selector: 'app-movie-info-dialog',

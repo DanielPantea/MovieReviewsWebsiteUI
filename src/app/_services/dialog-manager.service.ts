@@ -1,13 +1,13 @@
-import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
-import { enAuthResult } from './../_model/auth-result.enum';
-import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from '../_dialogs/register-dialog/register-dialog.component';
+import { enAuthResult } from '../_models/auth-result.enum';
+import { LoginDialogComponent } from '../_dialogs/login-dialog/login-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Injectable, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs';
-import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component';
-import { Movie } from '../_model/movie.model';
-import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
-import { MovieInfoDialogComponent } from '../movie-info-dialog/movie-info-dialog.component';
+import { RatingDialogComponent } from '../_dialogs/rating-dialog/rating-dialog.component';
+import { Movie } from '../_models/movie.model';
+import { enMovieInfoFormType } from '../_models/movie-info-form.enum';
+import { MovieInfoDialogComponent } from '../_dialogs/movie-info-dialog/movie-info-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class DialogManagerService implements OnDestroy {

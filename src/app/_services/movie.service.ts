@@ -1,10 +1,10 @@
 import { UserService } from './user.service';
 import { environment } from '../../environments/environment.prod';
-import { Movie } from '../_model/movie.model';
+import { Movie } from '../_models/movie.model';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
-import { Review } from '../_model/review.model';
+import { Review } from '../_models/review.model';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService{

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MovieService } from '../_service/movie.service';
+import { MovieService } from '../../_services/movie.service';
 
 @Component({
   selector: 'app-filter-dialog',

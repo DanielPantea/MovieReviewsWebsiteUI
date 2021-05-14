@@ -1,14 +1,14 @@
-import { enUserRole } from './../_model/user-role.enum';
-import { Review } from './../_model/review.model';
+import { enUserRole } from '../_models/user-role.enum';
+import { Review } from '../_models/review.model';
 import { Router } from '@angular/router';
-import { Movie } from './../_model/movie.model';
-import { environment } from './../../environments/environment';
+import { Movie } from '../_models/movie.model';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { User } from "../_model/user.model";
+import { User } from "../_models/user.model";
 import { AuthentificationService } from "./authentification.service";
-import { Rating } from '../_model/rating.model';
+import { Rating } from '../_models/rating.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService

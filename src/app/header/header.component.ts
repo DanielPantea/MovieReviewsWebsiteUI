@@ -1,7 +1,7 @@
-import { DialogManagerService } from './../_service/dialog-manager.service';
+import { DialogManagerService } from '../_services/dialog-manager.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from '../_service/authentification.service';
-import { UserService } from '../_service/user.service';
+import { AuthentificationService } from '../_services/authentification.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-header',

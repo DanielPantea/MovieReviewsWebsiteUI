@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Rating } from '../_model/rating.model';
-import { UserService } from '../_service/user.service';
+import { Rating } from '../../_models/rating.model';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-rating-dialog',

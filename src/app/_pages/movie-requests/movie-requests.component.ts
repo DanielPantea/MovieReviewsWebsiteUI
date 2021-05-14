@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../_model/movie.model';
-import { MovieService } from '../_service/movie.service';
-import { UserService } from '../_service/user.service';
+import { Movie } from '../../_models/movie.model';
+import { MovieService } from '../../_services/movie.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-movie-requests',

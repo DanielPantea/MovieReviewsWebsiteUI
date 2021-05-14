@@ -1,14 +1,14 @@
-import { Review } from '../_model/review.model';
+import { Review } from '../../_models/review.model';
 import { Subscription } from 'rxjs';
-import { UserService } from '../_service/user.service';
-import { Movie } from '../_model/movie.model';
+import { UserService } from '../../_services/user.service';
+import { Movie } from '../../_models/movie.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MovieService } from '../_service/movie.service';
+import { MovieService } from '../../_services/movie.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DialogManagerService } from '../_service/dialog-manager.service';
-import { Rating } from '../_model/rating.model';
-import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
+import { DialogManagerService } from '../../_services/dialog-manager.service';
+import { Rating } from '../../_models/rating.model';
+import { enMovieInfoFormType } from '../../_models/movie-info-form.enum';
 
 @Component({
   selector: 'app-movie-page',

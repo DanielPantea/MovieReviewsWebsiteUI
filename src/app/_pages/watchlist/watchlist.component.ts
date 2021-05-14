@@ -1,9 +1,9 @@
-import { AuthentificationService } from '../_service/authentification.service';
+import { AuthentificationService } from '../../_services/authentification.service';
 import { Subscription } from 'rxjs';
-import { MovieService } from '../_service/movie.service';
-import { UserService } from '../_service/user.service';
+import { MovieService } from '../../_services/movie.service';
+import { UserService } from '../../_services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Movie } from '../_model/movie.model';
+import { Movie } from '../../_models/movie.model';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 

@@ -1,11 +1,11 @@
-import { enUserRole } from './../_model/user-role.enum';
-import { UserService } from './../_service/user.service';
-import { DialogManagerService } from './../_service/dialog-manager.service';
-import { AuthentificationService } from './../_service/authentification.service';
+import { enUserRole } from '../_models/user-role.enum';
+import { UserService } from '../_services/user.service';
+import { DialogManagerService } from '../_services/dialog-manager.service';
+import { AuthentificationService } from '../_services/authentification.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieService } from '../_service/movie.service';
-import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
+import { MovieService } from '../_services/movie.service';
+import { enMovieInfoFormType } from '../_models/movie-info-form.enum';
 
 @Component({
   selector: 'app-navbar',

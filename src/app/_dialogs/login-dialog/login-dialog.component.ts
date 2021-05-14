@@ -2,10 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { enAuthResult } from '../_model/auth-result.enum';
-import { User } from '../_model/user.model';
-import { AuthentificationService } from '../_service/authentification.service';
-import { UserService } from '../_service/user.service';
+import { enAuthResult } from '../../_models/auth-result.enum';
+import { User } from '../../_models/user.model';
+import { AuthentificationService } from '../../_services/authentification.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-login-dialog',

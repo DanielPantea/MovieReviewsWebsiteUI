@@ -1,10 +1,10 @@
-import { AuthentificationService } from '../_service/authentification.service';
+import { AuthentificationService } from '../../_services/authentification.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService } from '../_service/user.service';
+import { UserService } from '../../_services/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { enAuthResult } from '../_model/auth-result.enum'
-import { User } from '../_model/user.model';
+import { enAuthResult } from '../../_models/auth-result.enum'
+import { User } from '../../_models/user.model';
 
 @Component({
   selector: 'app-register-dialog',

@@ -1,9 +1,9 @@
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
-import { SortDialogComponent } from '../sort-dialog/sort-dialog.component';
-import { MovieService } from '../_service/movie.service';
+import { FilterDialogComponent } from '../../_dialogs/filter-dialog/filter-dialog.component';
+import { SortDialogComponent } from '../../_dialogs/sort-dialog/sort-dialog.component';
+import { MovieService } from '../../_services/movie.service';
 
 @Component({
   selector: 'app-movies',
