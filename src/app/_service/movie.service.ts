@@ -1,6 +1,7 @@
+import { UserService } from './user.service';
 import { environment } from '../../environments/environment.prod';
 import { Movie } from '../_model/movie.model';
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 
@@ -38,7 +39,8 @@ export class MovieService{
     subscription: Subscription;
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private userService: UserService
     ) { }
     
     getMovies(): void {
@@ -108,5 +110,17 @@ export class MovieService{
     private getMoviesByTags(tags: string): Observable<Movie[]> {
 
         return this.http.get<Movie[]>(`${environment.apiUrl}/movie/tag/${tags}`);
+    }
+
+    
+    allowRequest(movieId: number){
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.userService.currentUser.authdata
+            }
+        );
+        
+        return this.http.put<any>(`${environment.apiUrl}/movie/enable/${movieId}`,null, {headers})
     }
 }

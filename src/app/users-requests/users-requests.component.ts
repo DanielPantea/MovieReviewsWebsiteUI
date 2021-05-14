@@ -14,7 +14,8 @@ export class UsersRequestsComponent implements OnInit {
   movies: Movie[];
 
   constructor(
-    public movieService: MovieService
+    public movieService: MovieService,
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,11 @@ export class UsersRequestsComponent implements OnInit {
     )
 
   } 
+
+  allowRequest(movieId: number){
+
+      this.movieService.allowRequest(movieId).subscribe();
+  }
 
   trailerLink(movie: Movie){
     window.location.href = movie.trailerUrl;
