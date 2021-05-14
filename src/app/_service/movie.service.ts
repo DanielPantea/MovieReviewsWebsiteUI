@@ -48,7 +48,7 @@ export class MovieService{
             tags += tags == '' ? '' : ',';
             tags += localStorage.getItem('searchTags').split(/[\s,.-]+/).toString();
         }
-        console.log(tags);
+
         let resp = tags == '' ? this.getAllMovies() : this.getMoviesByTags(tags);
 
         // To avoid memory leaks, unsubscribe from the last subscription
@@ -98,6 +98,11 @@ export class MovieService{
     private getAllMovies(): Observable<Movie[]> {
 
         return this.http.get<Movie[]>(`${environment.apiUrl}/movie/all`);
+    }
+
+    getRequestsMovies(): Observable<Movie[]> {
+
+        return this.http.get<Movie[]>(`${environment.apiUrl}/movie/requests`);
     }
 
     private getMoviesByTags(tags: string): Observable<Movie[]> {

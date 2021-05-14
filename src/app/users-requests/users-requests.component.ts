@@ -1,3 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Movie } from './../_model/movie.model';
+import { MovieService } from './../_service/movie.service';
+import { UserService } from './../_service/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersRequestsComponent implements OnInit {
 
-  constructor() { }
+  movies: Movie[];
+
+  constructor(
+    public movieService: MovieService
+  ) { }
 
   ngOnInit(): void {
+
+    this.getUsersRequests();
   }
+
+  getUsersRequests(): void {
+
+    this.movieService.getRequestsMovies().subscribe(
+      (response: Movie[]) => {
+        
+        this.movies = response;
+      },
+
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
+
+  } 
 
 }
