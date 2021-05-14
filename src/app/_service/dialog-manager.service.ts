@@ -1,6 +1,6 @@
-import { RegisterComponent } from './../register/register.component';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { enAuthResult } from './../_model/auth-result.enum';
-import { LogInComponent } from './../log-in/log-in.component';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Injectable, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs';
@@ -30,7 +30,7 @@ export class DialogManagerService implements OnDestroy {
     
     openLogin(): void {
 
-        this.loginSubscription = this.dialog.open(LogInComponent).afterClosed().subscribe(
+        this.loginSubscription = this.dialog.open(LoginDialogComponent).afterClosed().subscribe(
           (data) => {
     
             if(data?.authResult == enAuthResult.GoToRegister) {
@@ -42,7 +42,7 @@ export class DialogManagerService implements OnDestroy {
 
     openRegister(): void {
 
-        this.registerSubscription = this.dialog.open(RegisterComponent).afterClosed().subscribe(
+        this.registerSubscription = this.dialog.open(RegisterDialogComponent).afterClosed().subscribe(
           (data) => {
     
             if(data?.authResult == enAuthResult.GoToLogin) {

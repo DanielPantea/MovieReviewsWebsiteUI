@@ -8,11 +8,11 @@ import { AuthentificationService } from '../_service/authentification.service';
 import { UserService } from '../_service/user.service';
 
 @Component({
-  selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.css']
+  selector: 'app-login-dialog',
+  templateUrl: './login-dialog.component.html',
+  styleUrls: ['./login-dialog.component.css']
 })
-export class LogInComponent implements OnInit, OnDestroy {
+export class LoginDialogComponent implements OnInit, OnDestroy {
 
   username: string;
   password: string;
@@ -23,7 +23,7 @@ export class LogInComponent implements OnInit, OnDestroy {
   constructor(
     private authentificationService: AuthentificationService,
     private userService: UserService,
-    private dialogRef: MatDialogRef<LogInComponent>
+    private dialogRef: MatDialogRef<LoginDialogComponent>
   ) { }
 
   ngOnInit(): void {

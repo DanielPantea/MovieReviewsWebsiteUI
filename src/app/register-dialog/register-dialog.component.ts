@@ -7,11 +7,11 @@ import { enAuthResult } from '../_model/auth-result.enum'
 import { User } from '../_model/user.model';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-register-dialog',
+  templateUrl: './register-dialog.component.html',
+  styleUrls: ['./register-dialog.component.css']
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterDialogComponent implements OnInit, OnDestroy {
 
   username: string;
   password: string;
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private authentificationService: AuthentificationService,
     private userService: UserService,
-    private dialogRef: MatDialogRef<RegisterComponent>
+    private dialogRef: MatDialogRef<RegisterDialogComponent>
   ) { }
 
   ngOnInit(): void {
