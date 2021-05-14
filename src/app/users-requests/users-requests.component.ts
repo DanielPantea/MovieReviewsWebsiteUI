@@ -37,4 +37,8 @@ export class UsersRequestsComponent implements OnInit {
 
   } 
 
+  trailerLink(movie: Movie){
+    window.location.href = movie.trailerUrl;
+  }
+
 }

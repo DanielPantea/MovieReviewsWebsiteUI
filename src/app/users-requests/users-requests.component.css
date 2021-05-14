@@ -5,3 +5,46 @@
     background: rgb(231, 236, 240);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
+
+.body img{
+    padding: 20px;
+    width: 200px;
+}
+
+.title{
+    padding: 10px;
+    margin-bottom: 13px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.desc{
+    padding: 10px;
+}
+
+.trailer{
+    padding-bottom: 10px;
+    padding-left:  10px;
+}
+
+.creators{
+    padding-bottom: 5px;
+    padding-left:  10px;
+}
+
+.length{
+    padding-left:  10px;
+    padding-bottom: 10px;
+}
+
+.splitscreen {
+    display:flex;
+}  
+
+.left{
+    flex: 0;
+}
+
+.mat-card{
+    margin: 20px;
+}
