@@ -104,15 +104,17 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     if(!this.validateForm())
       return;
 
+    
+
     switch(this.formType) {
 
-      case enMovieInfoFormType.MovieRequest:
+      case enMovieInfoFormType.AddMovie:
         this.movieInfoSubscription = this.movieService.addMovie(this.movie).subscribe(
           () => this.dialogRef.close(),
           (error) => console.log(error)
         );
         break;
-      case enMovieInfoFormType.AddMovie:
+      case enMovieInfoFormType.MovieRequest:
         this.movieInfoSubscription = this.userService.sendMovieRequest(this.movie).subscribe(
           () => this.dialogRef.close(),
           (error) => console.log(error)

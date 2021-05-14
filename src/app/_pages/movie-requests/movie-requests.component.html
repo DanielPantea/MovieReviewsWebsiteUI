@@ -41,7 +41,7 @@
                         <button (click)="allowRequest(movie?.movieId)" mat-raised-button > Allow </button>
                     </div>
                     <div class="deny">
-                        <button mat-raised-button > Deny </button>
+                        <button mat-raised-button (click)="denyRequest(movie?.movieId)" > Deny </button>
                     </div>
 
                 </div>

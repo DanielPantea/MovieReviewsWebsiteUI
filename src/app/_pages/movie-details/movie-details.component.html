@@ -6,7 +6,7 @@
             <button (click)="addWatchlist()"><strong>+ </strong>Add to Watchlist</button><br/>
             <button (click)="addDiary()"><strong>+ </strong>Add to Viewed</button>
             <button *ngIf="userService.isAdmin()" (click)="openEditMovie()" ><strong>+ </strong>Edit</button>
-            <button *ngIf="userService.isAdmin()" (click)="deleteMovie()" ><strong>+ </strong>Delete</button>
+            <button routerLink="/movies" *ngIf="userService.isAdmin()" (click)="deleteMovie()" ><strong>+ </strong>Delete</button>
         </div>
       
         <div class="right">

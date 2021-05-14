@@ -35,20 +35,22 @@ export class MovieRequestsComponent implements OnInit {
         console.log(error);
       }
     )
-
   } 
 
   allowRequest(movieId: number){
 
       this.movieService.allowRequest(movieId).subscribe();
+      location.reload();
   }
 
   denyRequest(movieId: number){
 
     this.movieService.deleteMovie(movieId).subscribe();
+    location.reload();
 }
 
   trailerLink(movie: Movie){
+
     window.location.href = movie.trailerUrl;
   }
 
