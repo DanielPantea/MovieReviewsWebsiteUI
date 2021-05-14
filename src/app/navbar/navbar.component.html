@@ -5,8 +5,8 @@
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Diary </button>
     <button *ngIf="authentificationService.isLoggedIn()" routerLink="/diary"> Diary </button>
     
-    <button *ngIf="authentificationService.isLoggedIn()" (click)="dialogManagerService.openRequest(null, 'Add Movie')"> Add Movie </button>
+    <button *ngIf="userService.isAdmin()" (click)="openAddMovie()"> Add Movie </button>
 
-    <button *ngIf="userService.isAdmin()" routerLink="/users-requests"> UR </button>
+    <button *ngIf="userService.isAdmin()" routerLink="/movie-requests"> UR </button>
 </div>
 

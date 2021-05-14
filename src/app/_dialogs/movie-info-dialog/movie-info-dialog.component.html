@@ -1,0 +1,93 @@
+<div class="body">
+    <mat-card mat-dialog-title>
+      {{cardTitle}}
+    </mat-card>
+
+    <mat-dialog-content>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label *ngIf="!isInvalid">Movie Title</mat-label>
+        <mat-label *ngIf="isInvalid">Movie Title</mat-label>
+        <input [(ngModel)]="movie.movieTitle" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Movie Description</mat-label>
+        <input [(ngModel)]="movie.movieDesc" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Trailer Url</mat-label>
+        <input [(ngModel)]="movie.trailerUrl" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Length(min)</mat-label>
+        <input [(ngModel)]="movie.lengthMinutes" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Movie Directors</mat-label>
+        <input [(ngModel)]="movie.movieDirectors" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Movie Writers</mat-label>
+        <input [(ngModel)]="movie.movieWriters" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Movie Actors</mat-label>
+        <input [(ngModel)]="movie.movieActors" matInput placeholder="Placeholder" required>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Tags</mat-label>
+        <input matInput placeholder="Placeholder">
+      </mat-form-field>
+    </p>
+
+    <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Release Date</mat-label>
+      <input [(ngModel)]="movie.releaseDate" matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="fill">
+
+        <mat-toolbar>
+          <input  matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />
+          <button mat-icon-button>
+            <mat-icon>attach_file</mat-icon>
+          </button>
+        </mat-toolbar>
+  
+        <input type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
+          multiple="multiple" accept="image/*" />
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button (click)="submit()" mat-raised-button >Submit</button>
+    <button mat-raised-button mat-dialog-close >Cancel</button>
+  </mat-dialog-actions>
+</div>

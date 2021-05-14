@@ -1,21 +1,21 @@
-import { LogInComponent } from './log-in/log-in.component';
+import { LoginDialogComponent } from './_dialogs/login-dialog/login-dialog.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { appRoutingModule } from './app.routing';
-import { RegisterComponent } from './register/register.component';
+import { RegisterDialogComponent } from './_dialogs/register-dialog/register-dialog.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
-import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
+import { MovieDetailsComponent } from './_pages/movie-details/movie-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MoviesComponent } from './movies/movies.component';
-import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
-import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
-import { SortDialogComponent } from './sort-dialog/sort-dialog.component';
+import { MoviesComponent } from './_pages/movies/movies.component';
+import { WatchlistComponent } from './_pages/watchlist/watchlist.component';
+import { FilterDialogComponent } from './_dialogs/filter-dialog/filter-dialog.component';
+import { SortDialogComponent } from './_dialogs/sort-dialog/sort-dialog.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -26,32 +26,32 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { RequestmovieComponent } from './requestmovie/requestmovie.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
-import { DiaryComponent } from './diary/diary.component';
-import { UsersRequestsComponent } from './users-requests/users-requests.component';
+import { RatingDialogComponent } from './_dialogs/rating-dialog/rating-dialog.component';
+import { DiaryComponent } from './_pages/diary/diary.component';
+import { MovieInfoDialogComponent } from './_dialogs/movie-info-dialog/movie-info-dialog.component';
+import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent,
-    RegisterComponent,
+    LoginDialogComponent,
+    RegisterDialogComponent,
     NavbarComponent,
     HeaderComponent,
-    MovieDetailsPageComponent,
+    MovieDetailsComponent,
     MoviesComponent,
-    WatchlistPageComponent,
+    WatchlistComponent,
     MoviesComponent,
     FilterDialogComponent,
     SortDialogComponent,
-    RequestmovieComponent,
     RatingDialogComponent,
     DiaryComponent,
-    UsersRequestsComponent
+    MovieInfoDialogComponent,
+    MovieRequestsComponent
   ],
   imports: [
     BrowserModule,
