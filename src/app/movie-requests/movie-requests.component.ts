@@ -1,15 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Movie } from './../_model/movie.model';
-import { MovieService } from './../_service/movie.service';
-import { UserService } from './../_service/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Movie } from '../_model/movie.model';
+import { MovieService } from '../_service/movie.service';
+import { UserService } from '../_service/user.service';
 
 @Component({
-  selector: 'app-users-requests',
-  templateUrl: './users-requests.component.html',
-  styleUrls: ['./users-requests.component.css']
+  selector: 'app-movie-requests',
+  templateUrl: './movie-requests.component.html',
+  styleUrls: ['./movie-requests.component.css']
 })
-export class UsersRequestsComponent implements OnInit {
+export class MovieRequestsComponent implements OnInit {
 
   movies: Movie[];
 

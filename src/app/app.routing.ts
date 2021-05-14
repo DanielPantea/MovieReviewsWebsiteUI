@@ -1,9 +1,9 @@
-import { UsersRequestsComponent } from './users-requests/users-requests.component';
 import { DiaryComponent } from './diary/diary.component';
 import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
 import { MovieDetailsPageComponent } from './movie-details-page/movie-details-page.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
+import { MovieRequestsComponent } from './movie-requests/movie-requests.component';
 
 
 const routes: Routes = [
@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'watchlist', component: WatchlistPageComponent },
     { path: 'diary', component: DiaryComponent },
     { path: 'movie-details/:movieId', component: MovieDetailsPageComponent },
-    { path: 'users-requests', component: UsersRequestsComponent },
+    { path: 'movie-requests', component: MovieRequestsComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '/movies' }
 ];

@@ -31,8 +31,8 @@ import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
 import { DiaryComponent } from './diary/diary.component';
-import { UsersRequestsComponent } from './users-requests/users-requests.component';
 import { MovieInfoDialogComponent } from './movie-info-dialog/movie-info-dialog.component';
+import { MovieRequestsComponent } from './movie-requests/movie-requests.component';
 
 
 @NgModule({
@@ -50,8 +50,8 @@ import { MovieInfoDialogComponent } from './movie-info-dialog/movie-info-dialog.
     SortDialogComponent,
     RatingDialogComponent,
     DiaryComponent,
-    UsersRequestsComponent,
-    MovieInfoDialogComponent
+    MovieInfoDialogComponent,
+    MovieRequestsComponent
   ],
   imports: [
     BrowserModule,
