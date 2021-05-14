@@ -18,6 +18,22 @@
     font-weight: bold;
 }
 
+.allow{
+    display: inline-block;
+}
+
+.deny{
+    display: inline-block;
+}
+
+.allow button{
+    background-color:rgb(139, 212, 151);
+}
+
+.deny button{
+    background-color:rgb(238, 78, 78);
+}
+
 .desc{
     padding: 10px;
 }
