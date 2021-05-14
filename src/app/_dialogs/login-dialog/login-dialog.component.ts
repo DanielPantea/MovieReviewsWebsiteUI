@@ -38,22 +38,25 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
 
     this.loginSubscription = this.authentificationService.login(this.username, this.password).subscribe(
       (data: User) => {
+
         this.userService.currentUser = data;
         this.userService.currentUser.authdata = btoa(`${this.username}:${this.password}`);
         localStorage.setItem('userDetails', JSON.stringify(this.userService.currentUser));
-        this.dialogRef.close({authResult: enAuthResult.LoggedIn });
+        this.dialogRef.close({ authResult: enAuthResult.LoggedIn });
       },
-      (error: HttpErrorResponse) => {          
-        if(this.authentificationService.isLoggedIn) {
+      (error: HttpErrorResponse) => {  
+
+        if(this.authentificationService.isLoggedIn)
           this.authentificationService.logout;
-        }
+        
         this.isInvalid = true;
+        console.log(error);
       }
     );
   }
 
   goToRegister(): void {
     
-    this.dialogRef.close({authResult: enAuthResult.GoToRegister });
+    this.dialogRef.close({ authResult: enAuthResult.GoToRegister });
   }
 }

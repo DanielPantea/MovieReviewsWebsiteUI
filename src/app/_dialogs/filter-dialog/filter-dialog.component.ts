@@ -16,22 +16,21 @@ export class FilterDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<FilterDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string[]
   ) { 
+
     this.tags = data;
   }
 
   ngOnInit(): void {
 
     this.movieGenres = MovieService.movieGenres
-  
   }
 
-  getIndexOf(key: string){
+  getIndexOf(key: string): number {
 
     return this.tags.indexOf(key);
-
   }
 
-  toggleMovieGenre(key: string){
+  toggleMovieGenre(key: string): void {
 
     let index = this.getIndexOf(key);
 
@@ -39,7 +38,6 @@ export class FilterDialogComponent implements OnInit {
       this.tags.splice(index,1);
     else
       this.tags.push(key);
-
   }
 
 }

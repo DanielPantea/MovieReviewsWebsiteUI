@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { Rating } from '../../_models/rating.model';
 import { UserService } from '../../_services/user.service';
 
@@ -12,6 +13,8 @@ export class RatingDialogComponent implements OnInit {
 
   rating: Rating;
 
+  ratingSubscription: Subscription
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Rating, 
     private userService: UserService   
@@ -20,16 +23,21 @@ export class RatingDialogComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+    this.ratingSubscription?.unsubscribe();
   }
 
   clearRating(): void {
+
     this.rating .grade= 0;
-    this.userService.removeUserRating(this.rating.movieId).subscribe();
+    this.ratingSubscription?.unsubscribe();
+    this.ratingSubscription = this.userService.removeUserRating(this.rating.movieId).subscribe();
   }
 
   onChangeGrade(): void {
 
-    this.userService.addUserRating(this.rating).subscribe();
+    this.ratingSubscription?.unsubscribe();
+    this.ratingSubscription = this.userService.addUserRating(this.rating).subscribe();
   }
 
 }

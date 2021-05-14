@@ -9,13 +9,14 @@ import { MovieService } from '../../_services/movie.service';
 })
 export class SortDialogComponent implements OnInit {
 
-  sortTypes: {[key: string]: string} = MovieService.sortTypes;
-  sortParams: {sortType: string, sortDir: number}
+  sortTypes: { [key: string]: string } = MovieService.sortTypes;
+  sortParams: { sortType: string, sortDir: number }
 
   constructor(
     public dialogRef: MatDialogRef<SortDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {sortType: string, sortDir: number}
   ) { 
+
     this.sortParams = data;
   }
 

@@ -5,6 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { enAuthResult } from '../../_models/auth-result.enum'
 import { User } from '../../_models/user.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-dialog',
@@ -42,23 +43,26 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
     }
       
       this.registerSubscription = this.authentificationService.register(this.username,this.password,this.email).subscribe(
-      (data:User) => {
+      (data: User) => {
+
         this.userService.currentUser = data;
         this.userService.currentUser.authdata = btoa(`${this.username}:${this.password}`);
         localStorage.setItem('userDetails', JSON.stringify(this.userService.currentUser));
-        this.dialogRef.close({authResult: enAuthResult.Registered });       
+        this.dialogRef.close({ authResult: enAuthResult.Registered });       
       },
-      error =>{
-        if(this.authentificationService.isLoggedIn) {
+      (error: HttpErrorResponse) =>{
+
+        if(this.authentificationService.isLoggedIn)
           this.authentificationService.logout;
-        }
+        
         this.isInvalid = true;
+        console.log(error);
       }
     );
   }
 
   goToLogin(): void {
     
-    this.dialogRef.close({authResult: enAuthResult.GoToLogin });
+    this.dialogRef.close({ authResult: enAuthResult.GoToLogin });
   }
 }

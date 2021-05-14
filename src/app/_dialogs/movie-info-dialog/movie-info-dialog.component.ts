@@ -2,15 +2,16 @@ import { MovieService } from '../../_services/movie.service';
 import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Movie } from '../../_models/movie.model';
 import { UserService } from '../../_services/user.service';
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { enMovieInfoFormType } from '../../_models/movie-info-form.enum';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-info-dialog',
   templateUrl: './movie-info-dialog.component.html',
   styleUrls: ['./movie-info-dialog.component.css']
 })
-export class MovieInfoDialogComponent implements OnInit {
+export class MovieInfoDialogComponent implements OnInit, OnDestroy {
 
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef;
   myfilename = 'Image Poster';
@@ -35,17 +36,17 @@ export class MovieInfoDialogComponent implements OnInit {
 
   formType: enMovieInfoFormType;
 
-  constructor(
+  movieInfoSubscription: Subscription;
 
+  constructor(
     private userService: UserService,
     private dialogRef: MatDialogRef<MovieInfoDialogComponent>,
     private movieService: MovieService,
     @Inject(MAT_DIALOG_DATA) public data: { movie: Movie, cardTitle: string, formType: enMovieInfoFormType }
   ) { 
     
-    if(data.movie) {
+    if(data.movie)
       this.movie = data.movie;
-    }
 
     this.cardTitle = data.cardTitle;
     this.formType = data.formType;
@@ -54,6 +55,10 @@ export class MovieInfoDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+
+    this.movieInfoSubscription?.unsubscribe();
+  }
 
   fileChangeEvent(fileInput: any) {
 
@@ -91,38 +96,36 @@ export class MovieInfoDialogComponent implements OnInit {
     if(this.movie.movieTitle == '')
       return false;
     
-      return true;
+    return true;
   }
 
   submit(): void {
     
-    if(!this.validateForm()){
+    if(!this.validateForm())
       return;
-    }
 
     switch(this.formType) {
 
       case enMovieInfoFormType.MovieRequest:
-        this.movieService.addMovie(this.movie).subscribe(
+        this.movieInfoSubscription = this.movieService.addMovie(this.movie).subscribe(
           () => this.dialogRef.close(),
           (error) => console.log(error)
         );
         break;
       case enMovieInfoFormType.AddMovie:
-        this.userService.sendMovieRequest(this.movie).subscribe(
+        this.movieInfoSubscription = this.userService.sendMovieRequest(this.movie).subscribe(
           () => this.dialogRef.close(),
           (error) => console.log(error)
         );
         break;
       case enMovieInfoFormType.UpdateMovie:
-        this.movieService.updateMovie(this.movie).subscribe(
+        this.movieInfoSubscription = this.movieService.updateMovie(this.movie).subscribe(
           () => this.dialogRef.close(),
           (error) => console.log(error)
 
         );
         break;
     }
-
   }
 
 }
