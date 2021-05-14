@@ -32,6 +32,7 @@ import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
 import { DiaryComponent } from './diary/diary.component';
+import { UsersRequestsComponent } from './users-requests/users-requests.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { DiaryComponent } from './diary/diary.component';
     SortDialogComponent,
     RequestmovieComponent,
     RatingDialogComponent,
-    DiaryComponent
+    DiaryComponent,
+    UsersRequestsComponent
   ],
   imports: [
     BrowserModule,

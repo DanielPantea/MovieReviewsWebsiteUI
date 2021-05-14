@@ -7,5 +7,7 @@
 
     <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Request </button>
     <button *ngIf="authentificationService.isLoggedIn()" (click)="dialogManagerService.openRequest(null, 'Movie Request')"> Request </button>
+
+    <button *ngIf="userService.isAdmin()" routerLink="/users-requests"> UR </button>
 </div>
 

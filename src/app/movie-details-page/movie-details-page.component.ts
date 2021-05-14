@@ -37,7 +37,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
   constructor(
     private route:ActivatedRoute,
     private movieService: MovieService,
-    private userService: UserService,
+    public userService: UserService,
     public dialogManagerService: DialogManagerService,
     private ratingService: RatingService
   ) { }
@@ -63,11 +63,6 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     this.addReviewSubscription?.unsubscribe();
   }
 
-  isAdmin(): boolean {
-    
-    return this.userService.currentUser.userRole == enUserRole.ADMIN;
-  }
-
   getMovieById(): void {
     
     this.getMovieByIdSubscription = this.movieService.getMovieById(this.movieId).subscribe(
@@ -75,7 +70,6 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
         this.movie = response;
         this.getReviews(this.movie.movieId);
 
-        console.log (response);
         this.ratingService.getUserRating(this.movieId).subscribe(
           (data) => {
             this.userRating = data ? data : {movieId: this.movieId, grade: 0};
@@ -144,8 +138,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   openEditMovie()
   {
-
-    if(!this.isAdmin())
+    if(!this.userService.isAdmin())
       return;
     
     this.dialogManagerService.openRequest(this.movie, 'Edit Movie');
@@ -153,7 +146,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   deleteMovie(): void {
 
-    if(!this.isAdmin())
+    if(!this.userService.isAdmin())
       return;
 
     this.userService.deleteMovie(this.movieId).subscribe();
