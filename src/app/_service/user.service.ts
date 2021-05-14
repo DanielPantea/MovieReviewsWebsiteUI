@@ -123,17 +123,6 @@ export class UserService
         return this.http.post<any>(`${environment.apiUrl}/movie/add`, body, {headers});
     }
 
-    deleteMovie(movieId: number): Observable<any> {
-
-        let headers = new HttpHeaders(
-            {
-                Authorization: 'Basic ' + this.currentUser.authdata
-            }
-        );
-
-        return this.http.delete<any>(`${environment.apiUrl}/movie/del/${movieId}`, {headers});
-    }
-
     addReview(review: Review){
 
         let headers = new HttpHeaders(

@@ -149,7 +149,7 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
     if(!this.userService.isAdmin())
       return;
 
-    this.userService.deleteMovie(this.movieId).subscribe();
+    this.movieService.deleteMovie(this.movieId).subscribe();
   }
 
 }
