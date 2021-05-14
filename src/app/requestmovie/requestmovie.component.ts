@@ -1,3 +1,4 @@
+import { MovieService } from './../_service/movie.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Movie } from './../_model/movie.model';
 import { UserService } from './../_service/user.service';
@@ -35,6 +36,7 @@ export class RequestmovieComponent implements OnInit {
 
     private userService: UserService,
     private dialogRef: MatDialogRef<RequestmovieComponent>,
+    private movieService: MovieService,
     @Inject(MAT_DIALOG_DATA) public data: { movie: Movie, cardTitle: string }
   ) { 
     
@@ -80,13 +82,13 @@ export class RequestmovieComponent implements OnInit {
     }
   }
 
-  sendRequest(){
+  addMovie(){
     
     if(this.movie.movieTitle == ''){
       this.isInvalid = true;
       return;
     }
-    this.userService.sendRequest(this.movie).subscribe(
+    this.movieService.addMovie(this.movie).subscribe(
       () => {
         this.dialogRef.close();
       }

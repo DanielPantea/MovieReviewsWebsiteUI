@@ -134,4 +134,17 @@ export class MovieService{
 
         return this.http.delete<any>(`${environment.apiUrl}/movie/del/${movieId}`, {headers});
     }
+
+    addMovie(movie: Movie){
+
+        let body = movie;
+
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.userService.currentUser.authdata
+            }
+        );
+
+        return this.http.post<any>(`${environment.apiUrl}/movie/add`, body, {headers});
+    }
 }

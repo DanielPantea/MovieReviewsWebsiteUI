@@ -110,18 +110,6 @@ export class UserService
         return this.http.get<Review[]>(`${environment.apiUrl}/review/all/${movieId}`, {headers});
     }
 
-    sendRequest(movie: Movie){
-
-        let body = movie;
-
-        let headers = new HttpHeaders(
-            {
-                Authorization: 'Basic ' + this.currentUser.authdata
-            }
-        );
-
-        return this.http.post<any>(`${environment.apiUrl}/movie/add`, body, {headers});
-    }
 
     addReview(review: Review){
 
