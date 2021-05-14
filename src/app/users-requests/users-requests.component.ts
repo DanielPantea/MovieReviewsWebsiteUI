@@ -41,11 +41,13 @@ export class UsersRequestsComponent implements OnInit {
   allowRequest(movieId: number){
 
       this.movieService.allowRequest(movieId).subscribe();
+      location.reload();
   }
 
   denyRequest(movieId: number){
 
     this.movieService.deleteMovie(movieId).subscribe();
+    location.reload();
 }
 
   trailerLink(movie: Movie){
