@@ -144,10 +144,19 @@ export class MovieDetailsPageComponent implements OnInit, OnDestroy {
 
   openEditMovie()
   {
+
     if(!this.isAdmin())
       return;
     
     this.dialogManagerService.openRequest(this.movie, 'Edit Movie');
+  }
+
+  deleteMovie(): void {
+
+    if(!this.isAdmin())
+      return;
+
+    this.userService.deleteMovie(this.movieId).subscribe();
   }
 
 }
