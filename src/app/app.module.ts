@@ -13,7 +13,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MoviesComponent } from './movies/movies.component';
-import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
 import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from './sort-dialog/sort-dialog.component';
 
@@ -44,7 +44,7 @@ import { MovieRequestsComponent } from './movie-requests/movie-requests.componen
     HeaderComponent,
     MovieDetailsComponent,
     MoviesComponent,
-    WatchlistPageComponent,
+    WatchlistComponent,
     MoviesComponent,
     FilterDialogComponent,
     SortDialogComponent,

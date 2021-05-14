@@ -1,5 +1,5 @@
 import { DiaryComponent } from './diary/diary.component';
-import { WatchlistPageComponent } from './watchlist-page/watchlist-page.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
@@ -8,7 +8,7 @@ import { MovieRequestsComponent } from './movie-requests/movie-requests.componen
 
 const routes: Routes = [
     { path: 'movies', component: MoviesComponent },
-    { path: 'watchlist', component: WatchlistPageComponent },
+    { path: 'watchlist', component: WatchlistComponent },
     { path: 'diary', component: DiaryComponent },
     { path: 'movie-details/:movieId', component: MovieDetailsComponent },
     { path: 'movie-requests', component: MovieRequestsComponent },

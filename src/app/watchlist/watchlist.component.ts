@@ -1,18 +1,18 @@
-import { AuthentificationService } from './../_service/authentification.service';
+import { AuthentificationService } from '../_service/authentification.service';
 import { Subscription } from 'rxjs';
-import { MovieService } from './../_service/movie.service';
-import { UserService } from './../_service/user.service';
+import { MovieService } from '../_service/movie.service';
+import { UserService } from '../_service/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Movie } from './../_model/movie.model';
+import { Movie } from '../_model/movie.model';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'app-watchlist-page',
-  templateUrl: './watchlist-page.component.html',
-  styleUrls: ['./watchlist-page.component.css']
+  selector: 'app-watchlist',
+  templateUrl: './watchlist.component.html',
+  styleUrls: ['./watchlist.component.css']
 })
-export class WatchlistPageComponent implements OnInit, OnDestroy {
+export class WatchlistComponent implements OnInit, OnDestroy {
 
   movies: Movie[];
 
