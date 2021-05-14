@@ -1,5 +1,3 @@
-import { RequestmovieComponent } from './../requestmovie/requestmovie.component';
-import { Router } from '@angular/router';
 import { RegisterComponent } from './../register/register.component';
 import { enAuthResult } from './../_model/auth-result.enum';
 import { LogInComponent } from './../log-in/log-in.component';
@@ -9,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component';
 import { Movie } from '../_model/movie.model';
 import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
+import { MovieInfoDialogComponent } from '../movie-info-dialog/movie-info-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class DialogManagerService implements OnDestroy {
@@ -71,6 +70,6 @@ export class DialogManagerService implements OnDestroy {
       dialogConfig.width = '700px';
       dialogConfig.disableClose = true;
 
-      this.dialog.open(RequestmovieComponent,dialogConfig);
+      this.dialog.open(MovieInfoDialogComponent,dialogConfig);
     }
 }

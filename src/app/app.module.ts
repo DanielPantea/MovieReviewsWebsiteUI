@@ -26,13 +26,13 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { RequestmovieComponent } from './requestmovie/requestmovie.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
 import { DiaryComponent } from './diary/diary.component';
 import { UsersRequestsComponent } from './users-requests/users-requests.component';
+import { MovieInfoDialogComponent } from './movie-info-dialog/movie-info-dialog.component';
 
 
 @NgModule({
@@ -48,10 +48,10 @@ import { UsersRequestsComponent } from './users-requests/users-requests.componen
     MoviesComponent,
     FilterDialogComponent,
     SortDialogComponent,
-    RequestmovieComponent,
     RatingDialogComponent,
     DiaryComponent,
-    UsersRequestsComponent
+    UsersRequestsComponent,
+    MovieInfoDialogComponent
   ],
   imports: [
     BrowserModule,

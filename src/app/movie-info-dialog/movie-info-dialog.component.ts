@@ -3,15 +3,14 @@ import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { Movie } from './../_model/movie.model';
 import { UserService } from './../_service/user.service';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { enUserRole } from '../_model/user-role.enum';
 import { enMovieInfoFormType } from '../_model/movie-info-form.enum';
 
 @Component({
-  selector: 'app-requestmovie',
-  templateUrl: './requestmovie.component.html',
-  styleUrls: ['./requestmovie.component.css']
+  selector: 'app-movie-info-dialog',
+  templateUrl: './movie-info-dialog.component.html',
+  styleUrls: ['./movie-info-dialog.component.css']
 })
-export class RequestmovieComponent implements OnInit {
+export class MovieInfoDialogComponent implements OnInit {
 
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef;
   myfilename = 'Image Poster';
@@ -39,9 +38,9 @@ export class RequestmovieComponent implements OnInit {
   constructor(
 
     private userService: UserService,
-    private dialogRef: MatDialogRef<RequestmovieComponent>,
+    private dialogRef: MatDialogRef<MovieInfoDialogComponent>,
     private movieService: MovieService,
-    @Inject(MAT_DIALOG_DATA) public data: { movie: Movie, cardTitle: string }
+    @Inject(MAT_DIALOG_DATA) public data: { movie: Movie, cardTitle: string, formType: enMovieInfoFormType }
   ) { 
     
     if(data.movie) {
@@ -49,6 +48,7 @@ export class RequestmovieComponent implements OnInit {
     }
 
     this.cardTitle = data.cardTitle;
+    this.formType = data.formType;
   }
 
   ngOnInit(): void {
@@ -86,8 +86,7 @@ export class RequestmovieComponent implements OnInit {
     }
   }
 
-  validateForm()
-  {
+  validateForm(): boolean {
 
     if(this.movie.movieTitle == '')
       return false;
@@ -95,7 +94,7 @@ export class RequestmovieComponent implements OnInit {
       return true;
   }
 
-  submit(){
+  submit(): void {
     
     if(!this.validateForm()){
       return;
@@ -105,25 +104,26 @@ export class RequestmovieComponent implements OnInit {
 
       case enMovieInfoFormType.MovieRequest:
         this.movieService.addMovie(this.movie).subscribe(
-          () => {
-            this.dialogRef.close();
-          }
+          () => this.dialogRef.close(),
+          (error) => console.log(error)
         );
         break;
       case enMovieInfoFormType.AddMovie:
         this.userService.sendMovieRequest(this.movie).subscribe(
-          () => {
-            this.dialogRef.close();
-          }
+          () => this.dialogRef.close(),
+          (error) => console.log(error)
         );
         break;
       case enMovieInfoFormType.UpdateMovie:
         this.movieService.updateMovie(this.movie).subscribe(
-          () => {
-            this.dialogRef.close();
-          }
+          () => this.dialogRef.close(),
+          (error) => console.log(error)
+
         );
         break;
     }
+
   }
+
 }
+    
