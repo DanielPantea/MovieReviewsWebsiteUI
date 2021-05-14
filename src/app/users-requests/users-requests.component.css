@@ -19,11 +19,15 @@
 }
 
 .allow{
-    display: inline-block;
+    position: absolute;
+    right: 80px;
+    bottom: 10px;
 }
 
 .deny{
-    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 
 .allow button{
