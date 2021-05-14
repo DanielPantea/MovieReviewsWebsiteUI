@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Movie } from './../_model/movie.model';
 import { UserService } from './../_service/user.service';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { enUserRole } from '../_model/user-role.enum';
 
 @Component({
   selector: 'app-requestmovie',
@@ -42,6 +43,10 @@ export class RequestmovieComponent implements OnInit {
     
     if(data.movie) {
       this.movie = data.movie;
+    }
+
+    if(userService.currentUser.userRole == enUserRole.ADMIN){
+      this.movie.isEnabled = true;
     }
 
     this.cardTitle = data.cardTitle;
