@@ -5,7 +5,7 @@
             <img [src]="movie?.posterImgUrl" alt="" >
             <button (click)="addWatchlist()"><strong>+ </strong>Add to Watchlist</button><br/>
             <button (click)="addDiary()"><strong>+ </strong>Add to Viewed</button>
-            <button *ngIf="isAdmin()" (click)="openEditMovie()" ><strong>+ </strong>Edit</button>
+            <button *ngIf="userService.isAdmin()" (click)="openEditMovie()" ><strong>+ </strong>Edit</button>
         </div>
       
         <div class="right">

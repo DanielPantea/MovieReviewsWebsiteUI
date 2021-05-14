@@ -1,3 +1,5 @@
+import { enUserRole } from './../_model/user-role.enum';
+import { UserService } from './../_service/user.service';
 import { DialogManagerService } from './../_service/dialog-manager.service';
 import { AuthentificationService } from './../_service/authentification.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +16,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private movieService: MovieService,
+    public userService: UserService,
     public authentificationService: AuthentificationService,
     public dialogManagerService: DialogManagerService,
   ) { }

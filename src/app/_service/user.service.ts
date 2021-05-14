@@ -1,3 +1,4 @@
+import { enUserRole } from './../_model/user-role.enum';
 import { Review } from './../_model/review.model';
 import { Router } from '@angular/router';
 import { Movie } from './../_model/movie.model';
@@ -18,6 +19,12 @@ export class UserService
         private http: HttpClient,
         private router: Router
     ) { }
+    
+
+    isAdmin(): boolean {
+        
+        return this.currentUser?.userRole == enUserRole.ADMIN;
+      }
 
     getWatchlist(): Observable<Movie[]> {
         
