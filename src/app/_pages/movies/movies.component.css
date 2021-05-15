@@ -96,3 +96,7 @@ img{
     border-radius: 10px;
     outline:none;
 }
+
+.media-body{
+    margin: 10px;
+}
