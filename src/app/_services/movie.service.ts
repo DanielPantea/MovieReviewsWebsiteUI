@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 import { Injectable } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 import { Review } from '../_models/review.model';
+import { Tag } from '../_models/tag.model';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService{
@@ -166,5 +167,19 @@ export class MovieService{
         );
 
         return this.http.put<any>(`${environment.apiUrl}/movie/upd`, body, {headers});
+    }
+
+    getMovieGenres(movie: Movie): string[] {
+
+        if(!movie)
+            return [];
+            
+        let temp = [];
+        for(let tag of movie.movieTags) {
+
+            if(MovieService.movieGenres[tag.tagKey] && tag.tagKey != 'trending')
+                temp.push(MovieService.movieGenres[tag.tagKey]);
+        }
+        return temp;
     }
 }

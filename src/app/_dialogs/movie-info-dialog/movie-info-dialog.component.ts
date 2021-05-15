@@ -27,7 +27,8 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     movieDirectors: '',
     movieWriters: '',
     movieActors: '',
-    isEnabled: false
+    isEnabled: false,
+    movieTags: []
   };
   
   cardTitle: string;

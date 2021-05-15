@@ -1,3 +1,5 @@
+import { Tag } from "./tag.model";
+
 export interface Movie{
 
     movieId: number;
@@ -11,4 +13,5 @@ export interface Movie{
     movieWriters: string;
     movieActors: string;
     isEnabled: boolean;
+    movieTags: Tag[];
 }
