@@ -1,19 +1,18 @@
-<div class="body">
+<div class="container-fluid">
+    
+    <mat-card *ngFor="let movie of movies">
+    <div class="media">
 
-        <div *ngFor="let movie of movies" class="moviebox">
-            
-            <div class="splitscreen">
-  
-                <div class="left">
-                    <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
-                </div>
-              
-                <div class="right"> 
-                    <div class="title" [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}}</div>
-                    <div *ngFor = "let review of reviews[movie.movieId]"> {{review.reviewText}}<br/></div>
-                </div>
-                <button (click) = "removeDiary(movie.movieId)" class="close">Remove</button>
-             </div>
+        <div class="media-left">
+            <button mat-button class="btn-close" mat-mini-fab color="primary" (click) = "removeDiary(movie.movieId)"><mat-icon>delete</mat-icon></button>
+            <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
         </div>
+        
+        <div class="media-body" >
+            <div class="title" [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}}</div>
+            <div *ngFor = "let review of reviews[movie.movieId]"> {{review.reviewText}}<br/></div>
+        </div>
+    </div>
+    </mat-card>
 
 </div>

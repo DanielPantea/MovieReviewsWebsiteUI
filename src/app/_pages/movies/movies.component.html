@@ -33,8 +33,7 @@
         </div>
     </div> -->
 
-    <div class="media moviebox"*ngFor="let movie of movieService.movies" style="margin-top: 20px"
-    [routerLink] = "['/movie-details', movie.movieId]">
+    <div class="media"*ngFor="let movie of movieService.movies" [routerLink] = "['/movie-details', movie.movieId]">
         <div class="media-left">
             <img [src]="movie.posterImgUrl" alt="" >
         </div>
