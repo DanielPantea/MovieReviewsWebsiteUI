@@ -8,3 +8,17 @@
   flex: 85%;
 }
 
+mat-sidenav {
+  /* padding: 20px; */
+  background: rgb(185, 214, 238);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  width: 240px;
+}
+
+mat-sidenav-container {
+  position: fixed;
+   height: 100%;
+   min-height: 100%;
+   width: 100%;
+   min-width: 100%;
+}

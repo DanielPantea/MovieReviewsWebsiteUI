@@ -1,12 +1,7 @@
-<div class="navmenu">
-    <button (click)="goToTrending()">Trending</button>
-    <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Watchlist </button>
-    <button *ngIf="authentificationService.isLoggedIn()" routerLink="/watchlist"> Watchlist </button>
-    <button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()"> Diary </button>
-    <button *ngIf="authentificationService.isLoggedIn()" routerLink="/diary"> Diary </button>
-    
-    <button *ngIf="userService.isAdmin()" (click)="openAddMovie()"> Add Movie </button>
-
-    <button *ngIf="userService.isAdmin()" routerLink="/movie-requests"> UR </button>
+<div class="container-fluid">
+    <div class="row" (click)="goToTrending()">Trending</div>
+    <div class="row" (click)="goToWatchlist()">Watchlist</div>
+    <div class="row" (click)="goToDiary()">Diary</div>
+    <div *ngIf="userService.isAdmin()" class="row" (click)="openAddMovie()" >Add Movie</div>    
+    <div *ngIf="userService.isAdmin()" class="row" routerLink="/movie-requests">Movie Requests</div>
 </div>
-

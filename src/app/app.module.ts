@@ -28,6 +28,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingDialogComponent } from './_dialogs/rating-dialog/rating-dialog.component';
 import { DiaryComponent } from './_pages/diary/diary.component';
@@ -70,7 +72,8 @@ import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.c
     MatCardModule,
     NgbModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
