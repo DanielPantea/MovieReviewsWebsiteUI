@@ -1,23 +1,34 @@
-<div class="body">
-
-    <div style="margin-bottom:10px;">
-        <input type="text" placeholder="search" [(ngModel)]="searchTags">
-        <button mat-raised-button style="margin-left: 20px;" class="" (click)="search()">Search</button><br/>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 20px">
+        <div class="col-9">
+            <input type="text" class="searchInput" placeholder="search" [(ngModel)]="searchTags">
+        </div>
+        <div class="col-3">
+            <button mat-raised-button (click)="search()">Search</button><br/>
+        </div>
     </div>
-    <div style="margin: 10px auto;">
-        <button mat-raised-button (click)="openFilter()">Filter</button>
-        <button mat-raised-button style="margin-left:20px;" (click)="openSort()">Sort</button>
-    </div>
-    <div [routerLink] = "['/movie-details', movie.movieId]" class="moviebox" *ngFor="let movie of movieService.movies">
-        <div class="splitscreen">
-            <div class="left">
-                <img [src]="movie.posterImgUrl" alt="" >
-            </div>
-            <div class="right"> 
-                <div class="title">{{movie.movieTitle}}</div>
-                {{movie.movieDesc}}
-            </div>
+    <div class="row" style="margin: 10px 0;">
+        <div class="col">
+            <button mat-raised-button (click)="openFilter()">Filter</button>
+            <button mat-raised-button style="margin-left: 20px;" (click)="openSort()">Sort</button>
         </div>
     </div>
 
+    <div class="row moviebox" *ngFor="let movie of movieService.movies" style="margin-top: 20px">
+        <div class="col-2">
+            <img [src]="movie.posterImgUrl" alt="" >
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="title">{{movie.movieTitle}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{movie.movieDesc}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
