@@ -1,14 +1,14 @@
 <app-header></app-header>
 
-<div class="splitscreen">
-  
-  <div class="left">
-      <app-navbar></app-navbar>
-  </div>
+<mat-sidenav-container pointer-events: none>
+  <mat-sidenav mode="side"  opened>
+    <app-navbar></app-navbar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-  <div class="right">
-    <router-outlet></router-outlet>
-  </div>
-
-</div>
 

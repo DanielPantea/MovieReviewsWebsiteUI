@@ -1,30 +1,9 @@
-.navmenu{
-    height: 100%;
-    position: sticky;
+.row {
     padding: 20px;
-    background: rgb(185, 214, 238);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    font-size: 20px;
 }
 
-.navmenu button{
-  color: black;
-  background-color:rgb(185, 214, 238);
-  text-align: left;
-  padding: 20px;
-  text-decoration: none;
-  font-size: 28px;
-  line-height: 15px;
-  border-radius: 10px;
-  margin-top: 15px;
-  border: 1;
-  width: 100%;
-}
-
-.navmenu button:hover{
+.row:hover{
     background-color: rgb(136, 197, 247);
-    
-}
-.navmenu button:focus{
-    background-color: rgb(136, 197, 247);
-    outline: none;
+    cursor: pointer;
 }
