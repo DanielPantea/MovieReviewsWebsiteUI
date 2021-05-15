@@ -18,6 +18,7 @@
                 <span *ngIf="userRating?.grade==0" class="star">&#9733;</span>
             </button>
             <span>{{totalRating}}</span>
+            {{movieService.getMovieGenres(movie)}}
             <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate}}.</div>
 
             <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate | date}}.</div>

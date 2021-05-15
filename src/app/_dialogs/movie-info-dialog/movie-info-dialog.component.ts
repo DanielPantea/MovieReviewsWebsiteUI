@@ -5,6 +5,7 @@ import { UserService } from '../../_services/user.service';
 import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { enMovieInfoFormType } from '../../_models/movie-info-form.enum';
 import { Subscription } from 'rxjs';
+import { Tag } from 'src/app/_models/tag.model';
 
 @Component({
   selector: 'app-movie-info-dialog',
@@ -27,9 +28,12 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     movieDirectors: '',
     movieWriters: '',
     movieActors: '',
-    isEnabled: false
+    isEnabled: false,
+    movieTags: []
   };
   
+  movieTags: string = '';
+
   cardTitle: string;
 
   isInvalid = false;
@@ -46,7 +50,10 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
   ) { 
     
     if(data.movie)
+    {
       this.movie = data.movie;
+      this.movieTags = this.movie.movieTags.map(tag => tag.tagKey).toString();
+    }
 
     this.cardTitle = data.cardTitle;
     this.formType = data.formType;
@@ -104,7 +111,7 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     if(!this.validateForm())
       return;
 
-    
+    this.movie.movieTags = this.movieTags == '' ? [] : this.movieTags.split(',').map(t => ({tagKey: t}));
 
     switch(this.formType) {
 
