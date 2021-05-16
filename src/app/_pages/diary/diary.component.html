@@ -25,8 +25,8 @@
             </div>
             <button mat-button class="btn-close" mat-mini-fab color="primary" (click) = "removeDiary(movie.movieId)"><mat-icon>delete</mat-icon></button>
             <button mat-mini-fab class="rate">
-                <span *ngIf="userRating?.grade!=0">{{userRating?.grade}}</span>
-                <span class="star">&#9734;</span>
+                <span >{{userRating?.grade}}</span>
+                <span class="star">&#9733;</span>
             </button>
         </div>
     </div>
