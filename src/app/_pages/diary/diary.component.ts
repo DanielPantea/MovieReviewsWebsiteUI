@@ -17,7 +17,7 @@ export class DiaryComponent implements OnInit, OnDestroy {
 
   movies: Movie[];
   reviews: Review[][] = [];
-  userRating: Rating;
+  userGrades: number[] = [];
 
   getDiarySubscription: Subscription;
   removeDiarySubscription: Subscription;
@@ -51,6 +51,10 @@ export class DiaryComponent implements OnInit, OnDestroy {
         this.movies.forEach(m => {
           if(m.posterImg)
               m.posterImgUrl = 'data:image/jpeg;base64,' + m.posterImg.imageByte
+          
+           this.userService.getUserRating(m.movieId).subscribe(
+            (grade) => (this.userGrades[m.movieId] = grade)
+          );
         });
         
         for(let movie of this.movies){

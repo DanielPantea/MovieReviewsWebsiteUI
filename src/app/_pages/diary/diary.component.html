@@ -2,7 +2,6 @@
     
     <mat-card *ngFor="let movie of movies">
     <div class="media">
-
         <div class="media-left">
                 <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
         </div>
@@ -25,8 +24,8 @@
             </div>
             <button mat-button class="btn-close" mat-mini-fab color="primary" (click) = "removeDiary(movie.movieId)"><mat-icon>delete</mat-icon></button>
             <button mat-mini-fab class="rate">
-                <span >{{userRating?.grade}}</span>
-                <span class="star">&#9733;</span>
+                <span *ngIf="userGrades[movie.movieId] != 0">{{userGrades[movie.movieId]}}</span>
+                <span *ngIf="userGrades[movie.movieId] == 0" class="star">&#9733;</span>
             </button>
         </div>
     </div>

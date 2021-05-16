@@ -99,28 +99,25 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     switch(this.formType) {
 
       case enMovieInfoFormType.AddMovie:
-        console.log(enMovieInfoFormType.AddMovie);
         this.movie.isEnabled = true;
         respRef = this.movieService.addMovie(this.movie);
         break;
       case enMovieInfoFormType.MovieRequest:
         this.movie.isEnabled = false;
-        console.log(enMovieInfoFormType.MovieRequest);
         respRef = this.userService.sendMovieRequest(this.movie);
         break;
       case enMovieInfoFormType.UpdateMovie:
-        console.log(enMovieInfoFormType.UpdateMovie);
         respRef = this.movieService.updateMovie(this.movie);
         break;
     }
 
     respRef.subscribe(
       (response) => {
-        console.log(response.body);
-        if(this.posterImgFile)
-          this.movieService.addMoviePoster(response.movieId, this.posterImgFile).subscribe(
-            (error) => console.log(error)
-          );
+        if(this.posterImgFile){
+          console.log(this.posterImgFile)
+          this.movieService.addMoviePoster(response.movieId, this.posterImgFile).subscribe();
+        }
+          
         this.dialogRef.close()
       },
       (error: HttpErrorResponse) => console.log(error)

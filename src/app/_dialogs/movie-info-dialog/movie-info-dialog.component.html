@@ -15,7 +15,7 @@
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Movie Description</mat-label>
-        <textarea matInput
+        <textarea matInput [(ngModel)]="movie.movieDesc"
             cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"

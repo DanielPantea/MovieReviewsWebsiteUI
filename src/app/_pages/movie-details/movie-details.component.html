@@ -11,10 +11,12 @@
             <div class="Row title">
                 <div class="Column"><strong>{{movie?.movieTitle}}</strong></div>
                 <div class="Column">
-                    <button mat-raised-button (click)="addDiary()"><strong>+ </strong>Viewed</button>
+                    <button mat-raised-button (click)="addDiary()">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
                 </div>
                 <div class="Column">
-                    <button mat-raised-button (click)="addWatchlist()"><strong>+ </strong>Watchlist</button>
+                    <button mat-raised-button (click)="addWatchlist()"><mat-icon>add</mat-icon></button>
                 </div>
             </div>
 
@@ -67,12 +69,12 @@
 
         <!-- Fixed buttons are here -->
         <div class="editbutton">
-            <button mat-raised-button *ngIf="userService.isAdmin()" (click)="openEditMovie()" ><strong>+ </strong>Edit</button>
+            <button mat-raised-button *ngIf="userService.isAdmin()" (click)="openEditMovie()" >Edit</button>
         </div>
         <div class="deletebutton">
-            <button mat-raised-button routerLink="/movies" *ngIf="userService.isAdmin()" (click)="deleteMovie()" ><strong>+ </strong>Delete</button>
+            <button mat-raised-button routerLink="/movies" *ngIf="userService.isAdmin()" (click)="deleteMovie()" >Delete</button>
         </div>
-        <button mat-mini-fab (click)="rateMovie()">
+        <button mat-fab (click)="rateMovie()">
             <span *ngIf="userRating?.grade!=0">{{userRating?.grade}} | {{totalRating}}</span>
             <span *ngIf="userRating?.grade==0" class="star">{{totalRating}}</span>
         </button>

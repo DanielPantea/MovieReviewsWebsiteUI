@@ -26,6 +26,7 @@
 }
 
 .btn-close{
+        background-color:rgb(209, 73, 39);
         position: absolute;
         right: 20px;
         top: 20px;
@@ -45,14 +46,14 @@
 
 .rate{
     position: absolute;
-    background-color: rgb(140, 135, 211);
+    background-color: rgb(211, 210, 155);
     left:130px;
     top: 18px;
 }
 
 .star {
     font-size: 1.5rem;
-    color: #4274b4;
+    color: #a1a1a1;
 }
 
 .star:hover {

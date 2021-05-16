@@ -81,7 +81,7 @@
 
 .editbutton{
         position: absolute;
-        right: 90px;
+        right: 80px;
         top: -10px;
 }
 
@@ -91,7 +91,7 @@
     top: -10px;
 }
 
-.mat-mini-fab{
+.mat-fab{
     position: absolute;
     left: 20px;
     top: 20px;
