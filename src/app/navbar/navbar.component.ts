@@ -47,6 +47,10 @@ export class NavbarComponent implements OnInit {
       this.router.navigateByUrl('/diary');
   }
 
+  openMovieRequest() {
+    this.dialogManagerService.openMovieInfo(null, 'Request Missing Movie', enMovieInfoFormType.MovieRequest);
+  }
+
   openAddMovie() {
     this.dialogManagerService.openMovieInfo(null, 'Add Movie', enMovieInfoFormType.AddMovie);
   }

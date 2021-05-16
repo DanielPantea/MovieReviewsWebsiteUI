@@ -17,7 +17,7 @@
     <!-- <div class="row moviebox" *ngFor="let movie of movieService.movies" style="margin-top: 20px"
     [routerLink] = "['/movie-details', movie.movieId]">
         <div class="col-2">
-            <img [src]="movie.posterImgUrl" alt="" >
+            <img [src]="movie?.posterImgUrl" alt="" >
         </div>
         <div class="col">
             <div class="row">

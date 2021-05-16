@@ -57,7 +57,7 @@
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Tags</mat-label>
-        <input matInput placeholder="Placeholder">
+        <input [(ngModel)]="movieTags" matInput placeholder="Placeholder">
       </mat-form-field>
     </p>
 
@@ -80,7 +80,7 @@
           </button>
         </mat-toolbar>
   
-        <input type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
+        <input type="file" #UploadFileInput id="fileUpload" (change)="onFileSelected($event)" name="fileUpload"
           multiple="multiple" accept="image/*" />
       </mat-form-field>
     </p>

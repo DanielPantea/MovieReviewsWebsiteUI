@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DialogManagerService } from '../../_services/dialog-manager.service';
 import { Rating } from '../../_models/rating.model';
 import { enMovieInfoFormType } from '../../_models/movie-info-form.enum';
+import { Tag } from 'src/app/_models/tag.model';
 
 @Component({
   selector: 'app-movie-page',
@@ -34,7 +35,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route:ActivatedRoute,
-    private movieService: MovieService,
+    public movieService: MovieService,
     public userService: UserService,
     public dialogManagerService: DialogManagerService,
   ) { }
@@ -63,8 +64,11 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   getMovieById(): void {
     
     this.getMovieByIdSubscription = this.movieService.getMovieById(this.movieId).subscribe(
-      (response: Movie) => {
+      (response) => {
         this.movie = response;
+
+        if(this.movie.posterImg)
+          this.movie.posterImgUrl = 'data:image/jpeg;base64,' + this.movie.posterImg.imageByte;
         
         this.getReviews(this.movie.movieId);
 
@@ -154,5 +158,4 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
     this.movieService.deleteMovie(this.movieId).subscribe();
   }
-
 }
