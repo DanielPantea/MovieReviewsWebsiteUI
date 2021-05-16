@@ -33,7 +33,28 @@
 
 .title{
     cursor: pointer;
-    margin: 10px;
+    margin-bottom: 15px;
+    margin-left: 50px;
     font-size: 25px;
     font-weight: bold;
+}
+
+.reviews{
+    margin-bottom: 10px;
+}
+
+.rate{
+    position: absolute;
+    background-color: rgb(140, 135, 211);
+    left:130px;
+    top: 18px;
+}
+
+.star {
+    font-size: 1.5rem;
+    color: #4274b4;
+}
+
+.star:hover {
+    cursor: pointer;
 }
