@@ -1,56 +1,49 @@
-<div class="body">
-    <div class="splitscreen">
+<div class="container-fluid">
+    <mat-card>
+    <div class="media">
   
-        <div class="left">
+        <div class="media-left">
             <img alt="" [src]="movie?.posterImgUrl">
-            <button (click)="addWatchlist()"><strong>+ </strong>Add to Watchlist</button><br/>
-            <button (click)="addDiary()"><strong>+ </strong>Add to Viewed</button>
-            <button *ngIf="userService.isAdmin()" (click)="openEditMovie()" ><strong>+ </strong>Edit</button>
-            <button routerLink="/movies" *ngIf="userService.isAdmin()" (click)="deleteMovie()" ><strong>+ </strong>Delete</button>
         </div>
       
-        <div class="right">
-            <div class="title">
-                {{movie?.movieTitle}}
+        <div class="media-body">
+
+            <div class="Row title">
+                <div class="Column"><strong>{{movie?.movieTitle}}</strong></div>
+                <div class="Column">
+                    <button mat-raised-button (click)="addDiary()"><strong>+ </strong>Viewed</button>
+                </div>
+                <div class="Column">
+                    <button mat-raised-button (click)="addWatchlist()"><strong>+ </strong>Watchlist</button>
+                </div>
             </div>
-            <button mat-fab color="accent" (click)="rateMovie()">
-                <span *ngIf="userRating?.grade!=0">{{userRating?.grade}}</span>
-                <span *ngIf="userRating?.grade==0" class="star">&#9733;</span>
-            </button>
-            <span>{{totalRating}}</span>
-            {{movieService.getMovieGenres(movie)}}
-            <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate}}.</div>
 
-            <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate | date}}.</div>
+            <p>{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate | date}} | {{movieService.getMovieGenres(movie)}}</p>
             
-            <div class="desc"><strong>Description: </strong>{{movie?.movieDesc}} </div>
+            <p><strong>Description: </strong>{{movie?.movieDesc}} </p>
 
-            <div class="trailer">
+            <p>
                 <strong>Trailer: </strong>
                 <a (click)="trailerLink()"  >{{movie?.trailerUrl}}</a>
-            </div>
+            </p>
 
-            <div class="creators">
-                <strong>Director:</strong>
-                Daniel Mac
-            </div>
-            <div class="creators">
-                <strong>Writers:</strong>
-                G.A. Martin
-            </div>
-            <div class="creators">
-                <strong>Actors:</strong>
-                Lopez Algan
-            </div>
+            <p>
+                <strong>Director: </strong>{{movie?.movieDirectors}}
+            </p>
+
+            <p>
+                <strong>Writers: </strong>{{movie?.movieWriters}}
+            </p>
+
+            <p>
+                <strong>Actors: </strong>{{movie?.movieActors}}
+            </p>
         </div>
         
     </div>
-
-    <mat-card>
-        
+    
         <div *ngIf="reviewsLength==1">{{reviewsLength}} Review</div>
         <div *ngIf="reviewsLength!=1">{{reviewsLength}} Reviews</div>
-        
 
         <p>
             <mat-form-field class="reviewline">
@@ -71,6 +64,18 @@
             <p> {{review.reviewText}}</p>
             
         </div>
+
+        <!-- Fixed buttons are here -->
+        <div class="editbutton">
+            <button mat-raised-button *ngIf="userService.isAdmin()" (click)="openEditMovie()" ><strong>+ </strong>Edit</button>
+        </div>
+        <div class="deletebutton">
+            <button mat-raised-button routerLink="/movies" *ngIf="userService.isAdmin()" (click)="deleteMovie()" ><strong>+ </strong>Delete</button>
+        </div>
+        <button mat-mini-fab (click)="rateMovie()">
+            <span *ngIf="userRating?.grade!=0">{{userRating?.grade}} | {{totalRating}}</span>
+            <span *ngIf="userRating?.grade==0" class="star">{{totalRating}}</span>
+        </button>
         
     </mat-card>
 </div>

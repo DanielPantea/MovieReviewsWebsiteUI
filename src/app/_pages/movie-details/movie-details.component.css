@@ -1,84 +1,41 @@
-.body{
-    position: inherit;
-    height: 100%;
+.container-fluid{
     padding: 20px;
-    background: rgb(231, 236, 240);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
-.body img{
+.media-left img{
     padding: 20px;
     width: 200px;
 }
 
-.star {
+.media-body{
+    padding: 10px;
+    margin-top: 15px;
+}
+
+/* .star {
     font-size: 1.5rem;
-    color: #b0c4de;
-  }
+    color: #4274b4;
+}
+
 .star:hover {
     cursor: pointer;
-}
-.filled {
-    color: #1e90ff;
-  }
-
-
-.left button{
-    color: black;
-    background-color:rgb(228, 202, 163);
-    text-align: left;
-    padding: 20px;
-    text-decoration: none;
-    font-size: 20px;
-    line-height: 15px;
-    border-radius: 10px;
-    margin-top: 15px;
-    border: 1;
-    width: 205px;
-}
-
-.body button:hover{
-    background-color: rgb(205, 214, 154);
-    
-}
-.body button:focus{
-    background-color: rgb(205, 214, 154);
-    outline: none;
 } */
 
-.title{
-    padding: 10px;
-    margin-bottom: 13px;
-    font-size: 60px;
-    font-weight: bold;
+.filled {
+    color: #1e90ff;
 }
 
-.desc{
-    padding: 10px;
+
+.mat-mini-fab{
+    background-color:rgb(205, 214, 154);
 }
 
-.trailer{
-    padding-bottom: 10px;
-    padding-left:  10px;
+.media a{
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
 }
 
-.creators{
-    padding-bottom: 5px;
-    padding-left:  10px;
-}
-
-.length{
-    padding-left:  10px;
-    padding-bottom: 10px;
-}
-
-.splitscreen {
-    display:flex;
-}  
-
-.left{
-    flex: 0;
-}
 
 .mat-card{
     margin: 5px;
@@ -92,8 +49,10 @@
     margin-left: 40px;
 }
 
-.mat-card button{
+.reviewline button{
     margin-left: 40px;
+    float: right;
+    width: 100px;
 }
 
 .reviewline{
@@ -108,7 +67,41 @@
     font-weight: 500;
 }
 
-.mat-card button{
-    float:right;
-    width: 100px;
+.mat-raised-button{
+    background-color: rgb(225, 252, 238);
+}
+
+.mat-raised-button:hover{
+    background-color: rgb(205, 214, 154);
+}
+
+.title{
+    font-size: 30px;
+}
+
+.editbutton{
+        position: absolute;
+        right: 90px;
+        top: -10px;
+}
+
+.deletebutton{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.mat-mini-fab{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.Row {
+    display: table;
+}
+
+.Column {
+    display: table-cell;
+    padding: 10px
 }

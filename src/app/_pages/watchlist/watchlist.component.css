@@ -1,9 +1,8 @@
 .mat-card{
-    width: 220px;
     display:inline-block;
     cursor: pointer;
     width: 220px;
-    margin: 30px;
+    margin: 25px;
     background: rgb(185, 185, 185);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     text-align: center;
@@ -18,8 +17,8 @@
     height: 250px;
 }
 
-.mat-card span{
-    font-size: 16px;
+.mat-card-content{
+    font-size: 15px;
     font-weight: 600;
 }
 
