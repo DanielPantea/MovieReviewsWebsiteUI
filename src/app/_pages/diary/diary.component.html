@@ -4,28 +4,30 @@
     <div class="media">
 
         <div class="media-left">
-            <button mat-button class="btn-close" mat-mini-fab color="primary" (click) = "removeDiary(movie.movieId)"><mat-icon>delete</mat-icon></button>
-            <span matBadge="userRating()" matBadgeOverlap="false">
                 <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
-            </span>
         </div>
         
         <div class="media-body" >
             <div class="title" [routerLink] = "['/movie-details', movie.movieId]">
                 <span>{{movie.movieTitle}}</span>
             </div>
+            <div class="reviews" *ngFor = "let review of reviews[movie.movieId]">
             <mat-accordion>
                 <mat-expansion-panel hideToggle>
                     <mat-expansion-panel-header>
                         <mat-panel-title class="reviewtitle">
-                            All the reviews you have written for this movie.
+                            Post Date: {{review.postDate | date}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <div *ngFor = "let review of reviews[movie.movieId]"> 
                         <p>{{review.reviewText}}</p>
-                    </div>
                 </mat-expansion-panel>
             </mat-accordion>
+            </div>
+            <button mat-button class="btn-close" mat-mini-fab color="primary" (click) = "removeDiary(movie.movieId)"><mat-icon>delete</mat-icon></button>
+            <button mat-mini-fab class="rate">
+                <span >{{userRating?.grade}}</span>
+                <span class="star">&#9733;</span>
+            </button>
         </div>
     </div>
     </mat-card>
