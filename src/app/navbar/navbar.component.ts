@@ -22,14 +22,29 @@ export class NavbarComponent implements OnInit {
     public dialogManagerService: DialogManagerService,
   ) { }
 
-  ngOnInit(): void { }
-  
+  ngOnInit(): void { 
+  }
+
   goToTrending(): void {
 
     localStorage.setItem('tags', 'trending');
     localStorage.removeItem('searchTags');
     this.movieService.getMovies();
     this.router.navigateByUrl('/movies');
+  }
+
+  goToWatchlist(): void {
+    if(!this.authentificationService.isLoggedIn())
+      this.dialogManagerService.openLogin();
+    else
+      this.router.navigateByUrl('/watchlist');
+  }
+
+  goToDiary(): void {
+    if(!this.authentificationService.isLoggedIn())
+      this.dialogManagerService.openLogin();
+    else
+      this.router.navigateByUrl('/diary');
   }
 
   openAddMovie() {
