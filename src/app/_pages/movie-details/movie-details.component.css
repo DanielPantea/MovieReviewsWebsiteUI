@@ -85,6 +85,7 @@
     margin-top: 10px;
     background-color: rgb(209, 213, 216);
     padding: 20px;
+    word-break:break-word;
 }
 
 .mat-card h1{

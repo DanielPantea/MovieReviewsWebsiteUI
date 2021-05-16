@@ -53,9 +53,9 @@ export class MovieRequestsComponent implements OnInit {
     location.reload();
 }
 
-  trailerLink(movie: Movie){
+  trailerLink(trailerLink: string){
 
-    window.location.href = movie.trailerUrl;
+    window.location.href = trailerLink;
   }
 
 }
