@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+##**Start project**
+
+Open backend project named on git MovieReviewsWebsite(with git clone in console).
+run:
+-->mvn spring-boot:run
+
+Open frontend project named on git MovieReviewsWebsiteUI.
+run:
+-->npm install
+-->ng serve
+
+Open in browser http://localhost:4200/
