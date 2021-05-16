@@ -15,7 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class MovieInfoDialogComponent implements OnInit, OnDestroy {
 
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef;
-  myfilename = 'Image Poster';
+  myfilename = '';
 
   movie: Movie = {
     movieId: null,
@@ -25,7 +25,7 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     posterImg: null,
     releaseDate: null,
     trailerUrl: '',
-    lengthMinutes: 0,
+    lengthMinutes: null,
     movieDirectors: '',
     movieWriters: '',
     movieActors: '',
@@ -73,11 +73,12 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
   onFileSelected(event: any): void {
 
     this.posterImgFile = event.target.files[0];
+    this.myfilename = this.posterImgFile.name;
   }
 
   validateForm(): boolean {
 
-    if(this.movie.movieTitle == '')
+    if(this.movie.movieTitle == '' || this.movie.lengthMinutes == null || this.movie.movieDirectors == '' || this.movie.releaseDate == null)
       return false;
     
     return true;
@@ -85,8 +86,11 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
 
   submit(): void {
     
-    if(!this.validateForm())
+    if(!this.validateForm()) {
+      this.isInvalid = true;
       return;
+    }
+      
 
     this.movie.movieTags = this.movieTags == '' ? [] : this.movieTags.split(',').map(t => ({tagKey: t}));
 
@@ -95,28 +99,25 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     switch(this.formType) {
 
       case enMovieInfoFormType.AddMovie:
-        console.log(enMovieInfoFormType.AddMovie);
         this.movie.isEnabled = true;
         respRef = this.movieService.addMovie(this.movie);
         break;
       case enMovieInfoFormType.MovieRequest:
         this.movie.isEnabled = false;
-        console.log(enMovieInfoFormType.MovieRequest);
         respRef = this.userService.sendMovieRequest(this.movie);
         break;
       case enMovieInfoFormType.UpdateMovie:
-        console.log(enMovieInfoFormType.UpdateMovie);
         respRef = this.movieService.updateMovie(this.movie);
         break;
     }
 
     respRef.subscribe(
       (response) => {
-        console.log(response.body);
-        if(this.posterImgFile)
-          this.movieService.addMoviePoster(response.movieId, this.posterImgFile).subscribe(
-            (error) => console.log(error)
-          );
+        if(this.posterImgFile){
+          console.log(this.posterImgFile)
+          this.movieService.addMoviePoster(response.movieId, this.posterImgFile).subscribe();
+        }
+          
         this.dialogRef.close()
       },
       (error: HttpErrorResponse) => console.log(error)

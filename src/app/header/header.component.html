@@ -1,9 +1,9 @@
 <div class="header">
-    <a class="logo">Logo</a>
+      <img src="/assets/LogoHeader.png" class="logo">
     <div class="header-right">
-      <a *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openRegister()">Register</a>
-      <a *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()">Login</a>
+      <button mat-raised-button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()">Login</button>
+      <button mat-raised-button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openRegister()">Register</button>
+      <button mat-raised-button *ngIf="authentificationService.isLoggedIn()" (click)="authentificationService.logout()" style="cursor: pointer;">Logout</button>
       <a *ngIf="authentificationService.isLoggedIn()">{{userService.currentUser?.username}}</a>
-      <a *ngIf="authentificationService.isLoggedIn()" (click)="authentificationService.logout()" style="cursor: pointer;">Logout</a>
     </div>
   </div>

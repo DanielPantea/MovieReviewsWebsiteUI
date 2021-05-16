@@ -2,69 +2,77 @@
     <mat-card mat-dialog-title>
       {{cardTitle}}
     </mat-card>
-
     <mat-dialog-content>
+      <p *ngIf="isInvalid" style="color: red;">Please fill the required values!</p>
     <p>
       <mat-form-field appearance="standard">
         <mat-label *ngIf="!isInvalid">Movie Title</mat-label>
         <mat-label *ngIf="isInvalid">Movie Title</mat-label>
-        <input [(ngModel)]="movie.movieTitle" matInput placeholder="Placeholder" required>
+        <input [(ngModel)]="movie.movieTitle" matInput required>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Movie Description</mat-label>
-        <input [(ngModel)]="movie.movieDesc" matInput placeholder="Placeholder" required>
+        <textarea matInput [(ngModel)]="movie.movieDesc"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Trailer Url</mat-label>
-        <input [(ngModel)]="movie.trailerUrl" matInput placeholder="Placeholder" required>
+        <input [(ngModel)]="movie.trailerUrl" matInput>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="standard">
-        <mat-label>Length(min)</mat-label>
-        <input [(ngModel)]="movie.lengthMinutes" matInput placeholder="Placeholder" required>
+        <mat-label>Length (min)</mat-label>
+        <input [(ngModel)]="movie.lengthMinutes" matInput required>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Movie Directors</mat-label>
-        <input [(ngModel)]="movie.movieDirectors" matInput placeholder="Placeholder" required>
+        <input [(ngModel)]="movie.movieDirectors" matInput required>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Movie Writers</mat-label>
-        <input [(ngModel)]="movie.movieWriters" matInput placeholder="Placeholder" required>
+        <input [(ngModel)]="movie.movieWriters" matInput>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Movie Actors</mat-label>
-        <input [(ngModel)]="movie.movieActors" matInput placeholder="Placeholder" required>
+        <input [(ngModel)]="movie.movieActors" matInput>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Tags</mat-label>
-        <input [(ngModel)]="movieTags" matInput placeholder="Placeholder">
+        <textarea matInput [(ngModel)]="movieTags"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
       </mat-form-field>
     </p>
 
     <p>
     <mat-form-field appearance="fill">
       <mat-label>Release Date</mat-label>
-      <input [(ngModel)]="movie.releaseDate" matInput [matDatepicker]="picker">
+      <input [(ngModel)]="movie.releaseDate" matInput [matDatepicker]="picker" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -78,14 +86,16 @@
           <button mat-icon-button>
             <mat-icon>attach_file</mat-icon>
           </button>
+          <input type="file" #UploadFileInput id="fileUpload" (change)="onFileSelected($event)" name="fileUpload"
+          multiple="multiple" accept="image/*" />
         </mat-toolbar>
   
-        <input type="file" #UploadFileInput id="fileUpload" (change)="onFileSelected($event)" name="fileUpload"
-          multiple="multiple" accept="image/*" />
+        
       </mat-form-field>
     </p>
+    <p *ngIf="isInvalid" style="color: red;">Please fill the required values!</p>
   </mat-dialog-content>
-
+  
   <mat-dialog-actions>
     <button (click)="submit()" mat-raised-button >Submit</button>
     <button mat-raised-button mat-dialog-close >Cancel</button>

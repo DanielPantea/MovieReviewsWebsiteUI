@@ -1,19 +1,34 @@
-<div class="body">
-
-        <div *ngFor="let movie of movies" class="moviebox">
-            
-            <div class="splitscreen">
-  
-                <div class="left">
-                    <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
-                </div>
-              
-                <div class="right"> 
-                    <div class="title" [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}}</div>
-                    <div *ngFor = "let review of reviews[movie.movieId]"> {{review.reviewText}}<br/></div>
-                </div>
-                <button (click) = "removeDiary(movie.movieId)" class="close">Remove</button>
-             </div>
+<div class="container-fluid">
+    
+    <mat-card *ngFor="let movie of movies">
+    <div class="media">
+        <div class="media-left">
+                <img [src]="movie.posterImgUrl" alt=""  [routerLink] = "['/movie-details', movie.movieId]">
         </div>
+        
+        <div class="media-body" >
+            <div class="title" [routerLink] = "['/movie-details', movie.movieId]">
+                <span>{{movie.movieTitle}}</span>
+            </div>
+            <div class="reviews" *ngFor = "let review of reviews[movie.movieId]">
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="reviewtitle">
+                            Post Date: {{review.postDate | date}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                        <p>{{review.reviewText}}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+            </div>
+            <button mat-button class="btn-close" mat-mini-fab color="primary" (click) = "removeDiary(movie.movieId)"><mat-icon>delete</mat-icon></button>
+            <button mat-mini-fab class="rate">
+                <span *ngIf="userGrades[movie.movieId] != 0">{{userGrades[movie.movieId]}}</span>
+                <span *ngIf="userGrades[movie.movieId] == 0" class="star">&#9733;</span>
+            </button>
+        </div>
+    </div>
+    </mat-card>
 
 </div>

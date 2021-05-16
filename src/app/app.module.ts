@@ -16,6 +16,7 @@ import { MoviesComponent } from './_pages/movies/movies.component';
 import { WatchlistComponent } from './_pages/watchlist/watchlist.component';
 import { FilterDialogComponent } from './_dialogs/filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from './_dialogs/sort-dialog/sort-dialog.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -28,12 +29,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatBadgeModule} from '@angular/material/badge';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingDialogComponent } from './_dialogs/rating-dialog/rating-dialog.component';
 import { DiaryComponent } from './_pages/diary/diary.component';
 import { MovieInfoDialogComponent } from './_dialogs/movie-info-dialog/movie-info-dialog.component';
 import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.component';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,7 @@ import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.c
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    TextFieldModule,
     MatDialogModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -70,7 +75,10 @@ import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.c
     MatCardModule,
     NgbModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,11 @@
-<div class="watchlistbody">
-        <div *ngFor="let movie of movies" class="moviebox" style="position: relative;">
+<div class="container-fluid">
+    <mat-card *ngFor="let movie of movies">
+        <mat-card-actions >
             <button class="btn-close" mat-mini-fab color="warn" (click) = "removeWatchlist(movie.movieId)"><mat-icon>delete</mat-icon></button>
-            <img  [src]="movie.posterImgUrl" alt="" [routerLink] = "['/movie-details', movie.movieId]">
-            <span [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}}</span>
-    </div>
+        </mat-card-actions>
+        <img  mat-card-image [src]="movie.posterImgUrl" alt="" [routerLink] = "['/movie-details', movie.movieId]">
+        <mat-card-content>
+            <span [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}} ({{movie?.releaseDate | date:"yyyy"}})</span>
+        </mat-card-content>
+    </mat-card>
 </div>

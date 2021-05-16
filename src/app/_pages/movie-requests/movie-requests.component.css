@@ -1,21 +1,26 @@
-.body{
-    position: inherit;
-    height: 100%;
+.media-left img{
     padding: 20px;
-    background: rgb(231, 236, 240);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    width: 210px;
 }
 
-.body img{
-    padding: 20px;
-    width: 200px;
+.media-body{
+    margin-top: 10px;
 }
 
-.title{
-    padding: 10px;
-    margin-bottom: 13px;
-    font-size: 30px;
-    font-weight: bold;
+.mat-card{
+    margin: 20px;
+    background-color: darkgray;
+}
+
+
+.trailer a{
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.length{
+    margin-bottom: 10px;
 }
 
 .allow{
@@ -38,33 +43,3 @@
     background-color:rgb(238, 78, 78);
 }
 
-.desc{
-    padding: 10px;
-}
-
-.trailer{
-    padding-bottom: 10px;
-    padding-left:  10px;
-}
-
-.creators{
-    padding-bottom: 5px;
-    padding-left:  10px;
-}
-
-.length{
-    padding-left:  10px;
-    padding-bottom: 10px;
-}
-
-.splitscreen {
-    display:flex;
-}  
-
-.left{
-    flex: 0;
-}
-
-.mat-card{
-    margin: 20px;
-}

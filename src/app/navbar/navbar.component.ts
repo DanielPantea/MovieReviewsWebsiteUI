@@ -23,15 +23,28 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void { 
-    console.log(this.authentificationService.isLoggedIn() && !this.userService.isAdmin());
   }
-  
+
   goToTrending(): void {
 
     localStorage.setItem('tags', 'trending');
     localStorage.removeItem('searchTags');
     this.movieService.getMovies();
     this.router.navigateByUrl('/movies');
+  }
+
+  goToWatchlist(): void {
+    if(!this.authentificationService.isLoggedIn())
+      this.dialogManagerService.openLogin();
+    else
+      this.router.navigateByUrl('/watchlist');
+  }
+
+  goToDiary(): void {
+    if(!this.authentificationService.isLoggedIn())
+      this.dialogManagerService.openLogin();
+    else
+      this.router.navigateByUrl('/diary');
   }
 
   openMovieRequest() {

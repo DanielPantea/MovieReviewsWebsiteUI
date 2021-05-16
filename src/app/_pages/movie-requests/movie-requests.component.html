@@ -1,15 +1,14 @@
-<div class="body">
+<div class="container-fluid">
     
-    <div *ngFor="let movie of movies">
-        <mat-card>
+        <mat-card *ngFor="let movie of movies">
     
-            <div class="splitscreen">
+            <div class="media">
           
-                <div class="left">
+                <div class="media-left">
                     <img [src]="movie?.posterImgUrl" alt="" >
                 </div>
               
-                <div class="right">
+                <div class="media-body">
                     
                     <div class="title">
                         {{movie?.movieTitle}}
@@ -17,24 +16,29 @@
         
                     <div class="length">{{movie?.lengthMinutes}} minutes | {{movie?.releaseDate | date}}.</div>
                     
-                    <div class="desc"><strong>Description: </strong>{{movie?.movieDesc}} </div>
+                    <div class="desc"><p><strong>Description: </strong>{{movie?.movieDesc}} </p></div>
         
                     <div class="trailer">
+                        <p>
                         <strong>Trailer: </strong>
-                        <a (click)="trailerLink(movie?.trailerUrl)" >{{movie?.trailerUrl}}</a>
+                        <a (click)="trailerLink(movie.trailerUrl)" >{{movie?.trailerUrl}}</a>
+                        </p>
                     </div>
         
                     <div class="creators">
-                        <strong>Director:</strong>
-                        Daniel Mac
+                        <p>
+                        <strong>Director:</strong> {{movie?.movieDirectors}}
+                        </p>
                     </div>
                     <div class="creators">
-                        <strong>Writers:</strong>
-                        G.A. Martin
+                        <p>
+                        <strong>Writers:</strong> {{movie?.movieWriters}}
+                        </p>
                     </div>
                     <div class="creators">
-                        <strong>Actors:</strong>
-                        Lopez Algan
+                        <p>
+                        <strong>Actors:</strong> {{movie?.movieActors}}
+                        </p>
                     </div>
 
                     <div class="allow">
@@ -50,6 +54,5 @@
             
 
         </mat-card>
-    </div>
 
 </div>

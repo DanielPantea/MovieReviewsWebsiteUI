@@ -1,38 +1,24 @@
-.watchlistbody{
-    position: inherit;
-    height: 100%;
-    padding: 20px;
-    background: rgb(231, 236, 240);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-
-.moviebox{
+.mat-card{
     display:inline-block;
     cursor: pointer;
     width: 220px;
-    height: 41vh;
-    margin: 30px;
+    margin: 25px;
     background: rgb(185, 185, 185);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    outline: none;
     text-align: center;
-    padding: 5px;
 }
 
-.moviebox:hover{
+.mat-card:hover{
     background: darkgrey;
 }
 
-.watchlistbody img{
-    display: block;
-    margin: 3px auto 2px auto;
+.mat-card img{
     width:  170px;
     height: 250px;
-    object-fit: cover;
 }
 
-.watchlistbody span{
-    font-size: 16px;
+.mat-card-content{
+    font-size: 15px;
     font-weight: 600;
 }
 
