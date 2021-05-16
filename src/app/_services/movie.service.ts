@@ -16,7 +16,7 @@ export class MovieService{
         'adventure': 'Adventure',
         'animated': 'Animated',
         'comedy': 'Comedy',
-        'crime': 'Crime',
+        'mystery': 'Mystery',
         'drama': 'Drama',
         'docu': 'Documentary',
         'fantasy': 'Fantasy',
