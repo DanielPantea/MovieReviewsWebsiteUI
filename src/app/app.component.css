@@ -16,6 +16,7 @@ mat-sidenav {
 }
 
 mat-sidenav-container {
+  background-image: url("/assets/SiteBG.jpg");
    position: fixed;
    height: 90%;
    min-height: 90%;
