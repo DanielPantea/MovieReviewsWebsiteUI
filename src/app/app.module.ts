@@ -16,6 +16,7 @@ import { MoviesComponent } from './_pages/movies/movies.component';
 import { WatchlistComponent } from './_pages/watchlist/watchlist.component';
 import { FilterDialogComponent } from './_dialogs/filter-dialog/filter-dialog.component';
 import { SortDialogComponent } from './_dialogs/sort-dialog/sort-dialog.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -35,7 +36,7 @@ import { RatingDialogComponent } from './_dialogs/rating-dialog/rating-dialog.co
 import { DiaryComponent } from './_pages/diary/diary.component';
 import { MovieInfoDialogComponent } from './_dialogs/movie-info-dialog/movie-info-dialog.component';
 import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    TextFieldModule,
     MatDialogModule,
     MatCheckboxModule,
     MatButtonModule,

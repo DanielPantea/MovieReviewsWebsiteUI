@@ -2,7 +2,7 @@
     <div class="row" (click)="goToTrending()">Trending</div>
     <div class="row" (click)="goToWatchlist()">Watchlist</div>
     <div class="row" (click)="goToDiary()">Diary</div>
-    <div class="row" *ngIf="userService.isAdmin()" class="row" (click)="openAddMovie()" >Add Movie</div>
+    <div class="row" *ngIf="userService.isAdmin()" routerLink="/movie-requests">Movie Requests</div>
+    <div class="row" *ngIf="userService.isAdmin()" (click)="openAddMovie()" >Add Movie</div>
     <div class="row" *ngIf="(authentificationService.isLoggedIn() && !userService.isAdmin())" (click)="openMovieRequest()"> Missing Movie </div>
-    <div class="row" *ngIf="userService.isAdmin()" class="row" routerLink="/movie-requests">Movie Requests</div>
 </div>
