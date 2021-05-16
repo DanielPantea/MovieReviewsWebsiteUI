@@ -10,7 +10,18 @@
         
         <div class="media-body" >
             <div class="title" [routerLink] = "['/movie-details', movie.movieId]">{{movie.movieTitle}}</div>
-            <div *ngFor = "let review of reviews[movie.movieId]"> {{review.reviewText}}<br/></div>
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="reviewtitle">
+                            All the reviews you have written for this movie.
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div *ngFor = "let review of reviews[movie.movieId]"> 
+                        <p>{{review.reviewText}}</p>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
     </div>
     </mat-card>

@@ -15,10 +15,20 @@
     width: 100px;
 }
 
+.media-body{
+    margin: 10px;
+    word-break:break-word;
+}
+
+.reviewtitle{
+    font-weight: 500;
+    font-size: 15px;
+}
+
 .btn-close{
         position: absolute;
         right: 20px;
-        bottom: 20px;
+        top: 20px;
 }
 
 .title{

@@ -33,7 +33,7 @@ import { RatingDialogComponent } from './_dialogs/rating-dialog/rating-dialog.co
 import { DiaryComponent } from './_pages/diary/diary.component';
 import { MovieInfoDialogComponent } from './_dialogs/movie-info-dialog/movie-info-dialog.component';
 import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,8 @@ import { MovieRequestsComponent } from './_pages/movie-requests/movie-requests.c
     MatCardModule,
     NgbModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
