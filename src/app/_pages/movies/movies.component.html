@@ -11,7 +11,7 @@
     <div [routerLink] = "['/movie-details', movie.movieId]" class="moviebox" *ngFor="let movie of movieService.movies">
         <div class="splitscreen">
             <div class="left">
-                <img [src]="movie.posterImgUrl" alt="" >
+                <img alt="" [src]="movie?.posterImgUrl">
             </div>
             <div class="right"> 
                 <div class="title">{{movie.movieTitle}}</div>

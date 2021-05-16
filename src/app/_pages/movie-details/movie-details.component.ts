@@ -64,8 +64,11 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   getMovieById(): void {
     
     this.getMovieByIdSubscription = this.movieService.getMovieById(this.movieId).subscribe(
-      (response: Movie) => {
+      (response) => {
         this.movie = response;
+
+        if(this.movie.posterImg)
+          this.movie.posterImgUrl = 'data:image/jpeg;base64,' + this.movie.posterImg.imageByte;
         
         this.getReviews(this.movie.movieId);
 
