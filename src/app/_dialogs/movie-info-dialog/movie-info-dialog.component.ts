@@ -15,7 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class MovieInfoDialogComponent implements OnInit, OnDestroy {
 
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef;
-  myfilename = 'Image Poster';
+  myfilename = '';
 
   movie: Movie = {
     movieId: null,
@@ -25,7 +25,7 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     posterImg: null,
     releaseDate: null,
     trailerUrl: '',
-    lengthMinutes: 0,
+    lengthMinutes: null,
     movieDirectors: '',
     movieWriters: '',
     movieActors: '',
@@ -73,11 +73,12 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
   onFileSelected(event: any): void {
 
     this.posterImgFile = event.target.files[0];
+    this.myfilename = this.posterImgFile.name;
   }
 
   validateForm(): boolean {
 
-    if(this.movie.movieTitle == '')
+    if(this.movie.movieTitle == '' || this.movie.lengthMinutes == null || this.movie.movieDirectors == '' || this.movie.releaseDate == null)
       return false;
     
     return true;
@@ -85,8 +86,11 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
 
   submit(): void {
     
-    if(!this.validateForm())
+    if(!this.validateForm()) {
+      this.isInvalid = true;
       return;
+    }
+      
 
     this.movie.movieTags = this.movieTags == '' ? [] : this.movieTags.split(',').map(t => ({tagKey: t}));
 
