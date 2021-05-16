@@ -1,7 +1,7 @@
 import { UserService } from './user.service';
 import { environment } from '../../environments/environment.prod';
 import { Movie } from '../_models/movie.model';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 import { Review } from '../_models/review.model';
@@ -62,6 +62,7 @@ export class MovieService{
             (response: Movie[]) => {
                 
                 this.movies = response;
+                this.movies.forEach(m => m.posterImgUrl = 'data:image/jpeg;base64,' + m.posterImg.imageByte);
 
                 let sortParams = JSON.parse(localStorage.getItem('sortParams'));
                 if(sortParams) {
@@ -102,7 +103,7 @@ export class MovieService{
 
     getMovieById(movieId: number): Observable<Movie>{
 
-        return this.http.get<Movie>(`${environment.apiUrl}/movie/get/${movieId}`);
+        return this.http.get<Movie>(`${environment.apiUrl}/movie/get/${movieId}`)
     }
 
     private getAllMovies(): Observable<Movie[]> {
@@ -110,7 +111,7 @@ export class MovieService{
         return this.http.get<Movie[]>(`${environment.apiUrl}/movie/get/all`);
     }
 
-    getRequestsMovies(): Observable<Movie[]> {
+    getMovieRequests(): Observable<Movie[]> {
 
         return this.http.get<Movie[]>(`${environment.apiUrl}/movie/requests/get`);
     }
@@ -145,7 +146,19 @@ export class MovieService{
 
     addMovie(movie: Movie){
 
-        let body = movie;
+        let headers = new HttpHeaders(
+            {
+                Authorization: 'Basic ' + this.userService.currentUser.authdata
+            }
+        );
+        console.log(movie);
+        return this.http.post<any>(`${environment.apiUrl}/movie/add`, movie, {headers});
+    }
+
+    addMoviePoster(movieId: number, posterImg: File)
+    {
+        let uploadImageData = new FormData();
+        uploadImageData.append('posterImg', posterImg);
 
         let headers = new HttpHeaders(
             {
@@ -153,7 +166,7 @@ export class MovieService{
             }
         );
 
-        return this.http.post<any>(`${environment.apiUrl}/movie/add`, body, {headers});
+        return this.http.post<any>(`${environment.apiUrl}/movie/poster/add/${movieId}`, uploadImageData, {headers});
     }
 
     updateMovie(movie: Movie){
