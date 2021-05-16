@@ -29,6 +29,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingDialogComponent } from './_dialogs/rating-dialog/rating-dialog.component';
@@ -74,7 +75,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
