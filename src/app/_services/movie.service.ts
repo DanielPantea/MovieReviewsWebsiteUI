@@ -62,7 +62,10 @@ export class MovieService{
             (response: Movie[]) => {
                 
                 this.movies = response;
-                this.movies.forEach(m => m.posterImgUrl = 'data:image/jpeg;base64,' + m.posterImg.imageByte);
+                this.movies.forEach(m => {
+                    if(m.posterImg)
+                        m.posterImgUrl = 'data:image/jpeg;base64,' + m.posterImg.imageByte
+                });
 
                 let sortParams = JSON.parse(localStorage.getItem('sortParams'));
                 if(sortParams) {

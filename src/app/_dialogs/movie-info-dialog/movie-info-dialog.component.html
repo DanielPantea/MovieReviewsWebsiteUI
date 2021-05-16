@@ -80,7 +80,7 @@
           </button>
         </mat-toolbar>
   
-        <input type="file" (change)="onFileSelected($event)">
+        <input type="file" #UploadFileInput id="fileUpload" (change)="onFileSelected($event)" name="fileUpload"
           multiple="multiple" accept="image/*" />
       </mat-form-field>
     </p>

@@ -22,7 +22,9 @@ export class NavbarComponent implements OnInit {
     public dialogManagerService: DialogManagerService,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    console.log(this.authentificationService.isLoggedIn() && !this.userService.isAdmin());
+  }
   
   goToTrending(): void {
 
@@ -30,6 +32,10 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('searchTags');
     this.movieService.getMovies();
     this.router.navigateByUrl('/movies');
+  }
+
+  openMovieRequest() {
+    this.dialogManagerService.openMovieInfo(null, 'Request Missing Movie', enMovieInfoFormType.MovieRequest);
   }
 
   openAddMovie() {

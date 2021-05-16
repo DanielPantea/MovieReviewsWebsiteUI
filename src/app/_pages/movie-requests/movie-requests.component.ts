@@ -29,7 +29,10 @@ export class MovieRequestsComponent implements OnInit {
       (response: Movie[]) => {
         
         this.movies = response;
-        this.movies.forEach(m => m.posterImgUrl = 'data:image/jpeg;base64,' + m.posterImg.imageByte);
+        this.movies.forEach(m => {
+          if(m.posterImg)
+            m.posterImgUrl = 'data:image/jpeg;base64,' + m.posterImg.imageByte
+        });
       },
 
       (error: HttpErrorResponse) => {
