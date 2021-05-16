@@ -10,7 +10,7 @@
 
 mat-sidenav {
   /* padding: 20px; */
-  background: rgb(185, 214, 238);
+  background: rgb(199, 199, 199);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   width: 240px;
 }

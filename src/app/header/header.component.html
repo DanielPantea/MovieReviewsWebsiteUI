@@ -1,7 +1,5 @@
 <div class="header">
-    <button mat-fab >
-      <p>MR</p>
-    </button>
+      <img src="/assets/LogoHeader.png" class="logo">
     <div class="header-right">
       <button mat-raised-button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openLogin()">Login</button>
       <button mat-raised-button *ngIf="!authentificationService.isLoggedIn()" (click)="dialogManagerService.openRegister()">Register</button>

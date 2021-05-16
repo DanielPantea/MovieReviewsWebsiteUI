@@ -1,14 +1,19 @@
 .header {
-    background-color: #f1f1f1;
+    background-image: url("/assets/Header.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     padding: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); 
     height: 10%
 }
   
 .header-right a {
-    margin: 20px;
+    margin: 10px;
     float: right;
     color: black;
+    background-color: rgb(207, 207, 207);
+    border-radius: 10px;
+    padding: 10px;
     text-decoration: none;
     font-size: 18px;
 }
@@ -24,12 +29,9 @@
   color: black;
 }
 
-.mat-fab{
+.logo{
+    height: 80px;
     position: fixed;
     top: 10px;
     left: 20px;
-    background-color: rgb(138, 138, 153);
-    color: black;
-    text-align: center;
-    font-size: 18px;
 }
