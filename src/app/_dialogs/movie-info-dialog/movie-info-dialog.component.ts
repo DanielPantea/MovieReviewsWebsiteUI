@@ -5,6 +5,7 @@ import { UserService } from '../../_services/user.service';
 import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { enMovieInfoFormType } from '../../_models/movie-info-form.enum';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-movie-info-dialog',
@@ -20,16 +21,22 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     movieId: null,
     movieTitle: '',
     movieDesc: '',
-    posterImgUrl: '',
+    posterImgUrl: null,
+    posterImg: null,
     releaseDate: null,
     trailerUrl: '',
     lengthMinutes: 0,
     movieDirectors: '',
     movieWriters: '',
     movieActors: '',
-    isEnabled: false
+    isEnabled: false,
+    movieTags: []
   };
   
+  posterImgFile: File = null;
+
+  movieTags: string = '';
+
   cardTitle: string;
 
   isInvalid = false;
@@ -46,7 +53,10 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
   ) { 
     
     if(data.movie)
+    {
       this.movie = data.movie;
+      this.movieTags = this.movie.movieTags.map(tag => tag.tagKey).toString();
+    }
 
     this.cardTitle = data.cardTitle;
     this.formType = data.formType;
@@ -60,35 +70,9 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     this.movieInfoSubscription?.unsubscribe();
   }
 
-  fileChangeEvent(fileInput: any) {
+  onFileSelected(event: any): void {
 
-    if (fileInput.target.files && fileInput.target.files[0]) {
-
-
-      this.myfilename = '';
-      Array.from(fileInput.target.files).forEach((file: File) => {
-        console.log(file);
-        this.myfilename += file.name + ',';
-      });
-
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const image = new Image();
-        image.src = e.target.result;
-        image.onload = rs => {
-
-          // Return Base64 Data URL
-          const imgBase64Path = e.target.result;
-
-        };
-      };
-      reader.readAsDataURL(fileInput.target.files[0]);
-
-      // Reset File Input to Selct Same file again
-      this.uploadFileInput.nativeElement.value = "";
-    } else {
-      this.myfilename = 'Image Poster';
-    }
+    this.posterImgFile = event.target.files[0];
   }
 
   validateForm(): boolean {
@@ -104,30 +88,39 @@ export class MovieInfoDialogComponent implements OnInit, OnDestroy {
     if(!this.validateForm())
       return;
 
-    
+    this.movie.movieTags = this.movieTags == '' ? [] : this.movieTags.split(',').map(t => ({tagKey: t}));
+
+    let respRef;
 
     switch(this.formType) {
 
       case enMovieInfoFormType.AddMovie:
-        this.movieInfoSubscription = this.movieService.addMovie(this.movie).subscribe(
-          () => this.dialogRef.close(),
-          (error) => console.log(error)
-        );
+        console.log(enMovieInfoFormType.AddMovie);
+        this.movie.isEnabled = true;
+        respRef = this.movieService.addMovie(this.movie);
         break;
       case enMovieInfoFormType.MovieRequest:
-        this.movieInfoSubscription = this.userService.sendMovieRequest(this.movie).subscribe(
-          () => this.dialogRef.close(),
-          (error) => console.log(error)
-        );
+        this.movie.isEnabled = false;
+        console.log(enMovieInfoFormType.MovieRequest);
+        respRef = this.userService.sendMovieRequest(this.movie);
         break;
       case enMovieInfoFormType.UpdateMovie:
-        this.movieInfoSubscription = this.movieService.updateMovie(this.movie).subscribe(
-          () => this.dialogRef.close(),
-          (error) => console.log(error)
-
-        );
+        console.log(enMovieInfoFormType.UpdateMovie);
+        respRef = this.movieService.updateMovie(this.movie);
         break;
     }
+
+    respRef.subscribe(
+      (response) => {
+        console.log(response.body);
+        if(this.posterImgFile)
+          this.movieService.addMoviePoster(response.movieId, this.posterImgFile).subscribe(
+            (error) => console.log(error)
+          );
+        this.dialogRef.close()
+      },
+      (error: HttpErrorResponse) => console.log(error)
+    );
   }
 
 }
