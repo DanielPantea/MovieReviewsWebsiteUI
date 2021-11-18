@@ -75,8 +75,8 @@
             <button mat-raised-button routerLink="/movies" *ngIf="userService.isAdmin()" (click)="deleteMovie()" >Delete</button>
         </div>
         <button mat-fab (click)="rateMovie()">
-            <span *ngIf="userRating?.grade!=0">{{userRating?.grade}} | {{totalRating}}</span>
-            <span *ngIf="userRating?.grade==0" class="star">{{totalRating}}</span>
+            <span *ngIf="userRating?.grade!=0 && authService.isLoggedIn()">{{userRating?.grade}} | {{totalRating}}</span>
+            <span *ngIf="userRating?.grade==0 || !authService.isLoggedIn()" class="star">{{totalRating}}</span>
         </button>
         
     </mat-card>

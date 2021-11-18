@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DialogManagerService } from '../../_services/dialog-manager.service';
 import { Rating } from '../../_models/rating.model';
 import { enMovieInfoFormType } from '../../_models/movie-info-form.enum';
-import { Tag } from 'src/app/_models/tag.model';
+import { AuthentificationService } from '../../_services/authentification.service';
+
 
 @Component({
   selector: 'app-movie-page',
@@ -35,9 +36,10 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route:ActivatedRoute,
+    public authService: AuthentificationService,
     public movieService: MovieService,
     public userService: UserService,
-    public dialogManagerService: DialogManagerService,
+    public dialogManagerService: DialogManagerService
   ) { }
 
   ngOnInit(): void {
@@ -72,7 +74,8 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
         
         this.getReviews(this.movie.movieId);
 
-        this.getRating();
+        if(this.authService.isLoggedIn())
+          this.getRating();
 
         this.movieService.getMovieTotalRating(this.movieId).subscribe(
           (data: number) => {
@@ -103,16 +106,22 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
   addWatchlist(): void {
 
+    if(!this.authService.isLoggedIn())
+      return;
     this.addWatchlistSubscription = this.userService.addWatchlist(this.movieId).subscribe();
   }
 
   rateMovie(): void {
 
+    if(!this.authService.isLoggedIn())
+      return;
     this.dialogManagerService.openRatings(this.userRating);
   }
   
   addDiary(): void {
 
+    if(!this.authService.isLoggedIn())
+      return;
     this.addDiarySubscription = this.userService.addDiary(this.movieId).subscribe();
   }
 
@@ -132,6 +141,8 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
   addReview(review: Review): void {
 
+    if(!this.authService.isLoggedIn())
+      return;
     this.addReviewSubscription = this.userService.addReview(review).subscribe(
       () =>{
         location.reload();
